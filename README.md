@@ -1,4 +1,4 @@
-# imk
+# Project IMK - Redesign Web Direktori Putusan Mahkamah Agung
 
 ## Project setup
 ```
