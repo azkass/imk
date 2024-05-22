@@ -17,7 +17,7 @@
                 :loading="loading"
                 append-inner-icon="mdi-magnify"
                 density="compact"
-                label="Search templates"
+                label="Pencarian Putusan"
                 variant="solo"
                 hide-details
                 single-line
@@ -25,15 +25,17 @@
             ></v-text-field>
             </v-card-text>
         </v-card>
+        <FooterBar />
     </div>
 </template>
 
 <script>
     import NavBar from "@/components/NavBar.vue";
+    import FooterBar from "@/components/FooterBar.vue";
     export default {
     name: 'HomePage',
     components: {
-        NavBar
+        NavBar, FooterBar
     },
     data: () => ({
         loaded: false,
