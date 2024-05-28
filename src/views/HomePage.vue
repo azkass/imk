@@ -14,16 +14,16 @@
             max-width="400"
             >
             <v-card-text style="padding:0;">
-            <v-text-field
-                :loading="loading"
-                append-inner-icon="mdi-magnify"
-                density="compact"
-                label="Pencarian Putusan"
-                variant="solo"
-                hide-details
-                single-line
-                @click:append-inner="onClick"
-            ></v-text-field>
+                <v-text-field
+                    :loading="loading"
+                    prepend-inner-icon="mdi-magnify"
+                    density="compact"
+                    label="Pencarian Putusan"
+                    variant="solo"
+                    hide-details
+                    single-line
+                    @click:prepend-inner="onClick"
+                ></v-text-field>
             </v-card-text>
         </v-card>
         <br>

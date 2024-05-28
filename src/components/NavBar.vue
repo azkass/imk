@@ -1,7 +1,9 @@
 <template>
     <v-sheet class="d-flex mb-6">
-        <!-- <v-img src="../assets/logo.png" max-height="50" class="ma-2 pa-2 me-auto"></v-img> -->
-        <a href="/" class="ma-2 pa-2 me-auto"> Direktori Putusan Mahkamah Agung</a>
+        <RouterLink to="/" class="ma-2 pa-2 me-auto" style="display: flex; align-items: center;">
+            <img src="../assets/logo.png" alt="Logo" style="height: 30px; margin-right: 10px; padding-top: 0;">
+            Direktori Putusan Mahkamah Agung
+        </RouterLink>
         <v-btn class="ma-2 pa-2" variant="text">
             <RouterLink to="/">Beranda</RouterLink>
         </v-btn>
