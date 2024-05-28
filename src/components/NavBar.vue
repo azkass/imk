@@ -1,9 +1,9 @@
 <template>
     <v-sheet class="d-flex mb-6">
         <!-- <v-img src="../assets/logo.png" max-height="50" class="ma-2 pa-2 me-auto"></v-img> -->
-        <a href="" class="ma-2 pa-2 me-auto"> Direktori Putusan Mahkamah Agung</a>
+        <a href="/" class="ma-2 pa-2 me-auto"> Direktori Putusan Mahkamah Agung</a>
         <v-btn class="ma-2 pa-2" variant="text">
-            Beranda
+            <RouterLink to="/">Beranda</RouterLink>
         </v-btn>
 
         <v-menu open-on-hover>
@@ -15,37 +15,37 @@
             <v-list>
                 <v-list-item>
                     <v-list-item-title>
-                        <a href="">Klasifikasi</a>
+                        <RouterLink to="/klasifikasi">Klasifikasi</RouterLink>
                     </v-list-item-title>
                 </v-list-item>
                 <v-list-item>
                     <v-list-item-title>
-                        <a href="">Putusan Penting</a>
+                        <RouterLink to="/putusan-penting">Putusan Penting</RouterLink>
                     </v-list-item-title>
                 </v-list-item>
                 <v-list-item>
                     <v-list-item-title>
-                        <a href="">Kompilasi Kaidah Hukum</a>
+                        <RouterLink to="/kompilasi-kaidah-hukum">Kompilasi Kaidah Hukum</RouterLink>
                     </v-list-item-title>
                 </v-list-item>
                 <v-list-item>
                     <v-list-item-title>
-                        <a href="">Restatement</a>
+                        <RouterLink to="/restatement">Restatement</RouterLink>
                     </v-list-item-title>
                 </v-list-item>
                 <v-list-item>
                     <v-list-item-title>
-                        <a href="">Rumusan Kamar</a>
+                        <RouterLink to="/rumusan-kamar">Rumusan Kamar</RouterLink>
                     </v-list-item-title>
                 </v-list-item>
                 <v-list-item>
                     <v-list-item-title>
-                        <a href="">Rumusan Rakernas</a>
+                        <RouterLink to="/rumusan-rakernas">Rumusan Rakernas</RouterLink>
                     </v-list-item-title>
                 </v-list-item>
                 <v-list-item>
                     <v-list-item-title>
-                        <a href="">Yurisprudensi</a>
+                        <RouterLink to="/yurisprudensi">Yurisprudensi</RouterLink>
                     </v-list-item-title>
                 </v-list-item>
             </v-list>
@@ -60,26 +60,26 @@
             <v-list>
                 <v-list-item>
                     <v-list-item-title>
-                        <a href="">Mahkamah Agung</a>
+                        <RouterLink to="/mahkamah-agung">Mahkamah Agung</RouterLink>
                     </v-list-item-title>
                 </v-list-item>
                 <v-list-item>
                     <v-list-item-title>
-                        <a href="">Daftar Pengadilan</a>
+                        <RouterLink to="/daftar-pengadilan">Daftar Pengadilan</RouterLink>
                     </v-list-item-title>
                 </v-list-item>
                 <v-list-item>
                     <v-list-item-title>
-                        <a href="">Pengadilan Pajak</a>
+                        <RouterLink to="/pengadilan-pajak">Pengadilan Pajak</RouterLink>
                     </v-list-item-title>
                 </v-list-item>
             </v-list>
         </v-menu>
         <v-btn class="ma-2 pa-2" variant="text">
-            Peraturan
+            <RouterLink to="/peraturan">Peraturan</RouterLink>
         </v-btn>
         <v-btn class="ma-2 pa-2" variant="text">
-            Tentang
+            <RouterLink to="/tentang">Tentang</RouterLink>
         </v-btn>
     </v-sheet>
 </template>

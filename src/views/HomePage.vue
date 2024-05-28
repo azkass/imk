@@ -6,13 +6,14 @@
             <h3>MAHKAMAH AGUNG REPUBLIK INDONESIA</h3>
             <h1>DIREKTORI PUTUSAN</h1>
             <p>Publikasi Dokumen Elektronik Putusan seluruh Pengadilan di Indonesia</p>
+            <br>
         </div>
         <v-card
             class="mx-auto"
             color="surface-light"
             max-width="400"
             >
-            <v-card-text>
+            <v-card-text style="padding:0;">
             <v-text-field
                 :loading="loading"
                 append-inner-icon="mdi-magnify"
@@ -25,6 +26,14 @@
             ></v-text-field>
             </v-card-text>
         </v-card>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
         <FooterBar />
     </div>
 </template>
