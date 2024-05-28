@@ -14,7 +14,7 @@
                     Direktori
                 </v-btn>
             </template>
-            <v-list>
+            <v-list :style="{ boxShadow:'none'}">
                 <v-list-item>
                     <v-list-item-title>
                         <RouterLink to="/klasifikasi">Klasifikasi</RouterLink>
@@ -59,7 +59,7 @@
                     Pengadilan
                 </v-btn>
             </template>
-            <v-list>
+            <v-list :style="{ boxShadow:'none'}">
                 <v-list-item>
                     <v-list-item-title>
                         <RouterLink to="/mahkamah-agung">Mahkamah Agung</RouterLink>

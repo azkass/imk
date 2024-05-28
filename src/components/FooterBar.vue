@@ -7,7 +7,7 @@
             </v-col>
             <v-col cols="12" md="3">
                 <h3>Produk</h3>
-                <ul>
+                <ul :style="{marginLeft:'15px'}">
                     <li><RouterLink to="/klasifikasi">Klasifikasi</RouterLink></li>
                     <li><RouterLink to="/putusan-penting">Putusan Penting</RouterLink></li>
                     <li><RouterLink to="/kompilasi-kaidah-hukum">Kompilasi Kaidah Hukum</RouterLink></li>
@@ -24,18 +24,26 @@
                     Jakarta Pusat - DKI Jakarta
                     Indonesia 10110
                     <br>
-                    Phone: (021) 384 3348
-                    Phone: (021) 381 0350
-                    Phone: (021) 345 7661
+                    Phone: (021) 384 3348<br>
+                    Phone: (021) 381 0350<br>
+                    Phone: (021) 345 7661<br>
                     Email: info@mahkamahagung.go.id
                 </p>
             </v-col>
             <v-col cols="12" md="3">
                 <h3>Media Sosial</h3>
-                <v-icon>mdi-facebook</v-icon>
-                <v-icon>mdi-twitter</v-icon>
-                <v-icon>mdi-instagram</v-icon>
-                <v-icon>mdi-linkedin</v-icon>
+                <a href="https://www.facebook.com/humasma123/?locale=id_ID" target="_blank">
+                    <v-icon>mdi-facebook</v-icon>
+                </a>
+                <a href="https://twitter.com/mahkamahagung" target="_blank">
+                    <v-icon>mdi-twitter</v-icon>
+                </a>
+                <a href="https://www.instagram.com/humasmahkamahagung" target="_blank">
+                    <v-icon>mdi-instagram</v-icon>
+                </a>
+                <a href="https://www.youtube.com/@MahkamahAgungRepublikIndonesia" target="_blank">
+                    <v-icon>mdi-youtube</v-icon>
+                </a>
             </v-col>
         </v-row>
     </v-container>
@@ -51,5 +59,8 @@
     a {
         text-decoration: none;
         color: inherit;
+    }
+    .v-icon {
+        margin-right: 10px;
     }
 </style>
