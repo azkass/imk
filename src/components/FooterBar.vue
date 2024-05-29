@@ -1,5 +1,5 @@
 <template>
-    <v-container>
+    <v-container style="background-color: brown;">
         <v-row>
             <v-col cols="12" md="3">
                 <h3>Direktori Putusan</h3>
@@ -55,7 +55,7 @@
     };
 </script>
 
-<style scoped>
+<style>
     a {
         text-decoration: none;
         color: inherit;

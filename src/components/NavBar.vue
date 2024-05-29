@@ -4,6 +4,7 @@
             <img src="../assets/logo.png" alt="Logo" style="height: 30px; margin-right: 10px; padding-top: 0;">
             Direktori Putusan Mahkamah Agung
         </RouterLink>
+        
         <v-btn class="ma-2 pa-2" variant="text">
             <RouterLink to="/">Beranda</RouterLink>
         </v-btn>
@@ -14,7 +15,7 @@
                     Direktori
                 </v-btn>
             </template>
-            <v-list :style="{ boxShadow:'none'}">
+            <v-list :style="{ boxShadow:'none', backgroundColor: 'white'}">
                 <v-list-item>
                     <v-list-item-title>
                         <RouterLink to="/klasifikasi">Klasifikasi</RouterLink>
@@ -98,5 +99,8 @@ template {
 a {
     text-decoration: none;
     color: black;
+}
+[v-list]:hover {
+    background-color: #f2f2f2; /* Warna sedikit abu */
 }
 </style>
