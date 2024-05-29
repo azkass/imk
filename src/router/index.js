@@ -70,6 +70,11 @@ const routes = [
         path: '/bar',
         name: 'Bar',
         component: () => import('@/components/BarChart.vue')
+    },
+    {
+        path: '/test',
+        name: 'Test',
+        component: () => import('@/components/TestPage.vue')
     }
 ];
 
