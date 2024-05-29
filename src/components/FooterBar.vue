@@ -1,11 +1,19 @@
 <template>
-    <v-container style="background-color: brown;">
-        <v-row>
-            <v-col cols="12" md="3">
-                <h3>Direktori Putusan</h3>
-                <p>Publikasi Dokumen Elektronik Putusan seluruh Pengadilan di Indonesia</p>
+    <div style="background-color: #8E4202; color:white;">
+        <v-container style="max-width: 90%;">
+            <v-row>
+            <v-col cols="12" md="5">
+                <div style="display: flex; align-items: center;">
+                    <img src="../assets/logo.png" style="max-width: 60px; margin-right: 10px;">
+                    <div>
+                        <h3>Direktori Putusan</h3>
+                        <h4>Mahkamah Agung RI</h4>
+                    </div>
+                </div>
+                <p>Copyright © 2024 Kepaniteraan Mahkamah Agung Republik Indonesia.</p>
+                <p>Hak Cipta dan Kekayaan Intelektual dilindungi Undang-Undang.</p>
             </v-col>
-            <v-col cols="12" md="3">
+            <v-col cols="12" md="2">
                 <h3>Produk</h3>
                 <ul :style="{marginLeft:'15px'}">
                     <li><RouterLink to="/klasifikasi">Klasifikasi</RouterLink></li>
@@ -30,7 +38,7 @@
                     Email: info@mahkamahagung.go.id
                 </p>
             </v-col>
-            <v-col cols="12" md="3">
+            <v-col cols="12" md="2">
                 <h3>Media Sosial</h3>
                 <a href="https://www.facebook.com/humasma123/?locale=id_ID" target="_blank">
                     <v-icon>mdi-facebook</v-icon>
@@ -45,8 +53,9 @@
                     <v-icon>mdi-youtube</v-icon>
                 </a>
             </v-col>
-        </v-row>
-    </v-container>
+            </v-row>
+        </v-container>
+    </div>
 </template>
 
 <script>
