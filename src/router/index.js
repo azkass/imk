@@ -65,6 +65,11 @@ const routes = [
         path:'/tentang',
         name:'Tentang',
         component: () => import('@/views/TentangPage.vue')
+    },
+    {
+        path: '/bar',
+        name: 'Bar',
+        component: () => import('@/components/BarChart.vue')
     }
 ];
 
