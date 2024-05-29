@@ -1,14 +1,17 @@
-import { createApp } from 'vue'
-import App from './App.vue'
+import { createApp } from 'vue';
+import App from './App.vue';
 import router from './router';
 // Vuetify
-import 'vuetify/styles'
-import { createVuetify } from 'vuetify'
-import * as components from 'vuetify/components'
-import * as directives from 'vuetify/directives'
-import 'material-design-icons-iconfont/dist/material-design-icons.css'
-import '@mdi/font/css/materialdesignicons.css'
-import {mdi} from "vuetify/iconsets/mdi";
+import '@mdi/font/css/materialdesignicons.css';
+import 'material-design-icons-iconfont/dist/material-design-icons.css';
+import { createVuetify } from 'vuetify';
+import * as components from 'vuetify/components';
+import * as directives from 'vuetify/directives';
+import { mdi } from "vuetify/iconsets/mdi";
+import 'vuetify/styles';
+
+// Tailwind
+import './assets/style.css';
 
 const vuetify = createVuetify({
     components,

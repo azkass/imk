@@ -4,7 +4,7 @@
             <img src="../assets/logo.png" alt="Logo" style="height: 30px; margin-right: 10px; padding-top: 0;">
             Direktori Putusan Mahkamah Agung
         </RouterLink>
-        <v-btn class="ma-2 pa-2" variant="text">
+        <v-btn class="ma-2 pa-2 bg-pink-500" variant="text">
             <RouterLink to="/">Beranda</RouterLink>
         </v-btn>
 
