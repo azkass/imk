@@ -5,7 +5,7 @@
     </div>
 </template>
 
-<script setup>
+<script>
     // URL dari API atau endpoint yang menyediakan data JSON
     const url = 'https://script.googleusercontent.com/macros/echo?user_content_key=X3SM_4ItFLHhErhTfScQNtZZCKY2udB6Ur_Ize7rw-mTr91Rd1j8KMApWqNXdRCxP4OofHIve9E1WRdrHhqzwdRuBdR52rkcm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnOndka7CUg2WxWkgtxh0EQhqnsfM3BJKt1zYnFraaUtFjVD5Gezoit2mlK211O6QsVXK0ZW33QaWyW6I3E4gxECYa6RN0tzjKQ&lib=Mv8jyjEfepD2p_SRWBodP9x5NT3TNaPLP'
     
