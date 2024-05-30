@@ -1,5 +1,5 @@
 <template>
-    <div style="background-color: #8E4202; color:white;">
+    <div class="bg-[#8E4202] text-white">
         <v-container style="max-width: 90%;">
             <v-row>
             <v-col cols="12" md="5">

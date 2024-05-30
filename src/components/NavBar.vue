@@ -1,8 +1,10 @@
 <template>
-    <v-sheet class="d-flex mb-6">
+    <v-sheet class="d-flex bg-[#8E4202] text-white">
         <RouterLink to="/" class="ma-2 pa-2 me-auto" style="display: flex; align-items: center;">
             <img src="../assets/logo.png" alt="Logo" style="height: 30px; margin-right: 10px; padding-top: 0;">
-            Direktori Putusan Mahkamah Agung
+            Direktori Putusan
+            <br>
+            Mahkamah Agung
         </RouterLink>
         
         <v-btn class="ma-2 pa-2" variant="text">
