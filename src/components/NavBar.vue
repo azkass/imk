@@ -55,31 +55,6 @@
                 </v-list-item>
             </v-list>
         </v-menu>
-        
-        <v-menu open-on-hover>
-            <template v-slot:activator="{props}">
-                <v-btn class="ma-2 pa-2" variant="text" v-bind="props">
-                    Pengadilan
-                </v-btn>
-            </template>
-            <v-list :style="{ boxShadow:'none'}">
-                <v-list-item>
-                    <v-list-item-title>
-                        <RouterLink to="/mahkamah-agung">Mahkamah Agung</RouterLink>
-                    </v-list-item-title>
-                </v-list-item>
-                <v-list-item>
-                    <v-list-item-title>
-                        <RouterLink to="/daftar-pengadilan">Daftar Pengadilan</RouterLink>
-                    </v-list-item-title>
-                </v-list-item>
-                <v-list-item>
-                    <v-list-item-title>
-                        <RouterLink to="/pengadilan-pajak">Pengadilan Pajak</RouterLink>
-                    </v-list-item-title>
-                </v-list-item>
-            </v-list>
-        </v-menu>
         <v-btn class="ma-2 pa-2" variant="text">
             <RouterLink to="/peraturan">Peraturan</RouterLink>
         </v-btn>
