@@ -1,29 +1,28 @@
 <template>
-    <div>
-        <!-- <bar-chart :chart-data="chartData"></bar-chart> -->
+    <div class="bg-[#F5F7FA]">
         <h3>Rekapitulasi Putusan</h3>
-    </div>
-
-    <div>
-    <!-- Baris pertama dengan satu box rounded besar -->
-    <div class="flex justify-center">
-        <div class="box-border border-black border-2 rounded-lg bg-white w-32 h-32 flex justify-center">
-            Putusan Keseluruhan
+        <div>
+        <!-- Baris pertama dengan satu box rounded besar -->
+        <div class="flex justify-center">
+            <div class="box-border border-black border-2 rounded-lg bg-white w-32 h-32 flex justify-center">
+                Putusan Keseluruhan
+            </div>
         </div>
-    </div>
-        
-    <!-- 3 baris box rounded pada baris berikutnya -->
-    <div class="flex">
-        <div class="box-border border-black border-2 rounded-lg bg-white p-4 m-2">
-            Putusan Bulan Ini
+            
+        <!-- 3 baris box rounded pada baris berikutnya -->
+        <div class="flex">
+            <div class="box-border border-black border-2 rounded-lg bg-white p-4 m-2">
+                Putusan Bulan Ini
+            </div>
+            <div class="box-border border-black border-2 rounded-lg bg-white p-4 m-2">
+                Putusan Bulan Lalu
+            </div>
+            <div class="box-border border-black border-2 rounded-lg bg-white p-4 m-2">
+                Putusan 3 Bulan Lalu
+            </div>
+            </div>
         </div>
-        <div class="box-border border-black border-2 rounded-lg bg-white p-4 m-2">
-            Putusan Bulan Lalu
-        </div>
-        <div class="box-border border-black border-2 rounded-lg bg-white p-4 m-2">
-            Putusan 3 Bulan Lalu
-        </div>
-        </div>
+        <br><br><br><br>
     </div>
 </template>
 

@@ -1,6 +1,6 @@
 <template>
     <NavBar/>
-    <h1>Klasifikasi</h1>
+    <h1>Putusan</h1>
     <FooterBar/>
 </template>
 
@@ -8,7 +8,7 @@
     import NavBar from "@/components/NavBar.vue";
     import FooterBar from "@/components/FooterBar.vue";
     export default {
-    name: 'KlasifikasiPage',
+    name: 'PutusanPage',
     components: {
         NavBar, FooterBar
     }

@@ -33,13 +33,8 @@
         </div>
         
         <BoxRounded />
-        
         <BarChart />
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
+        <DokumenTerbaru />
         <FooterBar />
     </div>
 </template>
@@ -47,13 +42,14 @@
 <script>
     import NavBar from "@/components/NavBar.vue";
     import FooterBar from "@/components/FooterBar.vue";
-    import BarChart from "@/components/BarChart.vue";
+    import BarChart from "@/components/RekapitulasiPutusan.vue";
     import BoxRounded from "@/components/BoxRounded.vue";
+    import DokumenTerbaru from "@/components/DokumenTerbaru.vue";
     
     export default {
         name: 'HomePage',
         components: {
-            NavBar, FooterBar, BarChart, BoxRounded
+            NavBar, FooterBar, BarChart, BoxRounded, DokumenTerbaru
         },
         data: () => ({
             loaded: false,

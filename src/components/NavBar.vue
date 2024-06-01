@@ -20,7 +20,7 @@
             <v-list :style="{ boxShadow:'none', backgroundColor: 'white'}">
                 <v-list-item>
                     <v-list-item-title>
-                        <RouterLink to="/klasifikasi">Klasifikasi</RouterLink>
+                        <RouterLink to="/putusan">Putusan</RouterLink>
                     </v-list-item-title>
                 </v-list-item>
                 <v-list-item>
