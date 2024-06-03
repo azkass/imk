@@ -15,8 +15,8 @@
             </v-col>
             <v-col cols="12" md="2">
                 <h3>Produk</h3>
-                <ul :style="{marginLeft:'15px'}">
-                    <li><RouterLink to="/klasifikasi">Klasifikasi</RouterLink></li>
+                <ul>
+                    <li><RouterLink to="/putusan">Putusan</RouterLink></li>
                     <li><RouterLink to="/putusan-penting">Putusan Penting</RouterLink></li>
                     <li><RouterLink to="/kompilasi-kaidah-hukum">Kompilasi Kaidah Hukum</RouterLink></li>
                     <li><RouterLink to="/restatement">Restatement</RouterLink></li>

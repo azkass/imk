@@ -7,9 +7,9 @@ const routes = [
         component: () => import('@/views/HomePage.vue')
     },
     {
-        path: '/klasifikasi',
-        name: 'Klasifikasi',
-        component: () => import('@/views/KlasifikasiPage.vue')
+        path: '/putusan',
+        name: 'Putusan',
+        component: () => import('@/views/PutusanPage.vue')
     },
     {
         path: '/putusan-penting',
@@ -42,21 +42,6 @@ const routes = [
         component: () => import('@/views/YurisprudensiPage.vue')
     },
     {
-        path:'/mahkamah-agung',
-        name:'MahkamahAgung',
-        component: () => import('@/views/MahkamahAgung.vue')
-    },
-    {
-        path:'/daftar-pengadilan',
-        name:'DaftarPengadilan',
-        component: () => import('@/views/DaftarPengadilan.vue')
-    },
-    {
-        path:'/pengadilan-pajak',
-        name:'PengadilanPajak',
-        component: () => import('@/views/PengadilanPajak.vue')
-    },
-    {
         path:'/peraturan',
         name:'Peraturan',
         component: () => import('@/views/PeraturanPage.vue')
@@ -69,12 +54,17 @@ const routes = [
     {
         path: '/bar',
         name: 'Bar',
-        component: () => import('@/components/BarChart.vue')
+        component: () => import('@/components/RekapitulasiPutusan.vue')
     },
     {
         path: '/test',
         name: 'Test',
         component: () => import('@/components/TestPage.vue')
+    },
+    {
+        path: '/src/assets/logo.png',
+        name: 'Logo',
+        component: () => import('../assets/logo.png')
     }
 ];
 
