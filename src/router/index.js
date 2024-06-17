@@ -42,6 +42,11 @@ const routes = [
         component: () => import('@/views/YurisprudensiPage.vue')
     },
     {
+        path:'/isi-yurisprudensi',
+        name:'IsiYurisprudensi',
+        component: () => import('@/views/IsiYurisprudensiPage.vue')
+    },
+    {
         path:'/peraturan',
         name:'Peraturan',
         component: () => import('@/views/PeraturanPage.vue')
