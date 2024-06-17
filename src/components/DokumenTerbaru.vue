@@ -1,6 +1,7 @@
 <template>
-    <div class="bg-[#F5F7FA]">
+    <div class="bg-[#F5F7FA] px-8">
         <h3>Dokumen Terbaru</h3>
+        <hr class="border-black border-2">
         <v-card>
             <v-tabs v-model="selectedTab" bg-color="#F5F7FA" show-arrows>
             <v-tab v-for="(tab, index) in tabs" :key="index" :value="'tab-' + (index + 1)">

@@ -1,6 +1,7 @@
 <template>
-    <div class="bg-[#F5F7FA]">
+    <div class="bg-[#F5F7FA] px-8">
         <h3>Rekapitulasi Putusan</h3>
+        <hr class="border-black border-2">
         <div>
         <!-- Baris pertama dengan satu box rounded besar -->
         <div class="flex justify-center">
