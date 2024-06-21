@@ -5,14 +5,14 @@
     <v-container>
     <!-- <v-container class="mx-auto max-w-screen-lg px-4"> -->
       <!-- Breadcrumbs Section -->
-      <v-breadcrumbs :items="items" item-class="breadcrumb-item">
+      <!-- <v-breadcrumbs :items="items" item-class="breadcrumb-item">
         <template v-slot:divider>
           <v-icon class="text-[#8e4202]" icon="mdi-chevron-right"></v-icon>
         </template>
         <template v-slot:prepend>
           <v-icon class="text-[#8e4202]">mdi-home</v-icon>
         </template>
-      </v-breadcrumbs>
+      </v-breadcrumbs> -->
 
       <!-- Title Section -->
       <h1 class="text-2xl md:text-3xl font-bold mb-4">Restatement</h1>
@@ -60,7 +60,7 @@
           </div>
         </div>
         <!-- Filter Buttons for Mobile -->
-        <div class="flex md:hidden justify-center mb-4 space-x-4">
+        <div class="flex md:hidden justify-center mb-4">
           <v-btn color="primary" @click="showSortFilter = true">Urutkan berdasarkan</v-btn>
           <v-btn color="primary" @click="showCategoryFilter = true">Filter Kategori</v-btn>
         </div>
