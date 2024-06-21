@@ -27,14 +27,29 @@ const routes = [
         component: () => import('@/views/RestatementPage.vue')
     },
     {
+        path:'/isi-restatement',
+        name:'IsiRestatement',
+        component: () => import('@/views/IsiRestatement.vue')
+    },
+    {
         path:'/rumusan-kamar',
         name:'RumusanKamar',
         component: () => import('@/views/RumusanKamar.vue')
     },
     {
+        path:'/isi-rumusan-kamar',
+        name:'IsiRumusanKamar',
+        component: () => import('@/views/IsiRumusanKamar.vue')
+    },
+    {
         path:'/rumusan-rakernas',
         name:'RumusanRakernas',
         component: () => import('@/views/RumusanRakernas.vue')
+    },
+    {
+        path:'/isi-rumusan-rakernas',
+        name:'IsiRumusanRakernas',
+        component: () => import('@/views/IsiRumusanRakernas.vue')
     },
     {
         path:'/yurisprudensi',
@@ -72,9 +87,24 @@ const routes = [
         component: () => import('@/views/IsiPutusan.vue')
     },
     {
-        path: '/kontak-kami',
-        name: 'KontakKami',
+        path: '/kontak',
+        name: 'Kontak',
         component: () => import('@/views/KontakKami.vue')
+    },
+    {
+        path: '/isi-peraturan',
+        name: 'IsiPeraturan',
+        component: () => import('@/views/IsiPeraturan.vue')
+    },
+    {
+        path: '/panduan',
+        name: 'Panduan',
+        component: () => import('@/views/PanduanPage.vue')
+    },
+    {
+        path: '/rss',
+        name: 'RSS',
+        component: () => import('@/views/RssPage.vue')
     },
     {
         path: '/src/assets/logo.png',

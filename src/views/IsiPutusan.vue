@@ -1,21 +1,28 @@
 <template>
     <NavBar />
-    <div class="bg-[#F5F7FA] px-15 py-10">
-        <h3 class="text-xl font-semibold">Putusan PN JAKARTA UTARA</h3>
-        <h3 class="text-xl font-semibold mb-4">Nomor 1537/Pid.B/2016/PN JKT.UTR</h3>
+    <div class="bg-[#F5F7FA] px-15 pb-4">
+        <v-breadcrumbs :items="links" item-class="breadcrumb-item" class="breadcrumbs text-[#8e4202] pl-0">
+            <template v-slot:divider>
+            <v-icon class="text-[#8e4202]" icon="mdi-chevron-right"></v-icon>
+            </template>
+            <template v-slot:prepend>
+            <v-icon class="text-[#8e4202]">mdi-home</v-icon>
+            </template>
+        </v-breadcrumbs>
+        <h1 class="text-4xl font-semibold mt-4">Putusan PN JAKARTA UTARA</h1>
+        <h1 class="text-4xl font-semibold mb-4">Nomor 1537/Pid.B/2016/PN JKT.UTR</h1>
         <hr class="border-black border-2">
-        <p class="my-5">9 Mei 2017 — Ir. BASUKI TJAHAJA PURNAMA alias AHOK</p>
+        <p class="my-4">9 Mei 2017 — Ir. BASUKI TJAHAJA PURNAMA alias AHOK</p>
 
         <div class="pl-4">
             <h3 class="text-xl font-semibold mb-4">Metadata</h3>
             <div
                 v-for="(item, index) in items"
                 :key="'item-'+index"
-                class="grid grid-cols-2 gap-y-4">
-                    <h4 class="text-xl font-semibold mb-4">{{ item.title }}</h4>
+                class="grid grid-cols-2 gap-4 max-w-md mb-4">
+                    <h4 class="text-xl font-semibold">{{ item.title }}</h4>
                     <p>{{ item.value }}</p>
             </div>
-
         </div>
         <div 
             v-for="(list, index) in lists"
@@ -58,6 +65,11 @@
             {title: 'Kaidah', value: '-'},
             {title: 'Catatan Amar', value: '-'},
             {title: 'Putusan Terkait', value: 'Peninjauan Kembali Nomor 11/PK/PID/2018'},
+        ],
+        links: [
+            {title:'Direktori'},
+            {title:'Putusan'},
+            {title: 'Putusan Biasa'}
         ]
         }),
     }

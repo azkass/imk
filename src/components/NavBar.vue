@@ -59,7 +59,7 @@
             <RouterLink to="/tentang">Tentang</RouterLink>
         </v-btn>
         <v-btn class="ma-2 pa-2" variant="text">
-            <RouterLink to="/kontak-kami">Kontak Kami</RouterLink>
+            <RouterLink to="/kontak">Kontak Kami</RouterLink>
         </v-btn>
     </v-sheet>
 </template>
