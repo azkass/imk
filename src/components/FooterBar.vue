@@ -10,14 +10,28 @@
                         <h4>Mahkamah Agung RI</h4>
                     </div>
                 </div>
-                <p>Copyright © 2024 Kepaniteraan Mahkamah Agung Republik Indonesia.</p>
+                <p class="mt-5">Copyright © 2024 Kepaniteraan Mahkamah Agung Republik Indonesia.</p>
                 <p>Hak Cipta dan Kekayaan Intelektual dilindungi Undang-Undang.</p>
+                <div class="mt-5">
+                    <a href="https://www.facebook.com/humasma123/?locale=id_ID" target="_blank">
+                        <v-icon>mdi-facebook</v-icon>
+                    </a>
+                    <a href="https://twitter.com/mahkamahagung" target="_blank">
+                        <v-icon>mdi-twitter</v-icon>
+                    </a>
+                    <a href="https://www.instagram.com/humasmahkamahagung" target="_blank">
+                        <v-icon>mdi-instagram</v-icon>
+                    </a>
+                    <a href="https://www.youtube.com/@MahkamahAgungRepublikIndonesia" target="_blank">
+                        <v-icon>mdi-youtube</v-icon>
+                    </a>
+                </div>
             </v-col>
-            <v-col cols="12" md="2">
-                <h3>Produk</h3>
+            <v-col cols="12" md="3">
+                <h3>Direktori</h3>
                 <ul>
                     <li><RouterLink to="/putusan">Putusan</RouterLink></li>
-                    <li><RouterLink to="/putusan-penting">Putusan Penting</RouterLink></li>
+                    <li><RouterLink to="/putusan-penting">Peraturan Perundangan</RouterLink></li>
                     <li><RouterLink to="/kompilasi-kaidah-hukum">Kompilasi Kaidah Hukum</RouterLink></li>
                     <li><RouterLink to="/restatement">Restatement</RouterLink></li>
                     <li><RouterLink to="/rumusan-kamar">Rumusan Kamar</RouterLink></li>
@@ -25,7 +39,7 @@
                     <li><RouterLink to="/yurisprudensi">Yurisprudensi</RouterLink></li>
             </ul>
             </v-col>
-            <v-col cols="12" md="3">
+            <v-col cols="12" md="4">
                 <h3>Kontak</h3>
                 <p>
                     Jalan Medan Merdeka Utara No. 9-13.
@@ -37,21 +51,6 @@
                     Phone: (021) 345 7661<br>
                     Email: info@mahkamahagung.go.id
                 </p>
-            </v-col>
-            <v-col cols="12" md="2">
-                <h3>Media Sosial</h3>
-                <a href="https://www.facebook.com/humasma123/?locale=id_ID" target="_blank">
-                    <v-icon>mdi-facebook</v-icon>
-                </a>
-                <a href="https://twitter.com/mahkamahagung" target="_blank">
-                    <v-icon>mdi-twitter</v-icon>
-                </a>
-                <a href="https://www.instagram.com/humasmahkamahagung" target="_blank">
-                    <v-icon>mdi-instagram</v-icon>
-                </a>
-                <a href="https://www.youtube.com/@MahkamahAgungRepublikIndonesia" target="_blank">
-                    <v-icon>mdi-youtube</v-icon>
-                </a>
             </v-col>
             </v-row>
         </v-container>

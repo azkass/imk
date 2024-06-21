@@ -67,10 +67,20 @@ const routes = [
         component: () => import('@/components/TestPage.vue')
     },
     {
+        path: '/isi-putusan',
+        name: 'IsiPutusan',
+        component: () => import('@/views/IsiPutusan.vue')
+    },
+    {
+        path: '/kontak-kami',
+        name: 'KontakKami',
+        component: () => import('@/views/KontakKami.vue')
+    },
+    {
         path: '/src/assets/logo.png',
         name: 'Logo',
         component: () => import('../assets/logo.png')
-    }
+    },
 ];
 
 const router = createRouter({

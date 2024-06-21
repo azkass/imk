@@ -1,7 +1,7 @@
 <template>
-    <v-sheet class="d-flex bg-[#8E4202] text-white">
-        <RouterLink to="/" class="ma-2 pa-2 me-auto" style="display: flex; align-items: center;">
-            <img src="../assets/logo.png" alt="Logo" style="height: 30px; margin-right: 10px; padding-top: 0;">
+    <v-sheet class="d-flex bg-[#8E4202] text-white font-medium p-2">
+        <RouterLink to="/" class="pl-4 me-auto" style="display: flex; align-items: center;">
+            <img src="../assets/logo.png" alt="Logo" style="height: 40px; margin-right: 10px; padding-top: 0;">
             Direktori Putusan
             <br>
             Mahkamah Agung
@@ -56,10 +56,10 @@
             </v-list>
         </v-menu>
         <v-btn class="ma-2 pa-2" variant="text">
-            <RouterLink to="/peraturan">Peraturan</RouterLink>
+            <RouterLink to="/tentang">Tentang</RouterLink>
         </v-btn>
         <v-btn class="ma-2 pa-2" variant="text">
-            <RouterLink to="/tentang">Tentang</RouterLink>
+            <RouterLink to="/kontak-kami">Kontak Kami</RouterLink>
         </v-btn>
     </v-sheet>
 </template>
