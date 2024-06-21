@@ -33,9 +33,9 @@
         <div
             v-for="(item, index) in items"
             :key="'item-'+index"
-            class="grid grid-cols-2 gap-4 max-w-md mb-4">
-                <h4 class="text-l font-semibold mb-4">{{ item.title }}</h4>
-                <p class="text-l">{{ item.value }}</p>
+            class="flex flex-row gap-4 mb-4">
+                <h4 class="text-l font-semibold w-20 mb-4">{{ item.title }}</h4>
+                <p class="text-l max-w-max">{{ item.value }}</p>
         </div>
     </div>
         </div>
@@ -107,7 +107,6 @@ data() {
         {title: 'Tahun', value: ': 2000'},
         {title: 'Tentang', value: ': Perubahan Atas Undang-Undang Nomor 19 Tahun 1997 Tentang Penagihan Pajak Dengan Surat Paksa'},
         {title: 'Klasifikasi', value: ': Undang-Undang >> Hukum Materiil >> TUN Pajak'}
-
     ],
     openSections: [false, false] // Array to keep track of which sections are open
     };
