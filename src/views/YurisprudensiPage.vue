@@ -59,7 +59,7 @@
         </div>
         <v-row class="mt-[-23px]">
           <v-col cols="3">
-            <v-card>
+            <v-card class="pa-4 rounded-2xl shadow-2xl">
               <v-card-text>
                 <h2 class="mb-1 text-[17px] font-bold">Kata Kunci</h2>
                 <v-text-field class="mb-[-15px]" label="Masukkan Kata Kunci" v-model="keyword" />
