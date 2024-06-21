@@ -5,14 +5,14 @@
     <v-container>
     <!-- <v-container class="mx-auto max-w-screen-lg px-4"> -->
       <!-- Breadcrumbs Section -->
-      <!-- <v-breadcrumbs :items="items" item-class="breadcrumb-item">
+      <v-breadcrumbs :items="items" item-class="breadcrumb-item">
         <template v-slot:divider>
           <v-icon class="text-[#8e4202]" icon="mdi-chevron-right"></v-icon>
         </template>
         <template v-slot:prepend>
           <v-icon class="text-[#8e4202]">mdi-home</v-icon>
         </template>
-      </v-breadcrumbs> -->
+      </v-breadcrumbs>
 
       <!-- Title Section -->
       <h1 class="text-2xl md:text-3xl font-bold mb-4">Restatement</h1>
@@ -60,9 +60,9 @@
           </div>
         </div>
         <!-- Filter Buttons for Mobile -->
-        <div class="flex md:hidden justify-center mb-4">
-          <v-btn color="primary" @click="showSortFilter = true">Urutkan berdasarkan</v-btn>
-          <v-btn color="primary" @click="showCategoryFilter = true">Filter Kategori</v-btn>
+        <div class="flex md:hidden justify-center mb-4 space-x-6">
+          <v-btn  @click="showSortFilter = true">Urutkan</v-btn>
+          <v-btn  @click="showCategoryFilter = true">Filter</v-btn>
         </div>
 
         <v-row justify="center mt-[-23px]">
@@ -905,6 +905,25 @@ export default {
   width: 100%;
   max-width: 600px;
   margin-top: 10px;
+}
+
+.breadcrumbs {
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .breadcrumbs {
+    font-size: 0.75rem; /* Ukuran font lebih kecil untuk mobile */
+    padding: 0 0.5rem; /* Mengurangi padding untuk mobile */
+  }
+
+  .v-breadcrumbs .v-breadcrumbs__divider {
+    margin: 0 0.25rem; /* Mengurangi margin untuk divider pada mobile */
+  }
+
+  .v-breadcrumbs .v-breadcrumbs__item {
+    padding: 0.25rem 0; /* Mengurangi padding untuk item pada mobile */
+  }
 }
 </style>
   
