@@ -5,7 +5,7 @@
     <v-container>
     <!-- <v-container class="mx-auto max-w-screen-lg px-4"> -->
       <!-- Breadcrumbs Section -->
-      <v-breadcrumbs :items="items" item-class="breadcrumb-item">
+      <v-breadcrumbs :items="items" item-class="breadcrumb-item" class="breadcrumbs">
         <template v-slot:divider>
           <v-icon class="text-[#8e4202]" icon="mdi-chevron-right"></v-icon>
         </template>
@@ -917,11 +917,11 @@ export default {
     padding: 0 0.5rem; /* Mengurangi padding untuk mobile */
   }
 
-  .v-breadcrumbs .v-breadcrumbs__divider {
+  .v-breadcrumbs__divider {
     margin: 0 0.25rem; /* Mengurangi margin untuk divider pada mobile */
   }
 
-  .v-breadcrumbs .v-breadcrumbs__item {
+  .v-breadcrumbs__item {
     padding: 0.25rem 0; /* Mengurangi padding untuk item pada mobile */
   }
 }
