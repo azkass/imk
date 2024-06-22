@@ -1276,6 +1276,35 @@ const showSortFilter = ref(false);
   max-width: 600px;
   margin-top: 10px;
 }
+.breadcrumbs {
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .breadcrumbs {
+    font-size: 0.75rem; /* Ukuran font lebih kecil untuk mobile */
+    padding: 0 0.5rem; /* Mengurangi padding untuk mobile */
+  }
+
+  .v-breadcrumbs__divider {
+    margin: 0 0.25rem; /* Mengurangi margin untuk divider pada mobile */
+  }
+
+  .v-breadcrumbs__item {
+    padding: 0.25rem 0; /* Mengurangi padding untuk item pada mobile */
+  }
+
+  /* Adjust pagination buttons for mobile */
+  .pagination-button {
+    padding: 0.25rem 0.5rem; /* Smaller padding for mobile */
+    font-size: 0.75rem; /* Smaller font size for mobile */
+  }
+
+  .pagination-dots {
+    padding: 0.25rem 0.5rem; /* Smaller padding for mobile */
+    font-size: 0.75rem; /* Smaller font size for mobile */
+  }
+}
 </style>
 
 
