@@ -1,9 +1,9 @@
 <template>
-    <div>
+    <div class="bg-[#F5F7FA]">
       <NavBar />
       <v-container>
         <!-- Breadcrumbs Section -->
-        <v-breadcrumbs :items="items" item-class="breadcrumb-item">
+        <v-breadcrumbs :items="items" item-class="breadcrumb-item" class="text-[#8e4202] pl-0">
           <template v-slot:divider>
             <v-icon class="text-[#8e4202]" icon="mdi-chevron-right"></v-icon>
           </template>
@@ -53,8 +53,8 @@
   
           <!-- Accordion Sections -->
           <div class="accordion mb-4 border border-gray-300 rounded">
-            <button class="accordion-header w-full text-left bg-gray-100 p-4 rounded-t focus:outline-none flex justify-between items-center" @click="toggleSection(0)">
-              <span class="text-gray-800 font-medium">Kaidah Hukum</span>
+            <button class="accordion-header w-full text-left bg-white p-4 rounded-t focus:outline-none flex justify-between items-center" @click="toggleSection(0)">
+              <span class="text-gray-800 font-medium text-xl">Kaidah Hukum</span>
               <svg :class="{'transform rotate-180': openSections[0]}" class="w-5 h-5 text-gray-500 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
@@ -65,8 +65,8 @@
           </div>
   
           <div class="accordion mb-4 border border-gray-300 rounded">
-            <button class="accordion-header w-full text-left bg-gray-100 p-4 rounded-t focus:outline-none flex justify-between items-center" @click="toggleSection(1)">
-              <span class="text-gray-800 font-medium">Pengantar</span>
+            <button class="accordion-header w-full text-left bg-white p-4 rounded-t focus:outline-none flex justify-between items-center" @click="toggleSection(1)">
+              <span class="text-gray-800 font-medium text-xl">Pengantar</span>
               <svg :class="{'transform rotate-180': openSections[1]}" class="w-5 h-5 text-gray-500 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>

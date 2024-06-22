@@ -13,9 +13,8 @@
     </v-breadcrumbs>
 
     <!-- Title Section -->
-    <h1 class="text-2xl font-bold">Putusan PN JAKARTA UTARA</h1>
     <div class="flex justify-between items-center mb-4">
-        <h1 class="text-2xl font-bold">Nomor 1537/Pid.B/2016/PN JKT.UTR</h1>
+        <h1 class="text-2xl font-bold">Grosse Akta</h1>
         <div class="flex space-x-2">
         <button class="bg-yellow-500 text-white px-4 py-2 rounded-md flex items-center">
             <v-icon class="mr-2">mdi-zip-box</v-icon> ZIP
@@ -34,22 +33,22 @@
         <div
             v-for="(item, index) in items"
             :key="'item-'+index"
-            class="flex flex-row gap-4 mb-4">
-                <h4 class="text-l font-semibold w-20 mb-4">{{ item.title }}</h4>
-                <p class="text-l max-w-max">{{ item.value }}</p>
+            class="grid grid-cols-2 gap-4 max-w-md mb-4">
+                <h4 class="text-l font-semibold mb-4">{{ item.title }}</h4>
+                <p class="text-l">{{ item.value }}</p>
         </div>
     </div>
         </div>
         <!-- Accordion Sections -->
-        <div class="accordion mb-4 border border-gray-300 shadow-md rounded">
+        <div class="accordion mb-4 border border-gray-300 rounded">
         <button class="accordion-header w-full text-left bg-white p-4 rounded-t focus:outline-none flex justify-between items-center" @click="toggleSection(0)">
-            <span class="text-gray-800 text-xl font-semibold">Putusan Terkait</span>
+            <span class="text-gray-800 text-xl font-semibold">Rumusan</span>
             <svg :class="{'transform rotate-180': openSections[0]}" class="w-5 h-5 text-gray-500 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
         </button>
         <div :class="{'open': openSections[0]}" class="accordion-content bg-white rounded-b">
-            <p class="p-4 text-justify">Peninjauan Kembali Nomor 11/PK/PID/2018</p>
+            <p class="p-4">MENGADILI menyatakan terdakwa Ir. BASUKI TJAHAJA PURNAMA alias AHOK terbukti secara sah dan meyakinkan bersalah melakukan tindak pidana Penodaan Agama; Menjatuhkan pidana kepada Terdakwa oleh karena itu dengan pidana penjara selama 2 (dua) Tahun; Memerintahkan agar Terdakwa ditahan; Menetapkan barang bukti yang diajukan oleh Penuntut Umum berupa: Seluruhnya tetap terlampir dan menjadi bagian tidak terpisahkan dari berkas perkara; Membebankan kepada Terdakwa untuk membayar biaya perkara sebesar Rp.5.000,- (lima ribu rupiah) ;</p>
         </div>
         </div>
     </div>
@@ -71,24 +70,16 @@ components: {
 data() {
     return {
     breadcumbs: [
-        { title: 'Direktori', href: '#' },
-        { title: 'Putusan', href: '#' },
-        { title: 'Putusan Biasa', disabled: true }
+        {title:'Direktori'},
+        {title:'Rumusan Rakernas'},
+        {title:'Pengajuan Gugatan'},
+        {title:'RAKERNAS/2012/PERDATA AGAMA/FORMIL/19'},
     ],
     items: [
-    {title: 'Nomor', value: '1537/Pid.B/2016/PN JKT.UTR'},
-            {title: 'Tingkat Proses', value: 'Pertama'},
-            {title: 'Klasifikasi', value: 'Pidana Umum'},
-            {title: 'Kata Kunci', value: '1537/Pid.B/2016/PN JKT.UTR'},
-            {title: 'Tahun', value: '2017'},
-            {title: 'Tanggal Register', value: '1 Desember 2016'},
-            {title: 'Lembaga Peradilan', value: 'PN JAKARTA UTARA'},
-            {title: 'Hakim Ketua', value: 'H. Dwiarso Budi Santiarto'},
-            {title: 'Hakim Anggota', value: 'Jupriyadi, Abdul Rosyad, Didik Wuryanto, I Wayan Wirjana'},
-            {title: 'Amar', value: 'HUKUM'},
-            {title: 'Tanggal Musyawarah', value: '-'},
-            {title: 'Tanggal Dibacakan', value: '9 Mei 2017'},
-            {title: 'Abstrak', value: '-'}
+        {title: 'Nomor', value: 'RAKERNAS/2012/PERDATA AGAMA/FORMIL/19'},
+        {title: 'Tahun', value: '2012'},
+        {title: 'Klasifikasi', value: 'Pidana Perdata Agama'},
+        {title: 'Kata Kunci', value: 'Perkawinan di luar negeri tidak dicatatkan'}
     ],
     openSections: [false, false] // Array to keep track of which sections are open
     };
