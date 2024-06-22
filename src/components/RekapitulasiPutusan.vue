@@ -18,34 +18,34 @@
 
             <div class="flex flex-wrap justify-center">
                 <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 bg-white rounded-lg mx-2 mb-4">
-                    <div class="p-4">
+                    <div class="px-4 pt-4">
                         <h2 class="font-medium text-xl">Putusan Bulan Ini</h2>
-                        <p>8,883,154</p>
+                        <p>74,284</p>
                         <p>Dokumen</p>
                     </div>
-                    <div class="p-4">
+                    <div class="px-4">
                         <BarChart :chartData="data2" :chartConfig="config1" class=""/>
                     </div>
                 </div>
 
                 <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 bg-white rounded-lg mx-2 mb-4">
-                    <div class="p-4">
+                    <div class="px-4 pt-4">
                         <h2 class="font-medium text-xl">Putusan Bulan Lalu</h2>
-                        <p>8,883,154</p>
+                        <p>114,482</p>
                         <p>Dokumen</p>
                     </div>
-                    <div class="p-4">
+                    <div class="px-4">
                         <BarChart :chartData="data3" :chartConfig="config1" class=""/>
                     </div>
                 </div>
 
                 <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 bg-white rounded-lg mx-2 mb-4">
-                    <div class="p-4">
+                    <div class="px-4 pt-4">
                         <h2 class="font-medium text-xl">Putusan 3 Bulan Terakhir</h2>
-                        <p>8,883,154</p>
+                        <p>321,243</p>
                         <p>Dokumen</p>
                     </div>
-                    <div class="p-4">
+                    <div class="px-4">
                         <BarChart :chartData="data4" :chartConfig="config1" class=""/>
                     </div>
                 </div>
@@ -68,7 +68,7 @@ data() {
         labels: ['Pertama', 'Banding', 'Kasasi', 'Peninjauan Kembali'],
         datasets: [{
         label: 'Putusan Keseluruhan',
-        data: [841696, 253111, 149802, 63272],
+        data: [8417582, 253112, 149802, 63272],
         backgroundColor: [
             'rgb(142, 66, 2)'
         ],
@@ -92,7 +92,7 @@ data() {
         labels: ['Pertama', 'Banding', 'Kasasi', 'Peninjauan Kembali'],
         datasets: [{
         label: 'Putusan Bulan Ini',
-        data: [500, 400, 300, 200],
+        data: [72442, 1410, 172, 27],
         backgroundColor: [
             'rgb(142, 66, 2)'
         ],
@@ -106,7 +106,7 @@ data() {
         labels: ['Pertama', 'Banding', 'Kasasi', 'Peninjauan Kembali'],
         datasets: [{
         label: 'Putusan Bulan Lalu',
-        data: [500, 400, 300, 200],
+        data: [111795, 2420, 233, 34],
         backgroundColor: [
             'rgb(142, 66, 2)'
         ],
@@ -120,7 +120,7 @@ data() {
         labels: ['Pertama', 'Banding', 'Kasasi', 'Peninjauan Kembali'],
         datasets: [{
         label: 'Putusan 3 Bulan Terakhir',
-        data: [500, 400, 300, 200],
+        data: [308255, 8543, 2009, 2203],
         backgroundColor: [
             'rgb(142, 66, 2)'
         ],

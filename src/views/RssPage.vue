@@ -58,7 +58,7 @@
                 align: 'start',
                 key: 'name',
                 sortable: false,
-                title: 'Dessert (100g serving)',
+                title: 'Nama Pengadilan',
             },
             { key: 'calories', title: 'Calories' },
             { key: 'fat', title: 'Fat (g)' },

@@ -93,10 +93,7 @@
         data() {
     return {
     breadcumbs: [
-        { title: 'Direktori', href: '#' },
-        { title: 'Peraturan', href: '#' },
-        { title: 'Hukum Materil', href: '#' },
-        { title: '19 Tahun 2000', disabled: true },
+        { title: 'Kontak Kami', disabled: true },
     ],
     };},
     }

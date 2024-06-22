@@ -3,7 +3,7 @@
     <div class="bg-[#F5F7FA]">
       <v-container>
         <!-- Breadcrumbs Section -->
-        <v-breadcrumbs :items="items" item-class="breadcrumb-item" class="breadcrumbs">
+        <v-breadcrumbs :items="items" item-class="breadcrumb-item" class="breadcrumbs text-[#8e4202] pl-0">
           <template v-slot:divider>
             <v-icon class="text-[#8e4202]" icon="mdi-chevron-right"></v-icon>
           </template>
@@ -304,7 +304,7 @@
   import FooterBar from "@/components/FooterBar.vue";
   import NavBar from "@/components/NavBar.vue";
   import { onMounted, reactive, ref, watch } from "vue";
-import { useRouter } from "vue-router";
+  import { useRouter } from "vue-router";
   
   export default {
     name: "PutusanPenting",
@@ -853,8 +853,7 @@ import { useRouter } from "vue-router";
           },
           {
             title: "Rumusan Kamar",
-            disabled: false,
-            href: "breadcrumbs_link_1",
+            disabled: true          
           },
           // {
           //   title: "Link 2",
