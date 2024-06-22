@@ -1,56 +1,137 @@
 <template>
-    <div class="bg-[#F5F7FA] px-8">
-        <h3>Rekapitulasi Putusan</h3>
-        <hr class="border-black border-2">
-        <div>
-        <!-- Baris pertama dengan satu box rounded besar -->
-        <div class="flex justify-center">
-            <div class="box-border border-black border-2 rounded-lg bg-white w-32 h-32 flex justify-center">
-                Putusan Keseluruhan
+    <div class="bg-[#F5F7FA] pl-4">
+        <h1 class="">Rekapitulasi Putusan</h1>
+        <hr class="border-b-2 border-gray-800 mb-4">
+        <div id="app" class="pl-4">
+            <div class="flex justify-center mb-4 ">
+                <div class="w-full md:w-1/2 lg:w-1/3 xl:w-3/4 xl:flex bg-white rounded-lg">
+                    <div class="p-4 w-1/4">
+                        <h2 class="font-medium text-xl">Putusan Keseluruhan</h2>
+                        <p>8,883,154</p>
+                        <p>Dokumen</p>
+                    </div>
+                    <div class="p-4 w-3/4">
+                        <BarChart :chartData="data1" :chartConfig="config1" class=""/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-wrap justify-center">
+                <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 bg-white rounded-lg mx-2 mb-4">
+                    <div class="p-4">
+                        <h2 class="font-medium text-xl">Putusan Bulan Ini</h2>
+                        <p>8,883,154</p>
+                        <p>Dokumen</p>
+                    </div>
+                    <div class="p-4">
+                        <BarChart :chartData="data2" :chartConfig="config1" class=""/>
+                    </div>
+                </div>
+
+                <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 bg-white rounded-lg mx-2 mb-4">
+                    <div class="p-4">
+                        <h2 class="font-medium text-xl">Putusan Bulan Lalu</h2>
+                        <p>8,883,154</p>
+                        <p>Dokumen</p>
+                    </div>
+                    <div class="p-4">
+                        <BarChart :chartData="data3" :chartConfig="config1" class=""/>
+                    </div>
+                </div>
+
+                <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 bg-white rounded-lg mx-2 mb-4">
+                    <div class="p-4">
+                        <h2 class="font-medium text-xl">Putusan 3 Bulan Terakhir</h2>
+                        <p>8,883,154</p>
+                        <p>Dokumen</p>
+                    </div>
+                    <div class="p-4">
+                        <BarChart :chartData="data4" :chartConfig="config1" class=""/>
+                    </div>
+                </div>
             </div>
         </div>
-            
-        <!-- 3 baris box rounded pada baris berikutnya -->
-        <div class="flex">
-            <div class="box-border border-black border-2 rounded-lg bg-white p-4 m-2">
-                Putusan Bulan Ini
-            </div>
-            <div class="box-border border-black border-2 rounded-lg bg-white p-4 m-2">
-                Putusan Bulan Lalu
-            </div>
-            <div class="box-border border-black border-2 rounded-lg bg-white p-4 m-2">
-                Putusan 3 Bulan Lalu
-            </div>
-            </div>
-        </div>
-        <br><br><br><br>
     </div>
 </template>
 
 <script>
-    // URL dari API atau endpoint yang menyediakan data JSON
-    const url = 'https://script.googleusercontent.com/macros/echo?user_content_key=X3SM_4ItFLHhErhTfScQNtZZCKY2udB6Ur_Ize7rw-mTr91Rd1j8KMApWqNXdRCxP4OofHIve9E1WRdrHhqzwdRuBdR52rkcm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnOndka7CUg2WxWkgtxh0EQhqnsfM3BJKt1zYnFraaUtFjVD5Gezoit2mlK211O6QsVXK0ZW33QaWyW6I3E4gxECYa6RN0tzjKQ&lib=Mv8jyjEfepD2p_SRWBodP9x5NT3TNaPLP'
-    
-    
-    // Melakukan request menggunakan fetch
-    fetch(url)
-    .then(response => {
-        // Memeriksa apakah request berhasil (status 200-299)
-        if (!response.ok) {
-            throw new Error('Network response was not ok ' + response.statusText);
-        }
-        // Mengkonversi response menjadi JSON
-        return response.json();
-    })
-    .then(data => {
-        // Menangani data JSON yang diterima
-        console.log(data);
-        // Print data
-        
-    })
-    .catch(error => {
-        // Menangani error jika terjadi masalah saat fetch
-        console.error('There was a problem with the fetch operation:', error);
-    });
+import BarChart from '@/components/BarChart.vue';
 
+export default {
+name: 'App',
+components: {
+    BarChart
+},
+data() {
+    return {
+    data1: {
+        labels: ['Pertama', 'Banding', 'Kasasi', 'Peninjauan Kembali'],
+        datasets: [{
+        label: 'Putusan Keseluruhan',
+        data: [841696, 253111, 149802, 63272],
+        backgroundColor: [
+            'rgb(142, 66, 2)'
+        ],
+        borderColor: [
+            'rgb(142, 66, 2)'
+        ],
+        borderWidth: 1
+        }]
+    },
+    config1: {
+        type: 'bar',
+        options: {
+        scales: {
+            y: {
+            beginAtZero: true
+            }
+        }
+        }
+    },
+    data2: {
+        labels: ['Pertama', 'Banding', 'Kasasi', 'Peninjauan Kembali'],
+        datasets: [{
+        label: 'Putusan Bulan Ini',
+        data: [500, 400, 300, 200],
+        backgroundColor: [
+            'rgb(142, 66, 2)'
+        ],
+        borderColor: [
+            'rgb(142, 66, 2)'
+        ],
+        borderWidth: 1
+        }]
+    },
+    data3: {
+        labels: ['Pertama', 'Banding', 'Kasasi', 'Peninjauan Kembali'],
+        datasets: [{
+        label: 'Putusan Bulan Lalu',
+        data: [500, 400, 300, 200],
+        backgroundColor: [
+            'rgb(142, 66, 2)'
+        ],
+        borderColor: [
+            'rgb(142, 66, 2)'
+        ],
+        borderWidth: 1
+        }]
+    },
+    data4: {
+        labels: ['Pertama', 'Banding', 'Kasasi', 'Peninjauan Kembali'],
+        datasets: [{
+        label: 'Putusan 3 Bulan Terakhir',
+        data: [500, 400, 300, 200],
+        backgroundColor: [
+            'rgb(142, 66, 2)'
+        ],
+        borderColor: [
+            'rgb(142, 66, 2)'
+        ],
+        borderWidth: 1
+        }]
+    },
+    
+    };
+}
+};
 </script>
