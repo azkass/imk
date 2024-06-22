@@ -289,13 +289,19 @@
                       <div class="flex flex-col">
                         <hr class="border-b-2 border-gray-500 mb-4">
                         <div class="flex justify-between items-center text-gray-600">
-                          <div>
-                            <span class="font-bold text-[#8e4202]">Register:</span> {{ item.registerDate }}
-                            <span class="mx-2">|</span>
-                            <span class="font-bold text-[#8e4202]">Putus:</span> {{ item.desicionDate }}
-                            <span class="mx-2">|</span>
-                            <span class="font-bold text-[#8e4202]">Upload:</span> {{ item.uploadData }}
-                          </div>
+                          <div class="flex flex-col sm:flex-row sm:items-center sm:space-x-2">
+            <div>
+              <span class="font-bold text-[#8e4202]">Register:</span> {{ item.registerDate }}
+            </div>
+            <div>
+              <span class="mx-2 hidden sm:inline">|</span>
+              <span class="font-bold text-[#8e4202]">Putus:</span> {{ item.desicionDate }}
+            </div>
+            <div>
+              <span class="mx-2 hidden sm:inline">|</span>
+              <span class="font-bold text-[#8e4202]">Upload:</span> {{ item.uploadData }}
+            </div>
+          </div>
                           <div class="flex items-center">
                             <v-icon>mdi-eye</v-icon>
                             <span class="ml-1">{{ item.views }}</span>
