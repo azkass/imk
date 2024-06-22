@@ -1,9 +1,6 @@
 <template>
   <div class="bg-[#F5F7FA]">
-  <!-- <div class="bg-[#F5F7FA] min-h-screen"> -->
-    <!-- <NavBar /> -->
     <v-container>
-    <!-- <v-container class="mx-auto max-w-screen-lg px-4"> -->
       <!-- Breadcrumbs Section -->
       <v-breadcrumbs :items="items" item-class="breadcrumb-item" class="breadcrumbs">
         <template v-slot:divider>
@@ -18,7 +15,7 @@
       <h1 class="text-2xl md:text-3xl font-bold mb-4">Restatement</h1>
       <hr class="border-b-2 border-gray-800 mb-4">
       <p class="mb-8 text-sm md:text-base">
-        Putusan merupakan suatu pernyataan hakim sebagai pejabat negara yang diucapkan di muka persidangan dengan tujuan untuk mengakhiri atau menyelesaikan suatu perkara atau sengketa antara para pihak yang saling berkepentingan
+        Restatement adalah penyusunan kembali dan penjelasan ulang prinsip-prinsip hukum yang telah ditetapkan melalui putusan-putusan pengadilan, dengan tujuan untuk menyederhanakan, mengklarifikasi, dan merangkum aturan-aturan hukum agar lebih mudah dipahami dan diterapkan secara konsisten.
       </p>
 
       <!-- Loading Indicator -->
@@ -37,7 +34,7 @@
             <v-card-title class="text-2xl">Filter</v-card-title>
           </div>
           <div class="md:ml-1 sm:ml-12 xl:ml-0 2xl:ml-28 mb-0">
-            <p class="text-gray-700 mb-4">Menampilkan 1 - 10 dari 234 Putusan</p>
+            <p class="text-gray-700 mb-4">Menampilkan {{ (page - 1) * itemsPerPage + 1 }} - {{ Math.min(page * itemsPerPage, state.totalItems) }} dari {{ state.totalItems }} Putusan</p>
           </div>
           <div class="flex justify-end space-x-4 ml-auto mb-0">
             <v-card-title class="text-xl items-center mb-0">Urutkan berdasarkan</v-card-title>
@@ -61,8 +58,8 @@
         </div>
         <!-- Filter Buttons for Mobile -->
         <div class="flex md:hidden justify-center mb-4 space-x-6">
-          <v-btn  @click="showSortFilter = true">Urutkan</v-btn>
-          <v-btn  @click="showCategoryFilter = true">Filter</v-btn>
+          <v-btn @click="showSortFilter = true">Urutkan</v-btn>
+          <v-btn @click="showCategoryFilter = true">Filter</v-btn>
         </div>
 
         <v-row justify="center mt-[-23px]">
@@ -97,11 +94,12 @@
             <v-list class="bg-[#F5F7FA] w-full">
               <v-list-item v-for="item in state.rooms" :key="item.id" class="mb-4">
                 <v-card class="pa-4 rounded-2xl shadow-2xl w-full">
-                  <div v-if="item.jenisPutusan === 'Putusan Penting'">
+                  <!-- <div v-if="item.jenisPutusan === 'Putusan Penting'"> -->
+                  <div>
                     <div class="flex items-center mb-2 justify-between">
                       <div class="flex items-center">
                         <v-icon color="green">mdi-check-circle</v-icon>
-                        <span class="md:ml-6 sm:ml-0 text-green-600 sm:w-[18px] md:w-[254px]">Berkekuatan Hukum Tetap</span>
+                        <span class="md:ml-2 sm:ml-0 text-green-600 sm:w-[18px] md:w-[254px]">Berkekuatan Hukum Tetap</span>
                       </div>
                       <div class="flex justify-end">
                         <div class="bg-[#8e4202] sm:p-2 md:pr-3 md:pl-3 md:py-1 rounded-xl text-white text-center">
@@ -110,18 +108,12 @@
                       </div>
                     </div>
                     <h3 class="text-xl font-bold mb-2">{{ item.title }}</h3>
-                    <p class="mb-2">{{ item.case }}</p>
+                    <p class="mb-4 text-gray-500"><span class="text-black">Author:</span>{{ item.case }}</p>
+                    <p class="mb-2 text-gray-500">{{ item.case2 }} ... <span class="text-red-400">[Selengkapnya]</span></p>
                     <div class="mt-4">
                       <div class="flex flex-col">
                         <hr class="border-b-2 border-gray-500 mb-4">
                         <div class="flex justify-end items-center text-gray-600">
-                          <!-- <div>
-                            <span class="font-bold text-[#8e4202]">Register:</span> {{ item.registerDate }}
-                            <span class="mx-2">|</span>
-                            <span class="font-bold text-[#8e4202]">Putus:</span> {{ item.desicionDate }}
-                            <span class="mx-2">|</span>
-                            <span class="font-bold text-[#8e4202]">Upload:</span> {{ item.uploadData }}
-                          </div> -->
                           <div class="flex items-center">
                             <v-icon>mdi-eye</v-icon>
                             <span class="ml-1">{{ item.views }}</span>
@@ -132,7 +124,7 @@
                       </div>
                     </div>
                   </div>
-                  <div v-else>
+                  <!-- <div v-else>
                     <div class="flex justify-between items-center mb-2">
                       <h3 class="text-xl font-bold mb-2">{{ item.title }}</h3>
                       <div class="bg-[#8e4202] sm:p-0 pr-3 pl-3 py-1 rounded-xl text-white text-center">
@@ -144,13 +136,6 @@
                       <div class="flex flex-col">
                         <hr class="border-b-2 border-gray-500 mb-4">
                         <div class="flex justify-end items-center text-gray-600">
-                          <!-- <div>
-                            <span class="font-bold text-[#8e4202]">Register:</span> {{ item.registerDate }}
-                            <span class="mx-2">|</span>
-                            <span class="font-bold text-[#8e4202]">Putus:</span> {{ item.desicionDate }}
-                            <span class="mx-2">|</span>
-                            <span class="font-bold text-[#8e4202]">Upload:</span> {{ item.uploadData }}
-                          </div> -->
                           <div class="flex items-center">
                             <v-icon>mdi-eye</v-icon>
                             <span class="ml-1">{{ item.views }}</span>
@@ -160,10 +145,54 @@
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> -->
                 </v-card>
               </v-list-item>
             </v-list>
+
+            <!-- Pagination -->
+            <div class="flex justify-center mt-4" v-if="state.totalPages > 1">
+              <nav class="flex items-center space-x-2">
+                <button
+                  @click="goToPage(1)"
+                  :disabled="page === 1"
+                  class="pagination-button"
+                >
+                  « Awal
+                </button>
+                <button
+                  @click="prevPage"
+                  :disabled="page === 1"
+                  class="pagination-button"
+                >
+                  ‹ Kembali
+                </button>
+                <span v-for="n in paginationRange" :key="n">
+                  <button
+                    v-if="n !== '...'"
+                    @click="goToPage(n)"
+                    :class="['pagination-button', { 'bg-brown-500 text-white': page === n }]"
+                  >
+                    {{ n }}
+                  </button>
+                  <span v-else class="pagination-dots">...</span>
+                </span>
+                <button
+                  @click="nextPage"
+                  :disabled="page === state.totalPages"
+                  class="pagination-button"
+                >
+                  Selanjutnya ›
+                </button>
+                <button
+                  @click="goToPage(state.totalPages)"
+                  :disabled="page === state.totalPages"
+                  class="pagination-button"
+                >
+                  Akhir »
+                </button>
+              </nav>
+            </div>
           </v-col>
         </v-row>
       </div>
@@ -271,8 +300,6 @@
   </div>
 </template>
 
-
-
 <script>
 import FooterBar from "@/components/FooterBar.vue";
 // import NavBar from "@/components/NavBar.vue";
@@ -293,6 +320,7 @@ export default {
       error: null,
       progress: 0,
       totalPages: 1,
+      totalItems: 0,
     });
 
     const showSortFilter = ref(false);
@@ -301,8 +329,8 @@ export default {
     const selectedSort = ref(null);
     const selectedDirection = ref(null);
     const keyword = ref("");
-    const selectedDirectory = ref(null);
-    const selectedClassification = ref(null);
+    const selectedDirectory = ref("Semua");
+    const selectedClassification = ref("Semua");
     const tahunPenerbitan = ref([1984, 2024]);
     const tempTahunPenerbitan = ref([1984, 2024]);
     const page = ref(1);
@@ -313,14 +341,15 @@ export default {
         {
           id: 1,
           title: "Putusan Mahkamah Agung Nomor 362 K/Pdt.Sus-PHI/2024",
-          case: "PT MEGA AUTO",
+          case: "Suhartono, Kartini Mulyadi",
+          case2:"Alasan kami memilih topik Gadai Saham sebagai salah satu pokok bahasan Restatement adalah karena terdapat inkonsistensi putusan pengadilan terkait lembaga hukum Gadai Saham. Selain itu perkembangan kegiatan ekonomi terkait dengan kegiatan usaha",
           desicionDate: "17-05-2024",
           registerDate: "01-05-2024",
           uploadData: "30-05-2024",
           views: 1200,
           downloads: 440,
           direktori: "Putusan",
-          jenisPutusan: "Putusan Biasa",
+          jenisPutusan: "Rumusan Kamar",
           pengadilan: "Mahkamah Agung",
           lembagaPengadilan: "PA Jakarta Pusat",
           klasifikasi: "Pembatalan Perjanjian",
@@ -330,55 +359,60 @@ export default {
         },
         {
           id: 2,
-          title: "jaya jaya",
-          case: "PT MEGA AUTO",
+          title: "Putusan Mahkamah Agung Nomor 362 K/Pdt.Sus-PHI/2024",
+          case: "Suhartono, Kartini Mulyadi",
+          case2:"Alasan kami memilih topik Gadai Saham sebagai salah satu pokok bahasan Restatement adalah karena terdapat inkonsistensi putusan pengadilan terkait lembaga hukum Gadai Saham. Selain itu perkembangan kegiatan ekonomi terkait dengan kegiatan usaha",
           desicionDate: "17-05-2024",
           registerDate: "01-05-2024",
           uploadData: "30-05-2024",
-          views: 220,
+          views: 1200,
           downloads: 440,
-          direktori: "Putusan penting",
-          jenisPutusan: "Putusan Penting",
-          pengadilan: "Pengadilan Umum",
-          lembagaPengadilan: "PA Jakarta Barat",
-          klasifikasi: "Hak Milik Atas Tanah",
-          amar: "Bebas",
-          tingkatProses: "Pertama",
-          tahunPenerbitan:"2024"
+          direktori: "Putusan",
+          jenisPutusan: "Rumusan Kamar",
+          pengadilan: "Mahkamah Agung",
+          lembagaPengadilan: "PA Jakarta Pusat",
+          klasifikasi: "Pembatalan Perjanjian",
+          amar: "Terbukti",
+          tingkatProses: "Kasasi",
+          tahunPenerbitan:"2021"
         },
         {
           id: 3,
-          title: "elvina",
-          case: "PT MEGA AUTO",
+          title: "Putusan Mahkamah Agung Nomor 362 K/Pdt.Sus-PHI/2024",
+          case: "Suhartono, Kartini Mulyadi",
+          case2:"Alasan kami memilih topik Gadai Saham sebagai salah satu pokok bahasan Restatement adalah karena terdapat inkonsistensi putusan pengadilan terkait lembaga hukum Gadai Saham. Selain itu perkembangan kegiatan ekonomi terkait dengan kegiatan usaha",
           desicionDate: "17-05-2024",
           registerDate: "01-05-2024",
           uploadData: "30-05-2024",
-          views: 220,
+          views: 1200,
           downloads: 440,
           direktori: "Putusan",
-          jenisPutusan: "Putusan Biasa",
-          pengadilan: "Pengadilan Agama",
-          lembagaPengadilan: "PA Jakarta Selatan",
-          klasifikasi: "Perceraian",
+          jenisPutusan: "Rumusan Kamar",
+          pengadilan: "Mahkamah Agung",
+          lembagaPengadilan: "PA Jakarta Pusat",
+          klasifikasi: "Pembatalan Perjanjian",
           amar: "Terbukti",
-          tingkatProses: "Banding"
+          tingkatProses: "Kasasi",
+          tahunPenerbitan:"2021"
         },
         {
           id: 4,
           title: "Putusan Mahkamah Agung Nomor 362 K/Pdt.Sus-PHI/2024",
-          case: "PT MEGA AUTO",
+          case: "Suhartono, Kartini Mulyadi",
+          case2:"Alasan kami memilih topik Gadai Saham sebagai salah satu pokok bahasan Restatement adalah karena terdapat inkonsistensi putusan pengadilan terkait lembaga hukum Gadai Saham. Selain itu perkembangan kegiatan ekonomi terkait dengan kegiatan usaha",
           desicionDate: "17-05-2024",
           registerDate: "01-05-2024",
           uploadData: "30-05-2024",
-          views: 220,
+          views: 1200,
           downloads: 440,
-          direktori: "Putusan penting",
-          jenisPutusan: "Putusan Penting",
-          pengadilan: "Pengadilan Militer",
-          lembagaPengadilan: "PA Jakarta Timur",
-          klasifikasi: "Pidana Khusus",
-          amar: "Lepas",
-          tingkatProses: "Kasasi"
+          direktori: "Putusan",
+          jenisPutusan: "rumusan Kamar",
+          pengadilan: "Mahkamah Agung",
+          lembagaPengadilan: "PA Jakarta Pusat",
+          klasifikasi: "Pembatalan Perjanjian",
+          amar: "Terbukti",
+          tingkatProses: "Kasasi",
+          tahunPenerbitan:"2021"
         },
         {
           id: 5,
@@ -395,7 +429,8 @@ export default {
           lembagaPengadilan: "PA Jakarta",
           klasifikasi: "Perdata Agama",
           amar: "Tidak Dapat Diterima",
-          tingkatProses: "Peninjauan kembali"
+          tingkatProses: "Banding",
+          tahunPenerbitan:"2021"
         },
         {
           id: 6,
@@ -412,7 +447,8 @@ export default {
           lembagaPengadilan: "PA Jakarta Barat",
           klasifikasi: "Pencurian",
           amar: "Tolak",
-          tingkatProses: "Kasasi"
+          tingkatProses: "Banding",
+          tahunPenerbitan:"2021"
         },
         {
           id: 7,
@@ -429,7 +465,8 @@ export default {
           lembagaPengadilan: "PA Jakarta Utara",
           klasifikasi: "Pidana Khusus",
           amar: "Terbukti",
-          tingkatProses: "Banding"
+          tingkatProses: "Banding",
+          tahunPenerbitan:"2021"
         },
         {
           id: 8,
@@ -446,7 +483,8 @@ export default {
           lembagaPengadilan: "PA Jakarta Selatan",
           klasifikasi: "Perdata",
           amar: "Lepas",
-          tingkatProses: "Kasasi"
+          tingkatProses: "Banding",
+          tahunPenerbitan:"2021"
         },
         {
           id: 9,
@@ -463,7 +501,8 @@ export default {
           lembagaPengadilan: "PA Jakarta Barat",
           klasifikasi: "Pidana Umum",
           amar: "Tidak Dapat Diterima",
-          tingkatProses: "Pertama"
+          tingkatProses: "Banding",
+          tahunPenerbitan:"2021"
         },
         {
           id: 10,
@@ -480,7 +519,8 @@ export default {
           lembagaPengadilan: "PA Jakarta Timur",
           klasifikasi: "Perdata Agama",
           amar: "Tolak",
-          tingkatProses: "Kasasi"
+          tingkatProses: "Banding",
+          tahunPenerbitan:"2021"
         },
         {
           id: 11,
@@ -497,7 +537,8 @@ export default {
           lembagaPengadilan: "PA Jakarta Barat",
           klasifikasi: "Narkotika dan Psikotropika",
           amar: "Bebas",
-          tingkatProses: "Kasasi"
+          tingkatProses: "Banding",
+          tahunPenerbitan:"2021"
         },
         {
           id: 12,
@@ -514,7 +555,8 @@ export default {
           lembagaPengadilan: "PA Jakarta Utara",
           klasifikasi: "Ahli Waris Pengganti",
           amar: "Lepas",
-          tingkatProses: "Pertama"
+          tingkatProses: "Banding",
+          tahunPenerbitan:"2021"
         },
         {
           id: 13,
@@ -531,7 +573,8 @@ export default {
           lembagaPengadilan: "PA Jakarta Selatan",
           klasifikasi: "Perceraian",
           amar: "Terbukti",
-          tingkatProses: "Banding"
+          tingkatProses: "Banding",
+          tahunPenerbitan:"2021"
         },
         {
           id: 14,
@@ -548,7 +591,8 @@ export default {
           lembagaPengadilan: "PA Jakarta Barat",
           klasifikasi: "Pencurian",
           amar: "Tolak",
-          tingkatProses: "Kasasi"
+          tingkatProses: "Banding",
+          tahunPenerbitan:"2021"
         },
         {
           id: 15,
@@ -565,7 +609,8 @@ export default {
           lembagaPengadilan: "PA Jakarta Timur",
           klasifikasi: "Klausula Baku",
           amar: "Tidak Dapat Diterima",
-          tingkatProses: "Banding"
+          tingkatProses: "Banding",
+          tahunPenerbitan:"2021"
         },
         {
           id: 16,
@@ -582,7 +627,8 @@ export default {
           lembagaPengadilan: "PA Jakarta Utara",
           klasifikasi: "Grosse Akta",
           amar: "Lepas",
-          tingkatProses: "Pertama"
+          tingkatProses: "Banding",
+          tahunPenerbitan:"2021"
         },
         {
           id: 17,
@@ -599,7 +645,8 @@ export default {
           lembagaPengadilan: "PA Jakarta Timur",
           klasifikasi: "Perdata Agama",
           amar: "Terbukti",
-          tingkatProses: "Kasasi"
+          tingkatProses: "Banding",
+          tahunPenerbitan:"2021"
         },
         {
           id: 18,
@@ -616,7 +663,8 @@ export default {
           lembagaPengadilan: "PA Jakarta Selatan",
           klasifikasi: "Perdata",
           amar: "Tolak",
-          tingkatProses: "Banding"
+          tingkatProses: "Banding",
+          tahunPenerbitan:"2021"
         },
         {
           id: 19,
@@ -633,7 +681,8 @@ export default {
           lembagaPengadilan: "PA Jakarta Utara",
           klasifikasi: "Narkotika dan Psikotropika",
           amar: "Lepas",
-          tingkatProses: "Pertama"
+          tingkatProses: "Banding",
+          tahunPenerbitan:"2021"
         },
         {
           id: 20,
@@ -650,7 +699,8 @@ export default {
           lembagaPengadilan: "PA Jakarta Selatan",
           klasifikasi: "Penganiayaan",
           amar: "Terbukti",
-          tingkatProses: "Kasasi"
+          tingkatProses: "Banding",
+          tahunPenerbitan:"2021"
         }
       ];
   
@@ -673,15 +723,18 @@ export default {
 
       try {
         let filteredData = data.filter(item => {
-          const tahunPenerbitanValue = item.tahunPenerbitan;
+          const tahunPenerbitanValue = parseInt(item.tahunPenerbitan, 10);
 
           return (
-            (!selectedDirectory.value || selectedDirectory.value === "Semua" || item.direktori === selectedDirectory.value) &&
-            (!selectedClassification.value || selectedClassification.value === "Semua" || item.klasifikasi === selectedClassification.value) &&
+            (selectedDirectory.value === "Semua" || !selectedDirectory.value || item.direktori === selectedDirectory.value) &&
+            (selectedClassification.value === "Semua" || !selectedClassification.value || item.klasifikasi === selectedClassification.value) &&
             (!keyword.value || item.title.includes(keyword.value) || item.case.includes(keyword.value)) &&
-            (!tahunPenerbitan.value[0] || !tahunPenerbitan.value[1] || (tahunPenerbitanValue >= tahunPenerbitan.value[0] && tahunPenerbitanValue <= tahunPenerbitan.value[1]))
+            (tahunPenerbitan.value[0] <= tahunPenerbitanValue && tahunPenerbitanValue <= tahunPenerbitan.value[1])
           );
         });
+
+        console.log("Original data length:", data.length);
+        console.log("Filtered data length:", filteredData.length);
 
         if (selectedSort.value && selectedSort.value !== "-") {
           filteredData.sort((a, b) => {
@@ -716,6 +769,7 @@ export default {
           });
         }
 
+        state.totalItems = filteredData.length;
         state.totalPages = Math.ceil(filteredData.length / itemsPerPage);
         const start = (page.value - 1) * itemsPerPage;
         const end = start + itemsPerPage;
@@ -747,6 +801,7 @@ export default {
 
       try {
         state.totalPages = Math.ceil(data.length / itemsPerPage);
+        state.totalItems = data.length;
         const start = (page.value - 1) * itemsPerPage;
         const end = start + itemsPerPage;
         state.rooms = data.slice(start, end);
@@ -787,31 +842,32 @@ export default {
       clearFilters,
       applyFiltersAndNavigate,
       page,
+      itemsPerPage,
     };
   },
   data() {
     return {
       items: [
         {
-          title: "Dashboard",
+          title: "Direktori",
           disabled: false,
           href: "breadcrumbs_dashboard",
         },
         {
-          title: "Link 1",
+          title: "Restatement",
           disabled: false,
           href: "breadcrumbs_link_1",
         },
-        {
-          title: "Link 2",
-          disabled: false,
-          href: "breadcrumbs_link_2",
-        },
-        {
-          title: "Link 3",
-          disabled: true,
-          href: "breadcrumbs_link_2",
-        },
+        // {
+        //   title: "Link 2",
+        //   disabled: false,
+        //   href: "breadcrumbs_link_2",
+        // },
+        // {
+        //   title: "Link 3",
+        //   disabled: true,
+        //   href: "breadcrumbs_link_2",
+        // },
       ],
       directories: ["Semua", "Putusan", "Kompilasi Kaidah Hukum", "Restatement", "Rumusan Kamar", "Rumusan Rakernas", "Yurisprudensi", "Peraturan"],
       classifications: ["Semua", "Batasan Umur", "Bukti Permulaan Yang Cukup", "Cessie", "Eksekusi Gadai Saham", "Grosse Akta", "Keadaan Memaksa", "Kebatalan Perjanjian", "Klausula Baku", "Perampasan Aset Tanpa Pemidanaan"],
@@ -869,8 +925,8 @@ export default {
   },
 };
 </script>
-  
-  
+
+
 <style scoped>
 .breadcrumb-item {
   color: #8e4202;
@@ -924,6 +980,16 @@ export default {
   .v-breadcrumbs__item {
     padding: 0.25rem 0; /* Mengurangi padding untuk item pada mobile */
   }
+
+  /* Adjust pagination buttons for mobile */
+  .pagination-button {
+    padding: 0.25rem 0.5rem; /* Smaller padding for mobile */
+    font-size: 0.75rem; /* Smaller font size for mobile */
+  }
+
+  .pagination-dots {
+    padding: 0.25rem 0.5rem; /* Smaller padding for mobile */
+    font-size: 0.75rem; /* Smaller font size for mobile */
+  }
 }
 </style>
-  
