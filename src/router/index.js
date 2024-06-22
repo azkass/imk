@@ -109,7 +109,7 @@ const routes = [
     {
         path: '/src/assets/logo.png',
         name: 'Logo',
-        component: () => import('../assets/logo.png')
+        component: () => import('@/assets/logo.png')
     },
 ];
 
