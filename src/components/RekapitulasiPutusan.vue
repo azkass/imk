@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-[#F5F7FA] pl-4">
+    <div class="bg-[#F5F7FA] sm:px-4 md:px-16">
         <h1 class="">Rekapitulasi Putusan</h1>
         <hr class="border-b-2 border-gray-800 mb-4">
         <div id="app" class="pl-4">
@@ -68,7 +68,7 @@ data() {
         labels: ['Pertama', 'Banding', 'Kasasi', 'Peninjauan Kembali'],
         datasets: [{
         label: 'Putusan Keseluruhan',
-        data: [8417582, 253112, 149802, 63272],
+        data: [84175, 253112, 149802, 63272],
         backgroundColor: [
             'rgb(142, 66, 2)'
         ],
@@ -92,7 +92,7 @@ data() {
         labels: ['Pertama', 'Banding', 'Kasasi', 'Peninjauan Kembali'],
         datasets: [{
         label: 'Putusan Bulan Ini',
-        data: [72442, 1410, 172, 27],
+        data: [124, 110, 172, 57],
         backgroundColor: [
             'rgb(142, 66, 2)'
         ],
@@ -106,7 +106,7 @@ data() {
         labels: ['Pertama', 'Banding', 'Kasasi', 'Peninjauan Kembali'],
         datasets: [{
         label: 'Putusan Bulan Lalu',
-        data: [111795, 2420, 233, 34],
+        data: [1117, 1220, 233, 534],
         backgroundColor: [
             'rgb(142, 66, 2)'
         ],
@@ -120,7 +120,7 @@ data() {
         labels: ['Pertama', 'Banding', 'Kasasi', 'Peninjauan Kembali'],
         datasets: [{
         label: 'Putusan 3 Bulan Terakhir',
-        data: [308255, 8543, 2009, 2203],
+        data: [3088, 8543, 2009, 2203],
         backgroundColor: [
             'rgb(142, 66, 2)'
         ],

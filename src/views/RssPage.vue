@@ -1,6 +1,6 @@
 <template>
     <NavBar />
-        <div class="bg-[#F5F7FA] px-8 pb-8">
+        <div class="bg-[#F5F7FA]  sm:px-4 md:px-16 pb-8">
         <v-breadcrumbs :items="breadcumbs" item-class="breadcrumb-item" class="text-[#8e4202] pl-0">
             <template v-slot:divider>
                 <v-icon class="text-[#8e4202]" icon="mdi-chevron-right"></v-icon>

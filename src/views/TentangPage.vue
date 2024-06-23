@@ -1,6 +1,6 @@
 <template>
     <NavBar/>
-    <div class="bg-[#F5F7FA] px-8 pb-4">
+    <div class="bg-[#F5F7FA] sm:px-4 md:px-16 pb-4">
         <v-breadcrumbs :items="breadcumbs" item-class="breadcrumb-item" class="text-[#8e4202] pl-0">
             <template v-slot:divider>
                 <v-icon class="text-[#8e4202]" icon="mdi-chevron-right"></v-icon>
@@ -24,10 +24,10 @@
 
                 <hr class="border-gray-200 border-2 mb-4">
                 <div class="flex flex-col-reverse sm:flex-row sm:justify-between mb-4">
-                    <p class="text-justify sm:w-4/5 py-2 sm:pl-0">
+                    <p class="text-justify sm:w-3/5 py-2 sm:pl-0">
                         Untuk mendukung keputusan tersebut, Mahkamah Agung mengembangkan 'Direktori Putusan' elektronik. Tujuan utama dari inisiatif ini adalah memastikan masyarakat dapat mengakses informasi peradilan secara lengkap, cepat, dan terjangkau. Direktori ini menjadi wujud nyata dari komitmen MA terhadap keterbukaan informasi. Keputusan KMA menetapkan jenis informasi yang harus diumumkan oleh pengadilan secara proaktif, serta mekanisme pengumumannya. Informasi ini mencakup putusan dan penetapan pengadilan yang penting bagi para pencari keadilan dan masyarakat umum.
                     </p>
-                    <h3 class="p-4 sm:w-1/5 sm:text-left md:w-1/6 md:text-right sm:ml-4 box-border rounded-lg bg-[#DDC17C] bg-opacity-45 text-2xl font-semibold text-[#8E4202]">
+                    <h3 class="self-start p-4 sm:w-2/5 sm:text-left xl:w-1/6 md:text-right sm:ml-4 box-border rounded-lg bg-[#DDC17C] bg-opacity-45 text-2xl font-semibold text-[#8E4202]">
                         Pengembangan Direktori Putusan Elektronik
                     </h3>
                 </div>
@@ -41,7 +41,7 @@
                 <hr class="border-gray-200 border-2 mb-4">
                 <div class="flex flex-col-reverse sm:flex-row sm:justify-between mb-4">
                     <p class="text-justify sm:w-4/5 py-2 sm:pl-0">Informasi putusan dan penetapan pengadilan diumumkan melalui situs resmi Mahkamah Agung, menyesuaikan dengan kondisi keuangan dan prasarana pengadilan. 'Direktori Putusan' memastikan masyarakat mendapatkan akses luas dan mudah ke informasi peradilan. Direktori Putusan juga merupakan hasil kerjasama antara Mahkamah Agung Republik Indonesia dan Kemitraan Australia Indonesia. Inisiatif ini menunjukkan komitmen MA dalam meningkatkan transparansi dan aksesibilitas informasi peradilan. Kami berupaya menjadikan keterbukaan sebagai landasan akuntabilitas di setiap lapisan masyarakat.</p>
-                    <h3 class="p-4 sm:w-1/5 sm:text-left md:w-1/6 md:text-right sm:ml-4 box-border rounded-lg bg-[#DDC17C] bg-opacity-45 text-2xl font-semibold text-[#8E4202]">
+                    <h3 class="self-start p-4 sm:w-2/5 sm:text-left xl:w-1/6 md:text-right sm:ml-4 box-border rounded-lg bg-[#DDC17C] bg-opacity-45 text-2xl font-semibold text-[#8E4202]">
                         Mekanisme Pengumuman dan Kolaborasi Internasional
                     </h3>
                 </div>

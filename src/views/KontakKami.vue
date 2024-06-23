@@ -1,6 +1,6 @@
 <template>
     <NavBar />
-    <div class="bg-[#F5F7FA] px-8 pb-8">
+    <div class="bg-[#F5F7FA]  sm:px-4 md:px-16 pb-8">
     <v-breadcrumbs :items="breadcumbs" item-class="breadcrumb-item" class="text-[#8e4202] pl-0">
         <template v-slot:divider>
         <v-icon class="text-[#8e4202]" icon="mdi-chevron-right"></v-icon>
@@ -12,7 +12,7 @@
     <div class="">
         <h1 class="text-4xl font-semibold my-4">Kontak Kami</h1>
         <hr class="border-black border-2 mb-4">
-        <div class="grid grid-cols-2 gap-4">
+        <div class="grid grid-cols-2 gap-8">
             <div>
                 <h2 class="text-2xl font-semibold mb-4">Kontak Mahkamah Agung</h2>
                 <div class="bg-white rounded-lg">

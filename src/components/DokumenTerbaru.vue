@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-[#F5F7FA] px-8">
+    <div class="bg-[#F5F7FA] sm:px-4 md:px-16">
         <h3>Dokumen Terbaru</h3>
         <hr class="border-black border-2">
         <v-card>
@@ -31,8 +31,7 @@
             'Restatement',
             'Rumusan Kamar',
             'Rumusan Rakernas',
-            'Yurisprudensi',
-            'Test'
+            'Yurisprudensi'
             ],
             tabContents: [
             'Putusan',
@@ -41,8 +40,7 @@
             'Restatement',
             'Rumusan Kamar',
             'Rumusan Rakernas',
-            'Yurisprudensi',
-            'Test'
+            'Yurisprudensi'
             ]
         };
         }
