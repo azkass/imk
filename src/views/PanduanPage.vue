@@ -1,74 +1,144 @@
 <template>
-    <NavBar />
-    <div class="bg-[#F5F7FA] px-8 pb-8">
-    <v-breadcrumbs :items="breadcumbs" item-class="breadcrumb-item" class="text-[#8e4202] pl-0">
-        <template v-slot:divider>
-        <v-icon class="text-[#8e4202]" icon="mdi-chevron-right"></v-icon>
-        </template>
-        <template v-slot:prepend>
-        <v-icon class="text-[#8e4202]">mdi-home</v-icon>
-        </template>
-    </v-breadcrumbs>
-    <div class="">
-        <h1 class="text-4xl font-semibold my-4">Panduan</h1>
-        <hr class="border-black border-2 mb-4">
-        <div class="grid grid-cols-2 gap-4">
-            <div>
-                <h2 class="text-2xl font-semibold mb-4">Menu dan Cara Penggunaan</h2>
-                <div class="bg-white rounded-lg">
-                    <div class="px-4 py-2">
-                        <h3 class="text-lg font-semibold">Halaman Utama</h3>
-                    </div>
-                    <hr class="border-brown border-1">
-                    <div class="pl-4 pt-2">
-                        <h3 class="text-lg font-semibold">Fitur-fitur Direktori Keputusan</h3>
-                    </div>
-                    <div class="pl-8 py-2">
-                        <h3 class="text-lg font-semibold py-1">Pencarian</h3>
-                        <h3 class="text-lg font-semibold py-1">Halaman Putusan</h3>
-                        <h3 class="text-lg font-semibold py-1">Halaman Rumusan Kamar</h3>
-                        <h3 class="text-lg font-semibold py-1">Halaman Kaidah Hukum</h3>
-                        <h3 class="text-lg font-semibold py-1">Halaman Yurisprudensi</h3>
-                        <h3 class="text-lg font-semibold py-1">Halaman Restatement</h3>
-                        <h3 class="text-lg font-semibold py-1">Halaman Peraturan</h3>
-                    </div>
-                </div>
+    <v-app>
+      <NavBar />
+      <v-container class="mt-5">
+        <v-row>
+          <v-col cols="12">
+            <div class="flex items-center mb-4">
+              <v-icon class="mr-2" color="brown">mdi-home</v-icon>
+              <v-breadcrumbs :items="breadcrumbs">
+                <template v-slot:item="props">
+                  <v-breadcrumbs-item
+                    :disabled="props.item.disabled"
+                    :href="props.item.href"
+                  >
+                    {{ props.item.title }}
+                  </v-breadcrumbs-item>
+                </template>
+              </v-breadcrumbs>
             </div>
-
-            <div>
-                <h2 class="text-2xl font-semibold mb-4">Direktori Putusan</h2>
-                <div class="bg-white rounded-lg text-justify p-4">
-                    <p>
-                        Revitalisasi Direktori Putusan (RDP) merupakan pengembangan dari Direktori Putusan v2 kedalam Direktori Putusan v3 yang telah diimplementasikan pada server Mahkamah Agung. Fitur-fitur baru yang dihasilkan pada Direktori Putusan v3 diantaranya adalah Putusan, Yurisprudensi, Rumusan Kamar, Restatement, Kaidah Hukum dan Peraturan.
-                    </p>
-                    <br>
-                    <p>
-                        Copyright © 2020 by Mahkamah Agung>. All Rights Reserved.
-                    </p>
+            <h1 class="text-2xl font-bold">Panduan</h1>
+            <div class="border-b-2 border-black mb-4"></div>
+            <v-row>
+              <v-col cols="4">
+                <h2 class="font-bold text-[18px]">Menu dan Cara Penggunaan</h2>
+                <div class="bg-white rounded-lg shadow-md p-4">
+                  <ul class="space-y-2">
+                    <li class="flex items-center cursor-pointer" @click="setPage('home')">
+                      <v-icon color="brown">mdi-home</v-icon>
+                      <span class="ml-2">Halaman Utama Website / Beranda</span>
+                    </li>
+                    <li class="space-y-2">
+                      <div class="flex items-center cursor-pointer">
+                        <v-icon color="brown">mdi-home</v-icon>
+                        <span class="ml-2">Fitur-fitur Direktori Keputusan</span>
+                      </div>
+                      <div class="ml-10">
+                        <ul class="space-y-2">
+                          <li class="flex items-center cursor-pointer" @click="setPage('pencarian')">
+                            <v-icon color="brown">mdi-magnify</v-icon>
+                            <span class="ml-2">Pencarian</span>
+                          </li>
+                          <li class="flex items-center cursor-pointer" @click="setPage('putusan')">
+                            <v-icon color="brown">mdi-file-document</v-icon>
+                            <span class="ml-2">Halaman Putusan</span>
+                          </li>
+                          <li class="flex items-center cursor-pointer" @click="setPage('rumusan')">
+                            <v-icon color="brown">mdi-file-document-outline</v-icon>
+                            <span class="ml-2">Halaman Rumusan Kamar</span>
+                          </li>
+                          <li class="flex items-center cursor-pointer" @click="setPage('kaidah')">
+                            <v-icon color="brown">mdi-scale-balance</v-icon>
+                            <span class="ml-2">Halaman Kaidah Hukum</span>
+                          </li>
+                          <li class="flex items-center cursor-pointer" @click="setPage('yurisprudensi')">
+                            <v-icon color="brown">mdi-book-open-outline</v-icon>
+                            <span class="ml-2">Halaman Yurisprudensi</span>
+                          </li>
+                          <li class="flex items-center cursor-pointer" @click="setPage('restatement')">
+                            <v-icon color="brown">mdi-book-outline</v-icon>
+                            <span class="ml-2">Halaman Restatement</span>
+                          </li>
+                          <li class="flex items-center cursor-pointer" @click="setPage('peraturan')">
+                            <v-icon color="brown">mdi-gavel</v-icon>
+                            <span class="ml-2">Halaman Peraturan</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                  </ul>
                 </div>
-            </div>
-        </div>
-    </div>
-    </div>
-    <FooterBar />
-</template>
-
-<script>
-    import NavBar from "@/components/NavBar.vue";
-    import FooterBar from "@/components/FooterBar.vue";
-    export default {
-        name: 'KontakKami',
-        components: {
-            NavBar, FooterBar
-        },
-        data() {
-    return {
-    breadcumbs: [
-        { title: 'Direktori', href: '#' },
-        { title: 'Peraturan', href: '#' },
-        { title: 'Hukum Materil', href: '#' },
-        { title: '19 Tahun 2000', disabled: true },
-    ],
-    };},
+              </v-col>
+              <v-col cols="8">
+                <h2 class="text-[18px] font-bold">{{ pageTitle }}</h2>
+                <v-card outlined class="shadow-sm">
+                  <v-card-text>
+                    <div v-if="currentPage === 'home'">
+                      <p>Website Direktori Putusan dapat diakses di <a href="https://putusan3.mahkamahagung.go.id/">https://putusan3.mahkamahagung.go.id/</a></p>
+                      <p>Halaman utama yang akan ditampilkan adalah sebagai berikut:</p>
+                      <img src="path_to_image_1.png" alt="Gambar 1" />
+                      <p>Gambar 1 - Tampilan Utama Direktori Putusan v3</p>
+                    </div>
+                    <div v-else-if="currentPage === 'pencarian'">
+                      <p>Revitalisasi Direktor Putusan (RDP) merupakan pengembangan dari Direktor Putusan v2 ke dalam Direktor Putusan v3 yang telah diimplementasikan pada server Mahkamah Agung. Fitur-fitur baru yang dihasilkan pada Direktor Putusan v3 diantaranya adalah Putusan, Yurisprudensi, Rumusan Kamar, Restatement, Kaidah Hukum dan Peraturan.</p>
+                    </div>
+                    <!-- Add similar blocks for other pages -->
+                    <p v-else>Silakan pilih menu dari sebelah kiri untuk melihat konten.</p>
+                  </v-card-text>
+                </v-card>
+              </v-col>
+            </v-row>
+          </v-col>
+        </v-row>
+      </v-container>
+      <FooterBar />
+    </v-app>
+  </template>
+  
+  <script>
+  import FooterBar from "@/components/FooterBar.vue";
+import NavBar from "@/components/NavBar.vue";
+  
+  export default {
+    name: "PanduanPage",
+    components: {
+      NavBar,
+      FooterBar
+    },
+    data() {
+      return {
+        breadcrumbs: [
+          { title: 'Panduan', href: '#' }
+        ],
+        currentPage: '',
+      };
+    },
+    computed: {
+      pageTitle() {
+        switch (this.currentPage) {
+          case 'home': return 'Halaman Utama Website atau Beranda';
+          case 'pencarian': return 'Pencarian';
+          case 'putusan': return 'Halaman Putusan';
+          case 'rumusan': return 'Halaman Rumusan Kamar';
+          case 'kaidah': return 'Halaman Kaidah Hukum';
+          case 'yurisprudensi': return 'Halaman Yurisprudensi';
+          case 'restatement': return 'Halaman Restatement';
+          case 'peraturan': return 'Halaman Peraturan';
+          default: return 'Direktori Putusan';
+        }
+      }
+    },
+    methods: {
+      setPage(page) {
+        this.currentPage = page;
+      }
     }
-</script>
+  };
+  </script>
+  
+  <style scoped>
+  .v-container {
+    padding-top: 16px;
+  }
+  </style>
+  

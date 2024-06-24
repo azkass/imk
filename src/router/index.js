@@ -72,6 +72,11 @@ const routes = [
         component: () => import('@/views/TentangPage.vue')
     },
     {
+        path: '/direktori',
+        name: 'Direktori',
+        component: () => import('@/views/DirektoriPage.vue')
+    },
+    {
         path: '/bar',
         name: 'Bar',
         component: () => import('@/components/RekapitulasiPutusan.vue')

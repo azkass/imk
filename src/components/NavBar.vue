@@ -13,7 +13,7 @@
             <a href="/" class="hover:text-gray-300">Beranda</a>
             <div class="relative" @mouseenter="openSubMenu">
                 <button @click="toggleSubMenu" class="focus:outline-none hover:text-gray-300">
-                Direktori
+                    <a href="/direktori">Direktori</a>
                 </button>
                 <div v-if="isSubMenuOpen" @mouseleave="closeSubMenu" class="absolute left-0 mt-2 w-48 bg-[#8E4202]  rounded-md shadow-lg z-20">
                 <a href="/putusan" class="block px-4 py-2 hover:text-gray-300">Putusan</a>

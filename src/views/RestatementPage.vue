@@ -1,7 +1,11 @@
 <template>
   <NavBar/>
   <div class="bg-[#F5F7FA]">
-    <v-container>
+    <!-- <v-container>
+      
+    </v-container> -->
+
+    <div class="container px-16">
       <!-- Breadcrumbs Section -->
       <v-breadcrumbs :items="items" item-class="breadcrumb-item" class="breadcrumbs text-[#8e4202]">
         <template v-slot:divider>
@@ -30,33 +34,7 @@
 
       <!-- Content Section -->
       <div v-if="!state.isLoading && !state.error">
-        <div class="flex-row items-baseline mb-0 hidden md:flex">
-          <div class="mb-0">
-            <v-card-title class="text-2xl">Filter</v-card-title>
-          </div>
-          <div class="md:ml-1 sm:ml-12 xl:ml-0 2xl:ml-28 mb-0">
-            <p class="text-gray-700 mb-4">Menampilkan {{ (page - 1) * itemsPerPage + 1 }} - {{ Math.min(page * itemsPerPage, state.totalItems) }} dari {{ state.totalItems }} Putusan</p>
-          </div>
-          <div class="flex justify-end space-x-4 ml-auto mb-0">
-            <v-card-title class="text-xl items-center mb-0">Urutkan berdasarkan</v-card-title>
-            <v-combobox
-              :items="sortOptions"
-              label="Urutkan"
-              variant="outlined"
-              class="w-48 items-end mb-0"
-              v-model="selectedSort"
-              @change="applyFilters"
-            ></v-combobox>
-            <v-combobox
-              :items="directionOptions"
-              label="Arah"
-              variant="outlined"
-              class="w-32 items-end border-red-500 mb-0"
-              v-model="selectedDirection"
-              @change="applyFilters"
-            ></v-combobox>
-          </div>
-        </div>
+        
         <!-- Filter Buttons for Mobile -->
         <div class="flex md:hidden justify-center mb-4 space-x-6">
           <v-btn @click="showSortFilter = true">Urutkan</v-btn>
@@ -66,7 +44,10 @@
         <v-row justify="center mt-[-23px]">
           <!-- Filters for Desktop -->
           <v-col cols="3" class="hidden md:block">
-            <v-card class="pa-4 rounded-2xl shadow-2xl">
+            <div class="mb-5">
+              <v-card-title class="text-2xl">Filter</v-card-title>
+            </div>
+            <v-card class="pa-4 rounded-2xl shadow-xl">
               <h2 class="mb-1 text-[17px] font-bold">Kata Kunci</h2>
               <v-text-field class="mb-4" label="Masukkan Kata Kunci" v-model="keyword" />
 
@@ -92,11 +73,41 @@
           
           <!-- List of Items -->
           <v-col cols="12" md="9">
-            <v-list class="bg-[#F5F7FA] w-full">
-              <v-list-item v-for="item in state.rooms" :key="item.id" class="mb-4">
-                <v-card class="pa-4 rounded-2xl shadow-2xl w-full">
+            <div class="flex-row items-baseline mb-0 hidden md:flex">
+              <div class="mb-0 ml-3">
+                <p class="text-gray-700 mb-4">Menampilkan {{ (page - 1) * itemsPerPage + 1 }} - {{ Math.min(page * itemsPerPage, state.totalItems) }} dari {{ state.totalItems }} Putusan</p>
+              </div>
+              <div class="flex justify-end space-x-4 ml-auto mb-0">
+                <v-card-title class="text-xl items-center mb-0">Urutkan berdasarkan</v-card-title>
+                <v-combobox
+                  :items="sortOptions"
+                  label="Urutkan"
+                  variant="outlined"
+                  class="w-48 items-end mb-0"
+                  v-model="selectedSort"
+                  @change="applyFilters"
+                ></v-combobox>
+                <v-combobox
+                  :items="directionOptions"
+                  label="Arah"
+                  variant="outlined"
+                  class="w-32 items-end border-red-500 mb-0"
+                  v-model="selectedDirection"
+                  @change="applyFilters"
+                ></v-combobox>
+              </div>
+            </div>
+            <div v-if="state.rooms.length === 0" class="flex justify-center mt-4">
+              <v-alert type="warning" border="left" elevation="2" prominent>
+                Tidak ada data ditemukan berdasarkan filter yang diterapkan.
+              </v-alert>
+            </div>
+            <div v-else class="">
+              <v-list class=" w-full md:mt-[-16px]">
+              <v-list-item v-for="item in state.rooms" :key="item.id" class="mb-5">
+                <v-card class="pa-2 rounded-sm  w-full">
                   <!-- <div v-if="item.jenisPutusan === 'Putusan Penting'"> -->
-                  <div>
+                  <div class="shadow-xl rounded-xl pa-4 w-full">
                     <div class="flex items-center mb-2 justify-between">
                       <div class="flex items-center">
                         <v-icon color="green">mdi-check-circle</v-icon>
@@ -150,6 +161,8 @@
                 </v-card>
               </v-list-item>
             </v-list>
+            </div>
+            
 
             <!-- Pagination -->
             <div class="flex justify-center mt-4" v-if="state.totalPages > 1">
@@ -197,7 +210,7 @@
           </v-col>
         </v-row>
       </div>
-    </v-container>
+    </div>
 
     <!-- Bottom Sheet for Sort Filter (Mobile) -->
     <v-bottom-sheet v-model="showSortFilter" class="d-md-none">
@@ -245,7 +258,7 @@
           <v-text-field class="mb-4" label="Masukkan Kata Kunci" v-model="keyword" />
 
           <h2 class="mb-2 text-[17px] font-bold">Direktori</h2>
-          <v-combobox :items="directories" label="Pilih Direktori" variant="outlined" v-model="selectedDirectory"></v-combobox>
+          <v-combobox :items="directories" label="Pilih Direktori" variant="outlined" v-model="selectedDirectory" class="custom-combobox"></v-combobox>
 
           <h2 class="mb-2 text-[17px] font-bold">Klasifikasi</h2>
           <v-combobox :items="classifications" label="Pilih Klasifikasi Rumusan Rakernas" variant="outlined" v-model="selectedClassification"></v-combobox>
@@ -330,7 +343,7 @@ export default {
     const selectedSort = ref(null);
     const selectedDirection = ref(null);
     const keyword = ref("");
-    const selectedDirectory = ref("Semua");
+    const selectedDirectory = ref("Restatement");
     const selectedClassification = ref("Semua");
     const tahunPenerbitan = ref([1984, 2024]);
     const tempTahunPenerbitan = ref([1984, 2024]);
@@ -927,6 +940,38 @@ export default {
 };
 </script>
 
+<style>
+/* Global styles for the combobox */
+.custom-combobox .v-input__control {
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
+  border-radius: 8px !important;
+  border-width: 1px !important;
+  border-color: #8E4202 !important;
+  background-color: #e5e7eb !important;
+}
+
+.custom-combobox .v-field__input {
+  border-radius: 8px !important;
+  color: #8E4202 !important;
+}
+
+.custom-combobox .v-input__control--outlined {
+  border-radius: 8px !important;
+  border-width: 1px !important;
+  border-color: #8E4202 !important;
+  background-color: #e5e7eb !important;
+}
+
+.custom-combobox .v-field {
+  border-radius: 8px !important;
+  border-width: 1px !important;
+  border-color: #8E4202 !important;
+  background-color: #e5e7eb !important;
+  color: #8E4202 !important;
+}
+</style>
+
 
 <style scoped>
 .breadcrumb-item {
@@ -991,6 +1036,43 @@ export default {
   .pagination-dots {
     padding: 0.25rem 0.5rem; /* Smaller padding for mobile */
     font-size: 0.75rem; /* Smaller font size for mobile */
+  }
+}
+
+.custom-combobox .v-input__control {
+  padding-top: 4px !important; /* Adjust padding to make it more compact */
+  padding-bottom: 4px !important; /* Adjust padding to make it more compact */
+  border-radius: 8px !important; /* Adjust border radius */
+  border-width: 1px !important; /* Adjust border width */
+  border-color: #8e4202 !important; /* Adjust border color */
+  background-color: #e5e7eb !important; /* Adjust background color */
+}
+
+.custom-combobox .v-field__input {
+  border-radius: 8px !important; /* Adjust border radius */
+  color: #8e4202 !important; /* Adjust font color */
+}
+
+.custom-combobox .v-input__control--outlined {
+  border-radius: 8px !important; /* Ensure the border radius is applied to outlined control */
+  border-width: 1px !important; /* Adjust border width */
+  border-color: #8e4202 !important; /* Adjust border color */
+  background-color: #e5e7eb !important; /* Adjust background color */
+}
+
+.custom-combobox .v-field {
+  border-radius: 8px !important; /* Ensure the border radius is applied to the field */
+  border-width: 1px !important; /* Adjust border width */
+  border-color: #8e4202 !important; /* Adjust border color */
+  background-color: #e5e7eb !important; /* Adjust background color */
+  color: #8e4202 !important; /* Adjust font color */
+}
+
+/* Additional styles for mobile */
+@media (max-width: 768px) {
+  .custom-combobox .v-input__control {
+    padding-top: 2px !important; /* Adjust padding to make it more compact */
+    padding-bottom: 2px !important; /* Adjust padding to make it more compact */
   }
 }
 </style>
