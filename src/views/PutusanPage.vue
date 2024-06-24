@@ -1,14 +1,14 @@
 <template>
   <div class="bg-[#F5F7FA]">
-    <!-- <NavBar /> -->
+    <NavBar />
     <v-container>
       <!-- Breadcrumbs Section -->
-      <v-breadcrumbs :items="items" item-class="breadcrumb-item" class="breadcrumbs">
+      <v-breadcrumbs :items="items" item-class="breadcrumb-item" class="breadcrumbs pl-0 text-[#8e4202]">
         <template v-slot:divider>
-          <v-icon class="text-[#8e4202]" icon="mdi-chevron-right"></v-icon>
+          <v-icon class="" icon="mdi-chevron-right"></v-icon>
         </template>
         <template v-slot:prepend>
-          <v-icon class="text-[#8e4202]">mdi-home</v-icon>
+          <v-icon class="">mdi-home</v-icon>
         </template>
       </v-breadcrumbs>
 
@@ -66,7 +66,7 @@
         <v-row class="center mt-[-23px]">
           <!-- Filters for Desktop -->
           <v-col cols="3" class="hidden md:block">
-            <v-card class="pa-4 rounded-2xl shadow-2xl">
+            <v-card class="pa-4 rounded-2xl">
               <!-- <v-card-text> -->
                 <h2 class="mb-1 text-[17px] font-bold">Kata Kunci</h2>
                 <v-text-field class="mb-[-15px]" label="Masukkan Kata Kunci" v-model="keyword" />
@@ -240,7 +240,7 @@
           <v-col cols="12" md="9">
             <v-list class=" w-full bg-[#F5F7FA]">
               <v-list-item v-for="item in state.rooms" :key="item.id" class="mb-4">
-                <v-card class="pa-4 rounded-2xl shadow-2xl">
+                <v-card class="pa-4 rounded-2xl">
                   <div v-if="item.jenisPutusan === 'Putusan Penting'">
                     <div class="flex items-center mb-2 justify-between">
                       <div class="flex items-center">
@@ -570,15 +570,14 @@
 
 <script>
 import FooterBar from "@/components/FooterBar.vue";
-// import NavBar from "@/components/NavBar.vue";
+import NavBar from "@/components/NavBar.vue";
 import { onMounted, reactive, ref, watch } from "vue";
 import { useRouter } from "vue-router";
 
 export default {
   name: "PutusanPenting",
   components: {
-    // NavBar,
-    FooterBar,
+    NavBar, FooterBar,
   },
   setup() {
     const router = useRouter();
@@ -1161,8 +1160,8 @@ const showSortFilter = ref(false);
         },
         {
           title: "Putusan",
-          disabled: false,
-          href: "breadcrumbs_link_1",
+          disabled: true,
+          href: "",
         },
         // {
         //   title: "Link 2",

@@ -1,8 +1,9 @@
 <template>
+  <NavBar />
   <div class="bg-[#F5F7FA]">
     <v-container>
       <!-- Breadcrumbs Section -->
-      <v-breadcrumbs :items="items" item-class="breadcrumb-item" class="breadcrumbs">
+      <v-breadcrumbs :items="items" item-class="breadcrumb-item" class="breadcrumbs text-[#8e4202] pl-0">
         <template v-slot:divider>
           <v-icon class="text-[#8e4202]" icon="mdi-chevron-right"></v-icon>
         </template>
@@ -65,7 +66,7 @@
         <v-row justify="center mt-[-23px]">
           <!-- Filters for Desktop -->
           <v-col cols="3" class="hidden md:block">
-            <v-card class="pa-4 rounded-2xl shadow-2xl">
+            <v-card class="pa-4 rounded-2xl">
               <h2 class="mb-1 text-[17px] font-bold">Kata Kunci</h2>
               <v-text-field class="mb-4" label="Masukkan Kata Kunci" v-model="keyword" />
 
@@ -303,14 +304,14 @@
 
 <script>
 import FooterBar from "@/components/FooterBar.vue";
-// import NavBar from "@/components/NavBar.vue";
+import NavBar from "@/components/NavBar.vue";
 import { onMounted, reactive, ref, watch } from "vue";
 import { useRouter } from "vue-router";
 
 export default {
   name: "PutusanPenting",
   components: {
-    // NavBar,
+    NavBar,
     FooterBar,
   },
   setup() {
@@ -857,8 +858,7 @@ export default {
         },
         {
           title: "Rumusan Rakernas",
-          disabled: false,
-          href: "breadcrumbs_link_1",
+          disabled: true
         },
         // {
         //   title: "Link 2",

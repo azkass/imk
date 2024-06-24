@@ -869,8 +869,7 @@ export default {
         },
         {
           title: "Restatement",
-          disabled: false,
-          href: "breadcrumbs_link_1",
+          disabled: true
         },
         // {
         //   title: "Link 2",

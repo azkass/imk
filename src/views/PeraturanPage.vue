@@ -1,4 +1,5 @@
 <template>
+  <NavBar />
     <div class="bg-[#F5F7FA]">
       <v-container>
         <!-- Breadcrumbs Section -->
@@ -300,14 +301,14 @@
   
   <script>
   import FooterBar from "@/components/FooterBar.vue";
-  // import NavBar from "@/components/NavBar.vue";
+  import NavBar from "@/components/NavBar.vue";
   import { onMounted, reactive, ref, watch } from "vue";
 import { useRouter } from "vue-router";
   
   export default {
     name: "PutusanPenting",
     components: {
-      // NavBar,
+      NavBar,
       FooterBar,
     },
     setup() {
