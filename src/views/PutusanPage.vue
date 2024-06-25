@@ -1,8 +1,9 @@
 <template>
   <div class="bg-[#F5F7FA]">
     <NavBar />
-    <v-container>
-      <!-- Breadcrumbs Section -->
+    <!-- <v-container> -->
+    <div class="container px-16">
+              <!-- Breadcrumbs Section -->
       <v-breadcrumbs :items="items" item-class="breadcrumb-item" class="breadcrumbs pl-0 text-[#8e4202]">
         <template v-slot:divider>
           <v-icon class="" icon="mdi-chevron-right"></v-icon>
@@ -30,7 +31,7 @@
 
       <!-- Content Section -->
       <div v-if="!state.isLoading && !state.error">
-        <div class="hidden md:flex flex-row items-baseline mb-0">
+        <!-- <div class="hidden md:flex flex-row items-baseline mb-0">
           <div class="mb-0">
             <v-card-title class="text-2xl">Filter</v-card-title>
           </div>
@@ -56,7 +57,7 @@
               @change="applyFilters"
             ></v-combobox>
           </div>
-        </div>
+        </div> -->
         <!-- Filter Buttons for Mobile -->
         <div class="flex md:hidden justify-center mb-4 space-x-6">
           <v-btn @click="showSortFilter = true">Urutkan</v-btn>
@@ -66,6 +67,9 @@
         <v-row class="center mt-[-23px]">
           <!-- Filters for Desktop -->
           <v-col cols="3" class="hidden md:block">
+            <div class="mb-5">
+              <v-card-title class="text-2xl">Filter</v-card-title>
+            </div>
             <v-card class="pa-4 rounded-2xl">
               <!-- <v-card-text> -->
                 <h2 class="mb-1 text-[17px] font-bold">Kata Kunci</h2>
@@ -238,11 +242,57 @@
 
           <!-- Content for Mobile and Desktop -->
           <v-col cols="12" md="9">
-            <v-list class=" w-full bg-[#F5F7FA]">
-              <v-list-item v-for="item in state.rooms" :key="item.id" class="mb-4">
-                <v-card class="pa-4 rounded-2xl">
-                  <div v-if="item.jenisPutusan === 'Putusan Penting'">
-                    <div class="flex items-center mb-2 justify-between">
+            <div class="flex-row items-baseline mb-0 hidden md:flex">
+              <div class="mb-0 ml-3">
+                <p class="text-gray-700 mb-4">Menampilkan {{ (page - 1) * itemsPerPage + 1 }} - {{ Math.min(page * itemsPerPage, state.totalItems) }} dari {{ state.totalItems }} Putusan</p>
+              </div>
+              <div class="flex justify-end space-x-4 ml-auto mb-0">
+                <v-card-title class="text-xl items-center mb-0">Urutkan berdasarkan</v-card-title>
+                <v-combobox
+                  :items="sortOptions"
+                  label="Urutkan"
+                  variant="outlined"
+                  class="w-48 items-end mb-0"
+                  v-model="selectedSort"
+                  @change="applyFilters"
+                ></v-combobox>
+                <v-combobox
+                  :items="directionOptions"
+                  label="Arah"
+                  variant="outlined"
+                  class="w-32 items-end border-red-500 mb-0"
+                  v-model="selectedDirection"
+                  @change="applyFilters"
+                ></v-combobox>
+              </div>
+            </div>
+            <div v-if="state.rooms.length === 0" class="flex justify-center mt-4">
+              
+              
+              <div class="flex justify-center items-center mt-40">
+                <div class="text-center">
+                  <div class="flex justify-center items-center mb-2">
+                    <img class="h-20 block" src="../assets/nodata.png" alt="data tidak ditemukan">
+                  </div>
+                  <h4 class="text-2xl font-bold">Data tidak ditemukan!</h4>
+                  <p class="text-gray-500 w-[380px]">
+                    <span class="text-gray-700 font-semibold">Maaf!</span>
+                    Kami tidak menemukan apa pun yang cocok dengan kata kunci Anda. Coba ubah kata kunci Anda untuk hasil yang lebih baik.
+                  </p>
+                </div>
+              </div>
+              <!-- <v-alert type="warning" border="left" elevation="2" prominent>
+                Tidak ada data ditemukan berdasarkan filter yang diterapkan.
+              </v-alert> -->
+            </div>
+            <div v-else class="">
+            <v-list class=" w-full md:mt-[-16px] bg-[#F5F7FA]">
+              <v-list-item v-for="item in state.rooms" :key="item.id" class="mb-1">
+                
+                <v-card class="pa-2 bg-[#F5F7FA] w-full">
+                  <div v-if="item.jenisPutusan === 'Putusan Penting'" class="rounded-xl shadow-lg pa-4 w-full bg-white">
+                    <a href="/isi-putusan-penting"> 
+                    <div class="flex items-center mb-2 justify-between ">
                       <div class="flex items-center">
                         <v-icon color="green">mdi-check-circle</v-icon>
                         <span class="md:ml-2 sm:ml-0 text-green-600 sm:w-[18px] md:w-[254px]">Berkekuatan Hukum Tetap</span>
@@ -281,8 +331,11 @@
                         </div>
                       </div>
                     </div>
+                  </a>
                   </div>
-                  <div v-else>
+                  
+                  <div v-else class="rounded-xl shadow-lg pa-4 w-full bg-white">
+                    <a href="/isi-putusan">
                     <div class="flex justify-between items-center mb-2">
                       <h3 class="text-xl font-bold mb-2">{{ item.title }}</h3>
                       <div class="bg-[#8e4202] p-2 md:pr-3 md:pl-3 md:py-1 rounded-xl text-white text-center">
@@ -317,13 +370,16 @@
                         </div>
                       </div>
                     </div>
+                  </a>
                   </div>
                 </v-card>
+              
               </v-list-item>
             </v-list>
+          </div>
 
             <!-- Pagination Section -->
-            <div class="flex justify-center mt-4" v-if="state.totalPages > 1">
+            <div class="flex justify-center mt-4 mb-4" v-if="state.totalPages > 1">
               <nav class="flex items-center space-x-2">
                 <button
                   @click="goToPage(1)"
@@ -367,9 +423,10 @@
             </div>
           </v-col>
         </v-row>   
-        
       </div>
-      </v-container>
+    </div>
+
+      <!-- </v-container> -->
     <!-- Bottom Sheets for Mobile Filters -->
     <v-bottom-sheet v-model="showCategoryFilter">
     <v-card>
@@ -1148,6 +1205,7 @@ const showSortFilter = ref(false);
       clearFilters,
       applyFiltersAndNavigate,
       page,
+      itemsPerPage,
     };
   },
   data() {

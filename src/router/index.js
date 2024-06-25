@@ -97,6 +97,11 @@ const routes = [
         component: () => import('@/views/IsiPutusan.vue')
     },
     {
+        path: '/isi-putusan-penting',
+        name: 'IsiPutusanPenting',
+        component: () => import('@/views/IsiPutusanPenting.vue')
+    },
+    {
         path: '/kontak',
         name: 'Kontak',
         component: () => import('@/views/KontakKami.vue')

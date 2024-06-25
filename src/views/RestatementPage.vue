@@ -58,7 +58,10 @@
               <v-combobox :items="classifications" label="Pilih Klasifikasi Rumusan Rakernas" variant="outlined" v-model="selectedClassification"></v-combobox>
 
               <h2 class="mb-2 text-[17px] font-bold">Tahun Penerbitan</h2>
-              <v-range-slider v-model="tempTahunPenerbitan" :max="2024" :min="1984" :step="1" thumb-label="always" hide-details track-color="brown" thumb-color="brown"></v-range-slider>
+              <v-range-slider v-model="tempTahunPenerbitan" :max="2024" :min="1984" :step="1" :thumb-label="computedThumbLabel"
+      @start="showLabel = true"
+      @end="showLabel = false"
+      hide-details track-color="brown" thumb-color="brown"></v-range-slider>
               <div class="range-inputs">
                 <v-text-field v-model="tempTahunPenerbitan[0]" density="compact" style="width: 70px; text-align: center;" type="number" variant="outlined" hide-details single-line></v-text-field>
                 <div style="flex-grow: 1"></div>
@@ -118,10 +121,11 @@
             </div>
             <div v-else class="">
               <v-list class=" w-full md:mt-[-16px] bg-[#F5F7FA]">
-              <v-list-item v-for="item in state.rooms" :key="item.id" class="mb-5">
-                <v-card class="pa-2 rounded-sm  w-full bg-[#F5F7FA]">
+              <v-list-item v-for="item in state.rooms" :key="item.id" class="mb-1">
+                <a href="/isi-restatement">
+                  <v-card class="pa-2 bg-[#F5F7FA] w-full ">
                   <!-- <div v-if="item.jenisPutusan === 'Putusan Penting'"> -->
-                  <div class="shadow-xl rounded-xl pa-4 w-full">
+                  <div class="rounded-xl shadow-lg pa-4 w-full bg-white">
                     <div class="flex items-center mb-2 justify-between">
                       <div class="flex items-center">
                         <v-icon color="green">mdi-check-circle</v-icon>
@@ -173,13 +177,15 @@
                     </div>
                   </div> -->
                 </v-card>
+                </a>
+                
               </v-list-item>
             </v-list>
             </div>
             
 
             <!-- Pagination -->
-            <div class="flex justify-center mt-4" v-if="state.totalPages > 1">
+            <div class="flex justify-center mt-4 mb-4" v-if="state.totalPages > 1">
               <nav class="flex items-center space-x-2">
                 <button
                   @click="goToPage(1)"
@@ -324,8 +330,9 @@
       </v-card>
     </v-dialog>
 
-    <FooterBar />
+    
   </div>
+  <FooterBar />
 </template>
 
 <script>
@@ -900,9 +907,13 @@ export default {
       classifications: ["Semua", "Batasan Umur", "Bukti Permulaan Yang Cukup", "Cessie", "Eksekusi Gadai Saham", "Grosse Akta", "Keadaan Memaksa", "Kebatalan Perjanjian", "Klausula Baku", "Perampasan Aset Tanpa Pemidanaan"],
       directionOptions: ["Menurun", "Menaik"],
       sortOptions: ["-", "Tanggal Putusan", "Total View", "Total Download"],
+      showLabel: false,
     };
   },
   computed: {
+    computedThumbLabel() {
+        return this.showLabel ? 'always' : false
+      },
     paginationRange() {
       const current = this.page;
       const last = this.state.totalPages;

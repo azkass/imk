@@ -30,33 +30,7 @@
 
       <!-- Content Section -->
       <div v-if="!state.isLoading && !state.error">
-        <!-- <div class="flex-row items-baseline mb-0 hidden md:flex">
-          <div class="mb-0">
-            <v-card-title class="text-2xl">Filter</v-card-title>
-          </div>
-          <div class="md:ml-1 sm:ml-12 xl:ml-0 2xl:ml-28 mb-0">
-            <p class="text-gray-700 mb-4">Menampilkan {{ (page - 1) * itemsPerPage + 1 }} - {{ Math.min(page * itemsPerPage, state.totalItems) }} dari {{ state.totalItems }} Putusan</p>
-          </div>
-          <div class="flex justify-end space-x-4 ml-auto mb-0">
-            <v-card-title class="text-xl items-center mb-0">Urutkan berdasarkan</v-card-title>
-            <v-combobox
-              :items="sortOptions"
-              label="Urutkan"
-              variant="outlined"
-              class="w-48 items-end mb-0"
-              v-model="selectedSort"
-              @change="applyFilters"
-            ></v-combobox>
-            <v-combobox
-              :items="directionOptions"
-              label="Arah"
-              variant="outlined"
-              class="w-32 items-end border-red-500 mb-0"
-              v-model="selectedDirection"
-              @change="applyFilters"
-            ></v-combobox>
-          </div>
-        </div> -->
+        
         <!-- Filter Buttons for Mobile -->
         <div class="flex md:hidden justify-center mb-4 space-x-6">
           <v-btn @click="showSortFilter = true">Urutkan</v-btn>

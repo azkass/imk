@@ -1,22 +1,18 @@
 <template>
     <v-app>
       <NavBar />
+      
       <v-container class="mt-5">
         <v-row>
           <v-col cols="12">
-            <div class="flex items-center mb-4">
-              <v-icon class="mr-2" color="brown">mdi-home</v-icon>
-              <v-breadcrumbs :items="breadcrumbs">
-                <template v-slot:item="props">
-                  <v-breadcrumbs-item
-                    :disabled="props.item.disabled"
-                    :href="props.item.href"
-                  >
-                    {{ props.item.title }}
-                  </v-breadcrumbs-item>
-                </template>
-              </v-breadcrumbs>
-            </div>
+            <v-breadcrumbs :items="items" item-class="breadcrumb-item" class="breadcrumbs text-[#7d6654]">
+        <template v-slot:divider>
+          <v-icon class="text-[#8e4202]" icon="mdi-chevron-right"></v-icon>
+        </template>
+        <template v-slot:prepend>
+          <v-icon class="text-[#8e4202]">mdi-home</v-icon>
+        </template>
+      </v-breadcrumbs>
             <h1 class="text-2xl font-bold">Panduan</h1>
             <div class="border-b-2 border-black mb-4"></div>
             <v-row>
@@ -29,7 +25,7 @@
                       <span class="ml-2">Halaman Utama Website / Beranda</span>
                     </li>
                     <li class="space-y-2">
-                      <div class="flex items-center cursor-pointer">
+                      <div class="flex items-center cursor-pointer " @click="setPage('fitur')">
                         <v-icon color="brown">mdi-home</v-icon>
                         <span class="ml-2">Fitur-fitur Direktori Keputusan</span>
                       </div>
@@ -107,16 +103,25 @@ import NavBar from "@/components/NavBar.vue";
     },
     data() {
       return {
-        breadcrumbs: [
-          { title: 'Panduan', href: '#' }
+        items: [
+          {
+            title: "Informasi",
+            disabled: false,
+            href: "#",
+          },
+          {
+            title: "Panduan",
+            disabled: true,
+            href: "/rss",
+          },
         ],
-        currentPage: '',
       };
     },
     computed: {
       pageTitle() {
         switch (this.currentPage) {
           case 'home': return 'Halaman Utama Website atau Beranda';
+          case 'fitur': return 'Fitur-fitur Direktori Keputusan'
           case 'pencarian': return 'Pencarian';
           case 'putusan': return 'Halaman Putusan';
           case 'rumusan': return 'Halaman Rumusan Kamar';

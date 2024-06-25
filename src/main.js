@@ -13,6 +13,8 @@ import 'vuetify/styles';
 // Tailwind
 import './assets/style.css';
 
+
+
 const vuetify = createVuetify({
     components,
     directives,

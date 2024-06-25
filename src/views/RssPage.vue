@@ -1,39 +1,43 @@
 <template>
-    <div>
+    <div class="bg-[#F5F7FA]">
       <NavBar />
       <div class="bg-[#F5F7FA] container mx-auto p-4">
         <!-- Breadcrumbs Section -->
-        <v-breadcrumbs :items="items" item-class="breadcrumb-item" class="breadcrumbs text-[#8e4202]">
-          <template v-slot:divider>
-            <v-icon class="text-[#8e4202]" icon="mdi-chevron-right"></v-icon>
-          </template>
-          <template v-slot:prepend>
-            <v-icon class="text-[#8e4202]">mdi-home</v-icon>
-          </template>
-        </v-breadcrumbs>
+        <v-breadcrumbs :items="items" item-class="breadcrumb-item" class="breadcrumbs text-[#7d6654]">
+        <template v-slot:divider>
+          <v-icon class="text-[#8e4202]" icon="mdi-chevron-right"></v-icon>
+        </template>
+        <template v-slot:prepend>
+          <v-icon class="text-[#8e4202]">mdi-home</v-icon>
+        </template>
+      </v-breadcrumbs>
   
         <!-- Title Section -->
         <h1 class="text-2xl md:text-3xl font-bold mb-4">Daftar Pengadilan</h1>
         <hr class="border-b-2 border-gray-800 mb-4">
-        <p class="mb-4">Menampilkan {{ startItem }}-{{ endItem }} dari {{ totalItems }} Pengadilan</p>
+        
   
-        <!-- Filter Section -->
-        <div class="flex items-center justify-between mb-4">
-          <input
-            type="text"
-            placeholder="Temukan data ..."
-            class="border p-2 rounded w-full max-w-md"
-            v-model="searchQuery"
-            @input="applyFilters"
-          />
-          <button @click="clearFilter" class="ml-4 bg-gray-200 p-2 rounded">Clear</button>
-        </div>
+        
   
         <!-- Table Section -->
-        <div class="overflow-x-auto">
+        <div class="mx-10">
+          <div class="flex justify-between items-end">
+             <p class="mb-4 items-end">Menampilkan {{ startItem }}-{{ endItem }} dari {{ totalItems }} Pengadilan</p>
+          <!-- Filter Section -->
+           <div class="flex items-center justify-end space-x-1 mb-4">
+             <input
+               type="text"
+               placeholder="Temukan data ..."
+               class="border p-2 rounded w-full max-w-md"
+               v-model="searchQuery"
+                @input="applyFilters"
+               />
+              <button @click="clearFilter" class="ml-4 bg-gray-200 p-2 rounded">Clear</button>
+              </div>
+          </div>
           <table class="min-w-full bg-white">
             <thead>
-              <tr class="bg-orange-600 text-white">
+              <tr class="bg-[#8e4202] text-white">
                 <th class="py-2 px-4 border cursor-pointer" @click="sortData('nama')">
                   Nama Pengadilan
                   <span v-if="sortBy === 'nama' && !sortDesc">▲</span>
@@ -53,10 +57,10 @@
                 <td class="py-2 px-4 border">{{ pengadilan.nama }}</td>
                 <td class="py-2 px-4 border">{{ pengadilan.putusan }}</td>
                 <td class="py-2 px-4 border text-center">
-                  <v-icon class="text-yellow-600">mdi-rss</v-icon>
+                  <v-icon class="text-white bg-[#DDC17C]">mdi-rss</v-icon>
                 </td>
                 <td class="py-2 px-4 border text-center">
-                  <v-icon class="text-green-600">mdi-rss</v-icon>
+                  <v-icon class="text-[#66BB69]">mdi-rss</v-icon>
                 </td>
               </tr>
             </tbody>
@@ -284,9 +288,14 @@ import { computed, ref } from "vue";
       return {
         items: [
           {
-            title: "RSS",
+            title: "Informasi",
             disabled: false,
             href: "#",
+          },
+          {
+            title: "RSS",
+            disabled: true,
+            href: "/rss",
           },
         ],
       };
@@ -322,5 +331,8 @@ import { computed, ref } from "vue";
   .text-white {
     color: white !important;
   }
+  .breadcrumbs {
+  font-size: 1rem;
+}
   </style>
   
