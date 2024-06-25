@@ -4,8 +4,8 @@
         <NavBar />
         <div class="bg-cover bg-center bg-[url('@/assets/beranda.png')] pt-10">
             <div class="text-center">
-                <h3>Publikasi Dokumen Elektronik</h3>
-                <h3>Putusan Seluruh Pengadilan di Indonesia</h3>
+                <h2 class="sm:text-3xl md:text-5xl font-semibold md:mb-4">Publikasi Dokumen Elektronik</h2>
+                <h2 class="sm:text-3xl md:text-5xl font-semibold md:mb-4">Putusan Seluruh Pengadilan di Indonesia</h2>
                 <br>
             </div>
             <v-card

@@ -1,6 +1,6 @@
 <template>
-    <div class="bg-[#F5F7FA] sm:px-4 md:px-16">
-        <h1 class="">Rekapitulasi Putusan</h1>
+    <div class="bg-[#F5F7FA] sm:p-4 md:px-16">
+        <h3 class="text-2xl font-semibold">Rekapitulasi Putusan</h3>
         <hr class="border-b-2 border-gray-800 mb-4">
         <div id="app" class="pl-4">
             <div class="flex justify-center mb-4 ">
