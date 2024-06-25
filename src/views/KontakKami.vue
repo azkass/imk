@@ -22,10 +22,10 @@
                         call
                         </span>
                         <div>
-                            <h3 class="text-lg font-semibold">Phone</h3>
-                            <p>(021) 384 3348</p>
-                            <p>(021) 384 3348</p>
-                            <p>(021) 384 3348</p>
+                            <h3 class="text-lg font-semibold md:pl-2">Phone</h3>
+                            <p class="md:pl-2">(021) 384 3348</p>
+                            <p class="md:pl-2">(021) 384 3348</p>
+                            <p class="md:pl-2">(021) 384 3348</p>
                         </div>
                     </div>
                     <div class="py-4 pl-2 pr-4 flex space-x-2">
@@ -34,8 +34,8 @@
                         mail
                         </span>
                         <div>
-                            <h3 class="text-lg font-semibold">Email</h3>
-                            <p>info@mahkamahagung.go.id</p>
+                            <h3 class="text-lg font-semibold md:pl-2">Email</h3>
+                            <p class="md:pl-2">info@mahkamahagung.go.id</p>
                         </div>
                     </div>
                     <div class="py-4 pl-2 pr-4 flex space-x-2">
@@ -44,8 +44,8 @@
                         location_on
                         </span>
                         <div>
-                            <h3 class="text-lg font-semibold">Alamat</h3>
-                            <p>Jalan Medan Merdeka Utara No. 9-13. Jakarta Pusat - DKI Jakarta Indonesia 10110</p>
+                            <h3 class="text-lg font-semibold md:pl-2">Alamat</h3>
+                            <p class="md:pl-2">Jalan Medan Merdeka Utara No. 9-13. Jakarta Pusat - DKI Jakarta Indonesia 10110</p>
                         </div>
                     </div>
                 </div>
@@ -58,7 +58,7 @@
             <div class="md:w-7/12 ml-10">
                 <h2 class="text-2xl font-semibold mb-4">Kirim Masukan</h2>
                 <div class="bg-white rounded-lg">
-                    <div class="px-2">
+                    <div class="px-4">
                         <div class="px-4 pt-4">
                             <h3 class="text-lg font-semibold">Nama</h3>
                             <input type="text" class="w-full p-2 border border-gray-300 rounded">
