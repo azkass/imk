@@ -2,7 +2,7 @@
     <div class="bg-[#F5F7FA] sm:px-4 md:px-16">
         <h3>Dokumen Terbaru</h3>
         <hr class="border-black border-2">
-        <v-card>
+        <v-card class="elevation-0">
             <v-tabs v-model="selectedTab" bg-color="#F5F7FA" show-arrows>
             <v-tab v-for="(tab, index) in tabs" :key="index" :value="'tab-' + (index + 1)">
                 {{ tab }}
@@ -15,7 +15,7 @@
                 <p>Testing</p>
             </div>
         </template>
-    </v-card>
+        </v-card>
     </div>
 </template>
 
