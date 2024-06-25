@@ -67,6 +67,11 @@ const routes = [
         component: () => import('@/views/PeraturanPage.vue')
     },
     {
+        path:'/daftar-peradilan',
+        name:'Daftar Peradilan',
+        component: () => import('@/views/DaftarPeradilanPage.vue')
+    },
+    {
         path:'/tentang',
         name:'Tentang',
         component: () => import('@/views/TentangPage.vue')

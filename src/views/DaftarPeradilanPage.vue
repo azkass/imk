@@ -39,25 +39,35 @@
                   <span v-if="sortBy === 'nama' && !sortDesc">▲</span>
                   <span v-if="sortBy === 'nama' && sortDesc">▼</span>
                 </th>
+                <th class="py-2 px-4 border cursor-pointer" @click="sortData('tinggi')">
+                  Pengadilan Tinggi
+                  <span v-if="sortBy === 'tinggi' && !sortDesc">▲</span>
+                  <span v-if="sortBy === 'tinggi' && sortDesc">▼</span>
+                </th>
+                <th class="py-2 px-4 border cursor-pointer" @click="sortData('provinsi')">
+                  Provinsi
+                  <span v-if="sortBy === 'provinsi' && !sortDesc">▲</span>
+                  <span v-if="sortBy === 'provinsi' && sortDesc">▼</span>
+                </th>
                 <th class="py-2 px-4 border cursor-pointer" @click="sortData('putusan')">
                   Jumlah Putusan
                   <span v-if="sortBy === 'putusan' && !sortDesc">▲</span>
                   <span v-if="sortBy === 'putusan' && sortDesc">▼</span>
                 </th>
-                <th class="py-2 px-4 border">Terbaru</th>
-                <th class="py-2 px-4 border">Pilihan</th>
+                <th class="py-2 px-4 border cursor-pointer" @click="sortData('publikasi')">
+                  Jumlah Publikasi
+                  <span v-if="sortBy === 'publikasi' && !sortDesc">▲</span>
+                  <span v-if="sortBy === 'publikasi' && sortDesc">▼</span>
+                </th>
               </tr>
             </thead>
             <tbody>
               <tr v-for="pengadilan in paginatedData" :key="pengadilan.id">
                 <td class="py-2 px-4 border">{{ pengadilan.nama }}</td>
+                <td class="py-2 px-4 border">{{ pengadilan.tinggi }}</td>
+                <td class="py-2 px-4 border">{{ pengadilan.provinsi }}</td>
                 <td class="py-2 px-4 border">{{ pengadilan.putusan }}</td>
-                <td class="py-2 px-4 border text-center">
-                  <v-icon class="text-yellow-600">mdi-rss</v-icon>
-                </td>
-                <td class="py-2 px-4 border text-center">
-                  <v-icon class="text-green-600">mdi-rss</v-icon>
-                </td>
+                <td class="py-2 px-4 border">{{ pengadilan.publikasi }}</td>
               </tr>
             </tbody>
           </table>
@@ -124,26 +134,26 @@ import { computed, ref } from "vue";
     },
     setup() {
       const pengadilanList = ref([
-        { id: 1, nama: "SEMUA PENGADILAN", putusan: 8340754 },
-        { id: 2, nama: "PN PRABUMULIH", putusan: 2046 },
-        { id: 3, nama: "PN PAGAR ALAM", putusan: 1220 },
-        { id: 4, nama: "PN PALEMBANG", putusan: 1252 },
-        { id: 5, nama: "PN SEKAYU", putusan: 803 },
-        { id: 6, nama: "PN MUARA ENIM", putusan: 548 },
-        { id: 7, nama: "PN LAHAT", putusan: 914 },
-        { id: 8, nama: "PN LUBUK LINGAU", putusan: 2752 },
-        { id: 9, nama: "PN BATURAJA", putusan: 3530 },
-        { id: 10, nama: "PN KAYUAGUNG", putusan: 1027 },
-        { id: 11, nama: "PN METRO", putusan: 1000 },
-        { id: 12, nama: "PN KOTABUMI", putusan: 1200 },
-        { id: 13, nama: "PN GUNUNG SUGIH", putusan: 600 },
-        { id: 14, nama: "PN KALIANDA", putusan: 800 },
-        { id: 15, nama: "PN TANJUNG KARANG", putusan: 1500 },
-        { id: 16, nama: "PN LIWA", putusan: 700 },
-        { id: 17, nama: "PN KRUI", putusan: 900 },
-        { id: 18, nama: "PN BENGKULU", putusan: 1100 },
-        { id: 19, nama: "PN CURUP", putusan: 1300 },
-        { id: 20, nama: "PN ARGA MAKMUR", putusan: 1400 },
+        { id: 1, nama: "DILMIL I 01 BANDA ACEH", tinggi: "DILMILTI I MEDAN", provinsi: "NAD", putusan: 1945, publikasi: 1945 },
+        { id: 2, nama: "DILMIL I 02 MEDAN", tinggi: "DILMILTI I MEDAN", provinsi: "Sumatera Utara", putusan: 2046, publikasi: 2046 },
+        { id: 3, nama: "DILMIL I 03 PADANG", tinggi: "DILMILTI I MEDAN", provinsi: "Sumatera Barat", putusan: 1220, publikasi: 1220 },
+        { id: 4, nama: "DILMIL I 04 PALEMBANG", tinggi: "DILMILTI I MEDAN", provinsi: "Sumatera Selatan", putusan: 1252, publikasi: 1252 },
+        { id: 5, nama: "DILMIL I 05 PONTIANAK", tinggi: "DILMILTI I MEDAN", provinsi: "Kalimantan Barat", putusan: 803, publikasi: 803 },
+        { id: 6, nama: "DILMIL I 06 BANJARMASIN", tinggi: "DILMILTI I MEDAN", provinsi: "Kalimantan Selatan", putusan: 548, publikasi: 548 },
+        { id: 7, nama: "DILMIL I 07 BALIKPAPAN", tinggi: "DILMILTI I MEDAN", provinsi: "Kalimantan Timur", putusan: 914, publikasi: 914 },
+        { id: 8, nama: "DILMIL II 08 JAKARTA", tinggi: "DILMILTI II JAKARTA", provinsi: "DKI Jakarta", putusan: 2752, publikasi: 2752 },
+        { id: 9, nama: "DILMIL II 09 BANDUNG", tinggi: "DILMILTI II JAKARTA", provinsi: "Jawa Barat", putusan: 3530, publikasi: 3530 },
+        { id: 10, nama: "DILMIL II 10 SEMARANG", tinggi: "DILMILTI II JAKARTA", provinsi: "Jawa Tengah", putusan: 1027, publikasi: 1027 },
+        { id: 11, nama: "DILMIL III 11 SURABAYA", tinggi: "DILMILTI III SURABAYA", provinsi: "Jawa Timur", putusan: 500, publikasi: 500 },
+        { id: 12, nama: "DILMIL IV 12 MAKASSAR", tinggi: "DILMILTI IV MAKASSAR", provinsi: "Sulawesi Selatan", putusan: 600, publikasi: 600 },
+        { id: 13, nama: "DILMIL V 13 BANJARMASIN", tinggi: "DILMILTI V BANJARMASIN", provinsi: "Kalimantan Selatan", putusan: 700, publikasi: 700 },
+        { id: 14, nama: "DILMIL VI 14 MEDAN", tinggi: "DILMILTI VI MEDAN", provinsi: "Sumatera Utara", putusan: 800, publikasi: 800 },
+        { id: 15, nama: "DILMIL VII 15 PADANG", tinggi: "DILMILTI VII PADANG", provinsi: "Sumatera Barat", putusan: 900, publikasi: 900 },
+        { id: 16, nama: "DILMIL VIII 16 PALEMBANG", tinggi: "DILMILTI VIII PALEMBANG", provinsi: "Sumatera Selatan", putusan: 1000, publikasi: 1000 },
+        { id: 17, nama: "DILMIL IX 17 PONTIANAK", tinggi: "DILMILTI IX PONTIANAK", provinsi: "Kalimantan Barat", putusan: 1100, publikasi: 1100 },
+        { id: 18, nama: "DILMIL X 18 BANJARMASIN", tinggi: "DILMILTI X BANJARMASIN", provinsi: "Kalimantan Selatan", putusan: 1200, publikasi: 1200 },
+        { id: 19, nama: "DILMIL XI 19 BALIKPAPAN", tinggi: "DILMILTI XI BALIKPAPAN", provinsi: "Kalimantan Timur", putusan: 1300, publikasi: 1300 },
+        { id: 20, nama: "DILMIL XII 20 JAKARTA", tinggi: "DILMILTI XII JAKARTA", provinsi: "DKI Jakarta", putusan: 1400, publikasi: 1400 },
       ]);
   
       const searchQuery = ref("");
@@ -156,7 +166,10 @@ import { computed, ref } from "vue";
         let data = pengadilanList.value.filter((item) => {
           return (
             item.nama.toLowerCase().includes(searchQuery.value.toLowerCase()) ||
-            item.putusan.toString().includes(searchQuery.value)
+            item.tinggi.toLowerCase().includes(searchQuery.value.toLowerCase()) ||
+            item.provinsi.toLowerCase().includes(searchQuery.value.toLowerCase()) ||
+            item.putusan.toString().includes(searchQuery.value) ||
+            item.publikasi.toString().includes(searchQuery.value)
           );
         });
   
@@ -284,9 +297,13 @@ import { computed, ref } from "vue";
       return {
         items: [
           {
-            title: "RSS",
+            title: "Direktori",
             disabled: false,
             href: "#",
+          },
+          {
+            title: "Daftar Pengadilan",
+            disabled: true,
           },
         ],
       };
