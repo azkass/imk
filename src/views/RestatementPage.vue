@@ -98,14 +98,28 @@
               </div>
             </div>
             <div v-if="state.rooms.length === 0" class="flex justify-center mt-4">
-              <v-alert type="warning" border="left" elevation="2" prominent>
+              
+              
+              <div class="flex justify-center items-center mt-40">
+                <div class="text-center">
+                  <div class="flex justify-center items-center mb-2">
+                    <img class="h-20 block" src="../assets/nodata.png" alt="data tidak ditemukan">
+                  </div>
+                  <h4 class="text-2xl font-bold">Data tidak ditemukan!</h4>
+                  <p class="text-gray-500 w-[380px]">
+                    <span class="text-gray-700 font-semibold">Maaf!</span>
+                    Kami tidak menemukan apa pun yang cocok dengan kata kunci Anda. Coba ubah kata kunci Anda untuk hasil yang lebih baik.
+                  </p>
+                </div>
+              </div>
+              <!-- <v-alert type="warning" border="left" elevation="2" prominent>
                 Tidak ada data ditemukan berdasarkan filter yang diterapkan.
-              </v-alert>
+              </v-alert> -->
             </div>
             <div v-else class="">
-              <v-list class=" w-full md:mt-[-16px]">
+              <v-list class=" w-full md:mt-[-16px] bg-[#F5F7FA]">
               <v-list-item v-for="item in state.rooms" :key="item.id" class="mb-5">
-                <v-card class="pa-2 rounded-sm  w-full">
+                <v-card class="pa-2 rounded-sm  w-full bg-[#F5F7FA]">
                   <!-- <div v-if="item.jenisPutusan === 'Putusan Penting'"> -->
                   <div class="shadow-xl rounded-xl pa-4 w-full">
                     <div class="flex items-center mb-2 justify-between">

@@ -30,7 +30,7 @@
 
       <!-- Content Section -->
       <div v-if="!state.isLoading && !state.error">
-        <div class="flex-row items-baseline mb-0 hidden md:flex">
+        <!-- <div class="flex-row items-baseline mb-0 hidden md:flex">
           <div class="mb-0">
             <v-card-title class="text-2xl">Filter</v-card-title>
           </div>
@@ -56,7 +56,7 @@
               @change="applyFilters"
             ></v-combobox>
           </div>
-        </div>
+        </div> -->
         <!-- Filter Buttons for Mobile -->
         <div class="flex md:hidden justify-center mb-4 space-x-6">
           <v-btn @click="showSortFilter = true">Urutkan</v-btn>
@@ -66,6 +66,9 @@
         <v-row justify="center mt-[-23px]">
           <!-- Filters for Desktop -->
           <v-col cols="3" class="hidden md:block">
+            <div class="mb-5">
+              <v-card-title class="text-2xl">Filter</v-card-title>
+            </div>
             <v-card class="pa-4 rounded-2xl shadow-2xl">
               <h2 class="mb-1 text-[17px] font-bold">Kata Kunci</h2>
               <v-text-field class="mb-4" label="Masukkan Kata Kunci" v-model="keyword" />
