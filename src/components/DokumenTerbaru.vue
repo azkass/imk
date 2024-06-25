@@ -1,6 +1,6 @@
 <template>
     <div class="bg-[#F5F7FA] sm:px-4 md:px-16">
-        <h3 class="text-2xl font-semibold">Dokumen Terbaru</h3>
+        <h3 class="sm:text-xl md:text-2xl xl:text-4xl font-medium pb-2">Dokumen Terbaru</h3>
         <hr class="border-black border-2">
         <v-card class="elevation-0">
             <v-tabs v-model="selectedTab" bg-color="#F5F7FA" show-arrows>
