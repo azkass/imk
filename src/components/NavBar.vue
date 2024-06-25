@@ -11,8 +11,8 @@
     
             <div class="hidden md:flex space-x-8">
             <a href="/" class="hover:text-gray-300">Beranda</a>
-            <div class="relative" @mouseenter="openSubMenu">
-                <button @click="toggleSubMenu" class="focus:outline-none hover:text-gray-300">
+            <div class="relative" @mouseenter="openSubMenu('direktori'), closeSubMenu('informasi')">
+                <button @click="toggleSubMenu('direktori')" class="focus:outline-none hover:text-gray-300">
                     <a href="/direktori">Direktori</a>
                 </button>
                 <div v-if="isSubMenuOpen.direktori" @mouseleave="closeSubMenu('direktori')" class="absolute left-0 mt-2 w-48 bg-[#FFFFFF] border-amber-600 font-normal text-gray-600 rounded-md shadow-lg z-20">
