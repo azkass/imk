@@ -1,11 +1,11 @@
 <template>
     <v-app>
       <NavBar />
-      <v-container class="mt-5">
+      <div class="sm:px-4 md:px-16 pb-4 bg-[#F5F7FA]">
         <v-row>
           <v-col cols="12">
             <div class="flex items-center mb-4">
-              <v-icon class="mr-2" color="brown">mdi-home</v-icon>
+              <v-icon class="mr-2" color="#8E4202">mdi-home</v-icon>
               <v-breadcrumbs :items="breadcrumbs">
                 <template v-slot:item="props">
                   <v-breadcrumbs-item
@@ -25,43 +25,43 @@
                 <div class="bg-white rounded-lg shadow-md p-4">
                   <ul class="space-y-2">
                     <li class="flex items-center cursor-pointer" @click="setPage('home')">
-                      <v-icon color="brown">mdi-home</v-icon>
-                      <span class="ml-2">Halaman Utama Website / Beranda</span>
+                      <v-icon color="#8E4202">mdi-home</v-icon>
+                      <span class="sm:ml-0 md:ml-2">Halaman Utama Website / Beranda</span>
                     </li>
                     <li class="space-y-2">
                       <div class="flex items-center cursor-pointer">
-                        <v-icon color="brown">mdi-home</v-icon>
-                        <span class="ml-2">Fitur-fitur Direktori Keputusan</span>
+                        <v-icon color="#8E4202">mdi-home</v-icon>
+                        <span class="sm:ml-0 md:ml-2">Fitur-fitur Direktori Keputusan</span>
                       </div>
                       <div class="ml-10">
                         <ul class="space-y-2">
                           <li class="flex items-center cursor-pointer" @click="setPage('pencarian')">
-                            <v-icon color="brown">mdi-magnify</v-icon>
-                            <span class="ml-2">Pencarian</span>
+                            <v-icon color="#8E4202">mdi-magnify</v-icon>
+                            <span class="sm:ml-0 md:ml-2">Pencarian</span>
                           </li>
                           <li class="flex items-center cursor-pointer" @click="setPage('putusan')">
-                            <v-icon color="brown">mdi-file-document</v-icon>
-                            <span class="ml-2">Halaman Putusan</span>
+                            <v-icon color="#8E4202">mdi-file-document</v-icon>
+                            <span class="sm:ml-0 md:ml-2">Halaman Putusan</span>
                           </li>
                           <li class="flex items-center cursor-pointer" @click="setPage('rumusan')">
-                            <v-icon color="brown">mdi-file-document-outline</v-icon>
-                            <span class="ml-2">Halaman Rumusan Kamar</span>
+                            <v-icon color="#8E4202">mdi-file-document-outline</v-icon>
+                            <span class="sm:ml-0 md:ml-2">Halaman Rumusan Kamar</span>
                           </li>
                           <li class="flex items-center cursor-pointer" @click="setPage('kaidah')">
-                            <v-icon color="brown">mdi-scale-balance</v-icon>
-                            <span class="ml-2">Halaman Kaidah Hukum</span>
+                            <v-icon color="#8E4202">mdi-scale-balance</v-icon>
+                            <span class="sm:ml-0 md:ml-2">Halaman Kaidah Hukum</span>
                           </li>
                           <li class="flex items-center cursor-pointer" @click="setPage('yurisprudensi')">
-                            <v-icon color="brown">mdi-book-open-outline</v-icon>
-                            <span class="ml-2">Halaman Yurisprudensi</span>
+                            <v-icon color="#8E4202">mdi-book-open-outline</v-icon>
+                            <span class="sm:ml-0 md:ml-2">Halaman Yurisprudensi</span>
                           </li>
                           <li class="flex items-center cursor-pointer" @click="setPage('restatement')">
-                            <v-icon color="brown">mdi-book-outline</v-icon>
-                            <span class="ml-2">Halaman Restatement</span>
+                            <v-icon color="#8E4202">mdi-book-outline</v-icon>
+                            <span class="sm:ml-0 md:ml-2">Halaman Restatement</span>
                           </li>
                           <li class="flex items-center cursor-pointer" @click="setPage('peraturan')">
-                            <v-icon color="brown">mdi-gavel</v-icon>
-                            <span class="ml-2">Halaman Peraturan</span>
+                            <v-icon color="#8E4202">mdi-gavel</v-icon>
+                            <span class="sm:ml-0 md:ml-2">Halaman Peraturan</span>
                           </li>
                         </ul>
                       </div>
@@ -83,14 +83,14 @@
                       <p>Revitalisasi Direktor Putusan (RDP) merupakan pengembangan dari Direktor Putusan v2 ke dalam Direktor Putusan v3 yang telah diimplementasikan pada server Mahkamah Agung. Fitur-fitur baru yang dihasilkan pada Direktor Putusan v3 diantaranya adalah Putusan, Yurisprudensi, Rumusan Kamar, Restatement, Kaidah Hukum dan Peraturan.</p>
                     </div>
                     <!-- Add similar blocks for other pages -->
-                    <p v-else>Silakan pilih menu dari sebelah kiri untuk melihat konten.</p>
+                    <p v-else class="text-justify">Revitalisasi Direktori Putusan (RDP) merupakan pengembangan dari Direktori Putusan v2 kedalam Direktori Putusan v3 yang telah diimplementasikan pada server Mahkamah Agung. Fitur-fitur baru yang dihasilkan pada Direktori Putusan v3 diantaranya adalah Putusan, Yurisprudensi, Rumusan Kamar, Restatement, Kaidah Hukum dan Peraturan.</p>
                   </v-card-text>
                 </v-card>
               </v-col>
             </v-row>
           </v-col>
         </v-row>
-      </v-container>
+      </div>
       <FooterBar />
     </v-app>
   </template>

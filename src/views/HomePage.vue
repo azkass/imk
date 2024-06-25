@@ -29,14 +29,14 @@
             </v-card>
 
             <div class="flex items-center justify-center pb-5">
-    <div class="container mx-20 my-8 p-4">
-            <button
+    <div class="container mx-24 my-12">
+            <!-- <button
             @click="prevPage"
             :disabled="currentPage === 0"
             class="absolute left-0 z-10 p-2 bg-[#8E4202] text-white rounded-xl ml-10 mt-28"
             >
             &lt;
-        </button>
+        </button> -->
         <div class="relative flex items-center">
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10 mx-auto">
                 <div
@@ -56,14 +56,14 @@
                     </router-link>
                 </div>
             </div>
-            <button
-                @click="nextPage"
-                :disabled="currentPage === maxPage"
-                class="absolute right-0 z-10 p-2 bg-[#8E4202] text-white rounded-full"
-            >
-                &gt;
-            </button>
         </div>
+        <!-- <button
+            @click="nextPage"
+            :disabled="currentPage === maxPage"
+            class="absolute right-0 p-2 bg-[#8E4202] text-white rounded-full mr-10 mb-52"
+        >
+            &gt;
+        </button> -->
     </div>
 </div>
 
