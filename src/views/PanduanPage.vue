@@ -77,16 +77,16 @@
                   <div v-if="currentPage === 'home'">
                     <p>Website Direktori Putusan dapat diakses di <a href="https://putusan3.mahkamahagung.go.id/">https://putusan3.mahkamahagung.go.id/</a></p>
                     <p>Halaman utama yang akan ditampilkan adalah sebagai berikut:</p>
-                    <img src="path_to_image_1.png" alt="Gambar 1" />
+                    <img src="../assets/home.png" alt="Gambar 1" />
                     <p class="text-gray-400">Gambar 1 - Tampilan Utama Direktori Putusan v3</p>
                     <p>Bagian ini menampilkan daftar Fitur Direktori Putusan dan papan pencarian putusan.</p>
-                    <img src="path_to_image_1.png" alt="Gambar 2" />
+                    <img src="../assets/rekapitulasi-putusan.png" alt="Gambar 2" />
                     <p class="text-gray-400">Gambar 2 - Tampilan Statistik data dan Putusan</p>
                     <p>Sedangkan pada bagian ini menampilkan statistik data putusan.</p>
-                    <img src="path_to_image_1.png" alt="Gambar 3" />
+                    <img src="../assets/dokumen-terbaru.png" alt="Gambar 3" />
                     <p class="text-gray-400">Gambar 3 - Tampilan Konten Direktori Putusan v3</p>
                     <p class="text-justify">Kemudian pada bagian ini menampilkan konten Direktori Putusan, serta pada bagian paling bawah ditampilkan footer yang berisi tentang informasi Mahkamah Agung, sebagaimana pada gambar :</p>
-                    <img src="path_to_image_1.png" alt="Gambar 4" />
+                    <img src="../assets/footer.png" alt="Gambar 4" />
                   </div>
 
                   <div v-else-if="currentPage === 'fitur'">

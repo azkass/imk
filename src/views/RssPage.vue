@@ -13,7 +13,7 @@
       </v-breadcrumbs>
   
         <!-- Title Section -->
-        <h1 class="text-2xl md:text-3xl font-bold mb-4">Daftar Pengadilan</h1>
+        <h1 class="text-2xl md:text-3xl font-bold mb-4">RSS</h1>
         <hr class="border-b-2 border-gray-800 mb-4">
         
   

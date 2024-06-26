@@ -1,15 +1,15 @@
 <template>
     <div class="bg-[#F5F7FA] sm:px-4 md:px-16">
-      <h3>Dokumen Terbaru</h3>
+      <h3 class="sm:text-xl md:text-2xl xl:text-4xl font-medium pb-2">Dokumen Terbaru</h3>
       <hr class="border-black border-2 mb-4">
-      <v-card>
+      <v-card class="bg-[#F5F7FA] elevated-0">
         <v-tabs v-model="selectedTab" bg-color="#F5F7FA" show-arrows>
           <v-tab v-for="(tab, index) in tabs" :key="index" :value="tab">
             {{ tab }}
           </v-tab>
         </v-tabs>
   
-        <div v-for="(tab, index) in tabs" :key="'content-' + index">
+        <div v-for="(tab, index) in tabs" :key="'content-' + index" class="bg-[#F5F7FA]">
           <v-list v-show="selectedTab === tab" class="w-full bg-white">
             <v-list-item v-for="item in filteredItems(tab)" :key="item.id" class="mb-4 mt-4">
               <v-card class="pa-4 rounded-2xl">
