@@ -13,7 +13,8 @@ import 'vuetify/styles';
 // Tailwind
 import './assets/style.css';
 
-
+// Font inter
+import '@fontsource/inter'; // Defaults to weight 400
 
 const vuetify = createVuetify({
     components,

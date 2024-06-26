@@ -1,7 +1,7 @@
 <template>
-    <nav class="bg-[#8E4202] sm:px-4 sm:py-2 md:px-16 md:py-2 text-white font-medium">
+    <nav class="bg-[#8E4202] sm:px-4 sm:py-4 md:px-16 md:py-2 text-white font-medium">
         <!-- Desktop View -->
-        <div class="container flex justify-between items-center">
+        <div class="flex items-center">
             <RouterLink to="/" class="me-auto" style="display: flex; align-items: center;">
             <img src="../assets/logo.png" alt="Logo" style="height: 40px; margin-right: 10px; padding-top: 0;">
             Direktori Putusan

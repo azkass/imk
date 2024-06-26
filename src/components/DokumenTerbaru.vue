@@ -1,12 +1,12 @@
 <template>
     <div class="bg-[#F5F7FA] sm:px-4 md:px-16">
-      <h3>Dokumen Terbaru</h3>
-      <hr class="border-black border-2 mb-4">
-      <v-card>
-        <v-tabs v-model="selectedTab" bg-color="#F5F7FA" show-arrows>
-          <v-tab v-for="(tab, index) in tabs" :key="index" :value="tab">
-            {{ tab }}
-          </v-tab>
+        <h3 class="sm:text-xl md:text-2xl xl:text-4xl font-medium pb-2">Dokumen Terbaru</h3>
+        <hr class="border-black border-2">
+        <v-card class="elevation-0">
+            <v-tabs v-model="selectedTab" bg-color="#F5F7FA" show-arrows>
+            <v-tab v-for="(tab, index) in tabs" :key="index" :value="'tab-' + (index + 1)">
+                {{ tab }}
+            </v-tab>
         </v-tabs>
   
         <div v-for="(tab, index) in tabs" :key="'content-' + index">

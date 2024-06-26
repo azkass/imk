@@ -1,12 +1,12 @@
 <template>
-    <div class="bg-[#F5F7FA] sm:px-4 md:px-16">
-        <h1 class="">Rekapitulasi Putusan</h1>
+    <div class="bg-[#F5F7FA] sm:p-4 md:px-16">
+        <h3 class="sm:text-xl md:text-2xl xl:text-4xl font-medium pb-2">Rekapitulasi Putusan</h3>
         <hr class="border-b-2 border-gray-800 mb-4">
         <div id="app" class="pl-4">
             <div class="flex justify-center mb-4 ">
                 <div class="w-full md:w-1/2 lg:w-1/3 xl:w-3/4 xl:flex bg-white rounded-lg">
                     <div class="p-4 w-1/4">
-                        <h2 class="font-medium text-xl">Putusan Keseluruhan</h2>
+                        <h2 class="font-semibold md:text-xl">Putusan Keseluruhan</h2>
                         <p>8,883,154</p>
                         <p>Dokumen</p>
                     </div>
@@ -19,7 +19,7 @@
             <div class="flex flex-wrap justify-center">
                 <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 bg-white rounded-lg mx-2 mb-4">
                     <div class="px-4 pt-4">
-                        <h2 class="font-medium text-xl">Putusan Bulan Ini</h2>
+                        <h2 class="font-semibold md:text-xl">Putusan Bulan Ini</h2>
                         <p>74,284</p>
                         <p>Dokumen</p>
                     </div>
@@ -30,7 +30,7 @@
 
                 <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 bg-white rounded-lg mx-2 mb-4">
                     <div class="px-4 pt-4">
-                        <h2 class="font-medium text-xl">Putusan Bulan Lalu</h2>
+                        <h2 class="font-semibold md:text-xl">Putusan Bulan Lalu</h2>
                         <p>114,482</p>
                         <p>Dokumen</p>
                     </div>
@@ -41,7 +41,7 @@
 
                 <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 bg-white rounded-lg mx-2 mb-4">
                     <div class="px-4 pt-4">
-                        <h2 class="font-medium text-xl">Putusan 3 Bulan Terakhir</h2>
+                        <h2 class="font-semibold md:text-xl">Putusan 3 Bulan Terakhir</h2>
                         <p>321,243</p>
                         <p>Dokumen</p>
                     </div>

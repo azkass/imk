@@ -9,7 +9,7 @@
                 <v-icon class="text-[#8e4202]">mdi-home</v-icon>
             </template>
         </v-breadcrumbs>
-        <h1 class="text-4xl font-semibold py-4">Tentang</h1>
+        <h1 class="text-4xl font-semibold pb-4">Tentang</h1>
         <hr class="border-black border-2 mb-4">
         <div class="bg-white rounded-xl p-7 shadow-md">
             <div>
