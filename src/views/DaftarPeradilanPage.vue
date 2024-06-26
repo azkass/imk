@@ -15,25 +15,27 @@
         <!-- Title Section -->
         <h1 class="text-2xl md:text-3xl font-bold mb-4">Daftar Pengadilan</h1>
         <hr class="border-b-2 border-gray-800 mb-4">
-        <p class="mb-4">Menampilkan {{ startItem }}-{{ endItem }} dari {{ totalItems }} Pengadilan</p>
+        
   
         <!-- Filter Section -->
-        <div class="flex items-center justify-between mb-4">
-          <input
-            type="text"
-            placeholder="Temukan data ..."
-            class="border p-2 rounded w-full max-w-md"
-            v-model="searchQuery"
-            @input="applyFilters"
-          />
-          <button @click="clearFilter" class="ml-4 bg-gray-200 p-2 rounded">Clear</button>
-        </div>
-  
-        <!-- Table Section -->
-        <div class="overflow-x-auto">
+        <div class="mx-10">
+          <div class="flex justify-between items-end">
+             <p class="mb-4 items-end">Menampilkan {{ startItem }}-{{ endItem }} dari {{ totalItems }} Pengadilan</p>
+          <!-- Filter Section -->
+           <div class="flex items-center justify-end space-x-1 mb-4">
+             <input
+               type="text"
+               placeholder="Temukan data ..."
+               class="border p-2 rounded w-full max-w-md"
+               v-model="searchQuery"
+                @input="applyFilters"
+               />
+              <button @click="clearFilter" class="ml-4 bg-gray-200 p-2 rounded">Clear</button>
+              </div>
+          </div>
           <table class="min-w-full bg-white">
             <thead>
-              <tr class="bg-orange-600 text-white">
+              <tr class="bg-[#8e4202] text-white">
                 <th class="py-2 px-4 border cursor-pointer" @click="sortData('nama')">
                   Nama Pengadilan
                   <span v-if="sortBy === 'nama' && !sortDesc">▲</span>

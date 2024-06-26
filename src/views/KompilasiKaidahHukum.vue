@@ -1,8 +1,9 @@
 <template>
   <div class="bg-[#F5F7FA]">
     <NavBar />
-    <v-container>
+    <!-- <v-container> -->
       <!-- Breadcrumbs Section -->
+      <div class="container px-16">
       <v-breadcrumbs :items="items" item-class="breadcrumb-item" class="breadcrumbs text-[#8e4202] pl-0">
         <template v-slot:divider>
           <v-icon class="text-[#8e4202]" icon="mdi-chevron-right"></v-icon>
@@ -30,7 +31,7 @@
 
       <!-- Content Section -->
       <div v-if="!state.isLoading && !state.error">
-        <div class="hidden md:flex flex-row items-baseline mb-0">
+        <!-- <div class="hidden md:flex flex-row items-baseline mb-0">
           <div class="mb-0">
             <v-card-title class="text-2xl">Filter</v-card-title>
           </div>
@@ -56,7 +57,7 @@
               @change="applyFilters"
             ></v-combobox>
           </div>
-        </div>
+        </div> -->
         <!-- Filter Buttons for Mobile -->
         <div class="flex md:hidden justify-center mb-4 space-x-6">
           <v-btn @click="showSortFilter = true">Urutkan</v-btn>
@@ -66,6 +67,9 @@
         <v-row class="center mt-[-23px]">
           <!-- Filters for Desktop -->
           <v-col cols="3" class="hidden md:block">
+            <div class="mb-5">
+              <v-card-title class="text-2xl">Filter</v-card-title>
+            </div>
             <v-card class="pa-4 rounded-2xl">
               <!-- <v-card-text> -->
                 <h2 class="mb-1 text-[17px] font-bold">Kata Kunci</h2>
@@ -81,16 +85,10 @@
                 
                 <!-- Filter Tahun Putus -->
                 <h2 class="mb-2 text-[17px] font-bold">Tahun Putus</h2>
-                <v-range-slider
-                  v-model="tempTahunPutus"
-                  :max="2024"
-                  :min="1984"
-                  :step="1"
-                  thumb-label="always"
-                  hide-details
-                  track-color="brown"
-                  thumb-color="brown"
-                ></v-range-slider>
+                <v-range-slider v-model="tempTahunPutus" :max="2024" :min="1984" :step="1" :thumb-label="computedThumbLabel"
+      @start="showLabel = true"
+      @end="showLabel = false"
+      hide-details track-color="brown" thumb-color="brown"></v-range-slider>
                 <div class="range-inputs">
                   <v-text-field
                     v-model="tempTahunPutus[0]"
@@ -114,16 +112,10 @@
                 </div>
 
                 <h2 class="mt-[10px] mb-2 text-[17px] font-bold">Tahun Register</h2>
-                <v-range-slider
-                  v-model="tempTahunRegister"
-                  :max="2024"
-                  :min="1984"
-                  :step="1"
-                  thumb-label="always"
-                  hide-details
-                  track-color="brown"
-                  thumb-color="brown"
-                ></v-range-slider>
+                <v-range-slider v-model="tempTahunRegister" :max="2024" :min="1984" :step="1" :thumb-label="computedThumbLabel"
+      @start="showLabel = true"
+      @end="showLabel = false"
+      hide-details track-color="brown" thumb-color="brown"></v-range-slider>
                 <div class="range-inputs">
                   <v-text-field
                     v-model="tempTahunRegister[0]"
@@ -147,16 +139,10 @@
                 </div>
 
                 <h2 class="mr-8 mt-[10px] mb-2 text-[17px] font-bold">Tahun Upload</h2>
-                <v-range-slider
-                  v-model="tempTahunUpload"
-                  :max="2024"
-                  :min="1984"
-                  :step="1"
-                  thumb-label="always"
-                  hide-details
-                  track-color="brown"
-                  thumb-color="brown"
-                ></v-range-slider>
+                <v-range-slider v-model="tempTahunUpload" :max="2024" :min="1984" :step="1" :thumb-label="computedThumbLabel"
+      @start="showLabel = true"
+      @end="showLabel = false"
+      hide-details track-color="brown" thumb-color="brown"></v-range-slider>
                 <div class="range-inputs">
                   <v-text-field
                     v-model="tempTahunUpload[0]"
@@ -190,6 +176,50 @@
 
           <!-- Content for Mobile and Desktop -->
           <v-col cols="12" md="9">
+            <div class="flex-row items-baseline mb-0 hidden md:flex">
+              <div class="mb-0 ml-3">
+                <p class="text-gray-700 mb-4">Menampilkan {{ (page - 1) * itemsPerPage + 1 }} - {{ Math.min(page * itemsPerPage, state.totalItems) }} dari {{ state.totalItems }} Putusan</p>
+              </div>
+              <div class="flex justify-end space-x-4 ml-auto mb-0">
+                <v-card-title class="text-xl items-center mb-0">Urutkan berdasarkan</v-card-title>
+                <v-combobox
+                  :items="sortOptions"
+                  label="Urutkan"
+                  variant="outlined"
+                  class="w-48 items-end mb-0"
+                  v-model="selectedSort"
+                  @change="applyFilters"
+                ></v-combobox>
+                <v-combobox
+                  :items="directionOptions"
+                  label="Arah"
+                  variant="outlined"
+                  class="w-32 items-end border-red-500 mb-0"
+                  v-model="selectedDirection"
+                  @change="applyFilters"
+                ></v-combobox>
+              </div>
+            </div>
+            <div v-if="state.rooms.length === 0" class="flex justify-center mt-4">
+              
+              
+              <div class="flex justify-center items-center mt-40">
+                <div class="text-center">
+                  <div class="flex justify-center items-center mb-2">
+                    <img class="h-20 block" src="../assets/nodata.png" alt="data tidak ditemukan">
+                  </div>
+                  <h4 class="text-2xl font-bold">Data tidak ditemukan!</h4>
+                  <p class="text-gray-500 w-[380px]">
+                    <span class="text-gray-700 font-semibold">Maaf!</span>
+                    Kami tidak menemukan apa pun yang cocok dengan kata kunci Anda. Coba ubah kata kunci Anda untuk hasil yang lebih baik.
+                  </p>
+                </div>
+              </div>
+              <!-- <v-alert type="warning" border="left" elevation="2" prominent>
+                Tidak ada data ditemukan berdasarkan filter yang diterapkan.
+              </v-alert> -->
+            </div>
+            <div v-else class="">
             <v-list class=" w-full bg-[#F5F7FA]">
               <v-list-item v-for="item in state.rooms" :key="item.id" class="mb-4">
                 <v-card class="pa-4 rounded-2xl">
@@ -274,6 +304,7 @@
                 </v-card>
               </v-list-item>
             </v-list>
+          </div>
 
             <!-- Pagination Section -->
             <div class="flex justify-center mt-4" v-if="state.totalPages > 1">
@@ -322,7 +353,8 @@
         </v-row>   
         
       </div>
-      </v-container>
+    </div>
+      <!-- </v-container> -->
     <!-- Bottom Sheets for Mobile Filters -->
     <v-bottom-sheet v-model="showCategoryFilter">
     <v-card>
@@ -1054,6 +1086,7 @@ const showSortFilter = ref(false);
       clearFilters,
       applyFiltersAndNavigate,
       page,
+      itemsPerPage,
     };
   },
   data() {
@@ -1089,9 +1122,13 @@ const showSortFilter = ref(false);
       processLevels: ["Semua", "Pertama", "Banding", "Kasasi", "Peninjauan kembali"],
       directionOptions: ["Menurun", "Menaik"],
       sortOptions: ["-", "Tanggal Putusan", "Tanggal Register", "Tanggal Upload", "Total View", "Total Download"],
+      showLabel: false,
     };
   },
   computed: {
+    computedThumbLabel() {
+        return this.showLabel ? 'always' : false
+      },
     paginationRange() {
       const current = this.page;
       const last = this.state.totalPages;

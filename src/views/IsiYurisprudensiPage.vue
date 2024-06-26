@@ -17,10 +17,14 @@
           <h1 class="text-2xl font-bold">2/Yur/TUN/2018</h1>
           <div class="flex space-x-2">
             <button class="bg-yellow-500 text-white px-4 py-2 rounded-md flex items-center">
-              <v-icon class="mr-2">mdi-zip-box</v-icon> ZIP
+              <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" /><span class="material-symbols-outlined">
+folder_zip
+</span> <span class="ml-1">ZIP</span>
             </button>
             <button class="bg-red-500 text-white px-4 py-2 rounded-md flex items-center">
-              <v-icon class="mr-2">mdi-file-pdf</v-icon> PDF
+              <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" /><span class="material-symbols-outlined">
+picture_as_pdf
+</span> <span class="ml-1">PDF</span>
             </button>
           </div>
         </div>
@@ -86,7 +90,7 @@
   
   <script>
   import FooterBar from "@/components/FooterBar.vue";
-  import NavBar from "@/components/NavBar.vue";
+import NavBar from "@/components/NavBar.vue";
   
   export default {
     name: 'YurisprudensiPage',

@@ -1,7 +1,8 @@
 <template>
   <NavBar />
   <div class="bg-[#F5F7FA]">
-    <v-container>
+    <!-- <v-container> -->
+      <div class="container px-16">
       <!-- Breadcrumbs Section -->
       <v-breadcrumbs :items="items" item-class="breadcrumb-item" class="breadcrumbs">
         <template v-slot:divider>
@@ -54,7 +55,10 @@
               <v-combobox :items="classifications" label="Pilih Klasifikasi Rumusan Rakernas" variant="outlined" v-model="selectedClassification"></v-combobox>
 
               <h2 class="mb-2 text-[17px] font-bold">Tahun Penerbitan</h2>
-              <v-range-slider v-model="tempTahunPenerbitan" :max="2024" :min="1984" :step="1" thumb-label="always" hide-details track-color="brown" thumb-color="brown"></v-range-slider>
+              <v-range-slider v-model="tempTahunPenerbitan" :max="2024" :min="1984" :step="1" :thumb-label="computedThumbLabel"
+      @start="showLabel = true"
+      @end="showLabel = false"
+      hide-details track-color="brown" thumb-color="brown"></v-range-slider>
               <div class="range-inputs">
                 <v-text-field v-model="tempTahunPenerbitan[0]" density="compact" style="width: 70px; text-align: center;" type="number" variant="outlined" hide-details single-line></v-text-field>
                 <div style="flex-grow: 1"></div>
@@ -69,8 +73,53 @@
           
           <!-- List of Items -->
           <v-col cols="12" md="9">
+            <div class="flex-row items-baseline mb-0 hidden md:flex">
+              <div class="mb-0 ml-3">
+                <p class="text-gray-700 mb-4">Menampilkan {{ (page - 1) * itemsPerPage + 1 }} - {{ Math.min(page * itemsPerPage, state.totalItems) }} dari {{ state.totalItems }} Putusan</p>
+              </div>
+              <div class="flex justify-end space-x-4 ml-auto mb-0">
+                <v-card-title class="text-xl items-center mb-0">Urutkan berdasarkan</v-card-title>
+                <v-combobox
+                  :items="sortOptions"
+                  label="Urutkan"
+                  variant="outlined"
+                  class="w-48 items-end mb-0"
+                  v-model="selectedSort"
+                  @change="applyFilters"
+                ></v-combobox>
+                <v-combobox
+                  :items="directionOptions"
+                  label="Arah"
+                  variant="outlined"
+                  class="w-32 items-end border-red-500 mb-0"
+                  v-model="selectedDirection"
+                  @change="applyFilters"
+                ></v-combobox>
+              </div>
+            </div>
+            <div v-if="state.rooms.length === 0" class="flex justify-center mt-4">
+              
+              
+              <div class="flex justify-center items-center mt-40">
+                <div class="text-center">
+                  <div class="flex justify-center items-center mb-2">
+                    <img class="h-20 block" src="../assets/nodata.png" alt="data tidak ditemukan">
+                  </div>
+                  <h4 class="text-2xl font-bold">Data tidak ditemukan!</h4>
+                  <p class="text-gray-500 w-[380px]">
+                    <span class="text-gray-700 font-semibold">Maaf!</span>
+                    Kami tidak menemukan apa pun yang cocok dengan kata kunci Anda. Coba ubah kata kunci Anda untuk hasil yang lebih baik.
+                  </p>
+                </div>
+              </div>
+              <!-- <v-alert type="warning" border="left" elevation="2" prominent>
+                Tidak ada data ditemukan berdasarkan filter yang diterapkan.
+              </v-alert> -->
+            </div>
+            <div v-else class="">
             <v-list class="bg-[#F5F7FA] w-full">
               <v-list-item v-for="item in state.rooms" :key="item.id" class="mb-4">
+                <a href="/isi-yurisprudensi">
                 <v-card class="pa-4 rounded-2xl shadow-2xl w-full">
                   <!-- <div v-if="item.jenisPutusan === 'Putusan Penting'"> -->
                   <!-- <div>
@@ -126,8 +175,10 @@
                     </div>
                   </div>
                 </v-card>
+              </a>
               </v-list-item>
             </v-list>
+          </div>
 
             <!-- Pagination -->
             <div class="flex justify-center mt-4" v-if="state.totalPages > 1">
@@ -175,7 +226,8 @@
           </v-col>
         </v-row>
       </div>
-    </v-container>
+    </div>
+    <!-- </v-container> -->
 
     <!-- Bottom Sheet for Sort Filter (Mobile) -->
     <v-bottom-sheet v-model="showSortFilter" class="d-md-none">
@@ -325,8 +377,8 @@ export default {
           desicionDate: "17-05-2024",
           registerDate: "01-05-2024",
           uploadData: "30-05-2024",
-          views: 1200,
-          downloads: 440,
+          views: 200,
+          downloads: 40,
           direktori: "Putusan",
           jenisPutusan: "Yurispendensi",
           pengadilan: "Mahkamah Agung",
@@ -344,8 +396,8 @@ export default {
           desicionDate: "17-05-2024",
           registerDate: "01-05-2024",
           uploadData: "30-05-2024",
-          views: 1200,
-          downloads: 440,
+          views: 20000,
+          downloads: 940,
           direktori: "Putusan",
           jenisPutusan: "Yurispendensi",
           pengadilan: "Mahkamah Agung",
@@ -451,239 +503,252 @@ export default {
           tahunPenerbitan:"2021"
         },
         {
-          id: 8,
-          title: "Putusan Mahkamah Agung Nomor 456 K/Pdt.Sus-PHI/2024",
-          case: "PT ABC",
-          desicionDate: "05-06-2024",
+          id: 1,
+          title: "2/Yur/TUN/2018",
+          case: "pilihan hukum, kaidah hukum substantif, kaidah hukum formal",
+          case2:"Dalam hal kepastian hak atau status hukum seseorang telah jelas melalui putusanpengadilan perdata, pengadilan pidana maupun putusan pengadilan tata usaha negara yang sudah berkekuatan hukum tetap, namun kemudianapabila terjadi",
+          desicionDate: "17-05-2024",
           registerDate: "01-05-2024",
-          uploadData: "20-06-2024",
-          views: 500,
-          downloads: 200,
-          direktori: "Rumusan Kamar",
-          jenisPutusan: "Putusan Biasa",
-          pengadilan: "Pengadilan Agama",
-          lembagaPengadilan: "PA Jakarta Selatan",
-          klasifikasi: "Perdata",
-          amar: "Lepas",
-          tingkatProses: "Banding",
-          tahunPenerbitan:"2021"
-        },
-        {
-          id: 9,
-          title: "Putusan Mahkamah Agung Nomor 789 K/Pdt.Sus-PHI/2024",
-          case: "PT DEF",
-          desicionDate: "15-07-2024",
-          registerDate: "01-05-2024",
-          uploadData: "30-07-2024",
-          views: 600,
-          downloads: 250,
-          direktori: "Rumusan Rakernas",
-          jenisPutusan: "Putusan Penting",
-          pengadilan: "Pengadilan Militer",
-          lembagaPengadilan: "PA Jakarta Barat",
-          klasifikasi: "Pidana Umum",
-          amar: "Tidak Dapat Diterima",
-          tingkatProses: "Banding",
-          tahunPenerbitan:"2021"
-        },
-        {
-          id: 10,
-          title: "Putusan Mahkamah Agung Nomor 101 K/Pdt.Sus-PHI/2024",
-          case: "PT GHI",
-          desicionDate: "20-08-2024",
-          registerDate: "01-05-2024",
-          uploadData: "05-09-2024",
-          views: 700,
-          downloads: 300,
-          direktori: "Yurisprudensi",
-          jenisPutusan: "Putusan Biasa",
-          pengadilan: "Pengadilan Tata Usaha Negara",
-          lembagaPengadilan: "PA Jakarta Timur",
-          klasifikasi: "Perdata Agama",
-          amar: "Tolak",
-          tingkatProses: "Banding",
-          tahunPenerbitan:"2021"
-        },
-        {
-          id: 11,
-          title: "Putusan Mahkamah Agung Nomor 654 K/Pdt.Sus-PHI/2024",
-          case: "PT JKL",
-          desicionDate: "02-02-2024",
-          registerDate: "01-02-2024",
-          uploadData: "14-02-2024",
-          views: 450,
-          downloads: 150,
+          uploadData: "30-05-2024",
+          views: 1200,
+          downloads: 440,
           direktori: "Putusan",
-          jenisPutusan: "Putusan Penting",
-          pengadilan: "Pengadilan Umum",
-          lembagaPengadilan: "PA Jakarta Barat",
-          klasifikasi: "Narkotika dan Psikotropika",
-          amar: "Bebas",
-          tingkatProses: "Banding",
-          tahunPenerbitan:"2021"
-        },
-        {
-          id: 12,
-          title: "Putusan Mahkamah Agung Nomor 789 K/Pdt.Sus-PHI/2024",
-          case: "PT MNO",
-          desicionDate: "10-11-2023",
-          registerDate: "01-11-2023",
-          uploadData: "15-11-2023",
-          views: 600,
-          downloads: 300,
-          direktori: "Putusan penting",
-          jenisPutusan: "Putusan Penting",
-          pengadilan: "Pengadilan Tata Usaha Negara",
-          lembagaPengadilan: "PA Jakarta Utara",
-          klasifikasi: "Ahli Waris Pengganti",
-          amar: "Lepas",
-          tingkatProses: "Banding",
-          tahunPenerbitan:"2021"
-        },
-        {
-          id: 13,
-          title: "Putusan Mahkamah Agung Nomor 246 K/Pdt.Sus-PHI/2024",
-          case: "PT PQR",
-          desicionDate: "05-10-2024",
-          registerDate: "01-10-2024",
-          uploadData: "20-10-2024",
-          views: 780,
-          downloads: 320,
-          direktori: "Putusan",
-          jenisPutusan: "Putusan Biasa",
-          pengadilan: "Pengadilan Agama",
-          lembagaPengadilan: "PA Jakarta Selatan",
-          klasifikasi: "Perceraian",
+          jenisPutusan: "Yurispendensi",
+          pengadilan: "Mahkamah Agung",
+          lembagaPengadilan: "PA Jakarta Pusat",
+          klasifikasi: "Pembatalan Perjanjian",
           amar: "Terbukti",
-          tingkatProses: "Banding",
+          tingkatProses: "Kasasi",
           tahunPenerbitan:"2021"
         },
         {
-          id: 14,
-          title: "Putusan Mahkamah Agung Nomor 135 K/Pdt.Sus-PHI/2024",
-          case: "PT STU",
-          desicionDate: "08-09-2024",
-          registerDate: "01-09-2024",
-          uploadData: "25-09-2024",
-          views: 520,
-          downloads: 210,
-          direktori: "Rumusan Kamar",
-          jenisPutusan: "Putusan Biasa",
-          pengadilan: "Pengadilan Pajak",
-          lembagaPengadilan: "PA Jakarta Barat",
-          klasifikasi: "Pencurian",
-          amar: "Tolak",
-          tingkatProses: "Banding",
-          tahunPenerbitan:"2021"
-        },
-        {
-          id: 15,
-          title: "Putusan Mahkamah Agung Nomor 357 K/Pdt.Sus-PHI/2024",
-          case: "PT VWX",
-          desicionDate: "12-08-2024",
-          registerDate: "01-08-2024",
-          uploadData: "30-08-2024",
-          views: 630,
-          downloads: 270,
-          direktori: "Restatement",
-          jenisPutusan: "Putusan Penting",
-          pengadilan: "Pengadilan Militer",
-          lembagaPengadilan: "PA Jakarta Timur",
-          klasifikasi: "Klausula Baku",
-          amar: "Tidak Dapat Diterima",
-          tingkatProses: "Banding",
-          tahunPenerbitan:"2021"
-        },
-        {
-          id: 16,
-          title: "Putusan Mahkamah Agung Nomor 468 K/Pdt.Sus-PHI/2024",
-          case: "PT YZA",
-          desicionDate: "01-07-2024",
-          registerDate: "01-07-2024",
-          uploadData: "15-07-2024",
-          views: 590,
-          downloads: 250,
-          direktori: "Rumusan Rakernas",
-          jenisPutusan: "Putusan Penting",
-          pengadilan: "Pengadilan Agama",
-          lembagaPengadilan: "PA Jakarta Utara",
-          klasifikasi: "Grosse Akta",
-          amar: "Lepas",
-          tingkatProses: "Banding",
-          tahunPenerbitan:"2021"
-        },
-        {
-          id: 17,
-          title: "Putusan Mahkamah Agung Nomor 579 K/Pdt.Sus-PHI/2024",
-          case: "PT BCD",
-          desicionDate: "20-06-2024",
-          registerDate: "01-06-2024",
-          uploadData: "05-07-2024",
-          views: 700,
-          downloads: 280,
-          direktori: "Putusan",
-          jenisPutusan: "Putusan Biasa",
-          pengadilan: "Pengadilan Tata Usaha Negara",
-          lembagaPengadilan: "PA Jakarta Timur",
-          klasifikasi: "Perdata Agama",
-          amar: "Terbukti",
-          tingkatProses: "Banding",
-          tahunPenerbitan:"2021"
-        },
-        {
-          id: 18,
-          title: "Putusan Mahkamah Agung Nomor 680 K/Pdt.Sus-PHI/2024",
-          case: "PT EFG",
-          desicionDate: "15-05-2021",
+          id: 1,
+          title: "2/Yur/TUN/2018",
+          case: "pilihan hukum, kaidah hukum substantif, kaidah hukum formal",
+          case2:"Dalam hal kepastian hak atau status hukum seseorang telah jelas melalui putusanpengadilan perdata, pengadilan pidana maupun putusan pengadilan tata usaha negara yang sudah berkekuatan hukum tetap, namun kemudianapabila terjadi",
+          desicionDate: "17-05-2024",
           registerDate: "01-05-2024",
-          uploadData: "25-05-2024",
-          views: 550,
-          downloads: 220,
-          direktori: "Yurisprudensi",
-          jenisPutusan: "Putusan Penting",
-          pengadilan: "Pengadilan Umum",
-          lembagaPengadilan: "PA Jakarta Selatan",
-          klasifikasi: "Perdata",
-          amar: "Tolak",
-          tingkatProses: "Banding",
-          tahunPenerbitan:"2021"
-        },
-        {
-          id: 19,
-          title: "Putusan Mahkamah Agung Nomor 791 K/Pdt.Sus-PHI/2024",
-          case: "PT HIJ",
-          desicionDate: "10-04-2024",
-          registerDate: "01-04-2024",
-          uploadData: "20-04-2024",
-          views: 620,
-          downloads: 240,
-          direktori: "Putusan penting",
-          jenisPutusan: "Putusan Biasa",
-          pengadilan: "Pengadilan Pajak",
-          lembagaPengadilan: "PA Jakarta Utara",
-          klasifikasi: "Narkotika dan Psikotropika",
-          amar: "Lepas",
-          tingkatProses: "Banding",
-          tahunPenerbitan:"2021"
-        },
-        {
-          id: 20,
-          title: "Putusan Mahkamah Agung Nomor 902 K/Pdt.Sus-PHI/2024",
-          case: "PT KLM",
-          desicionDate: "05-03-2024",
-          registerDate: "01-03-2024",
-          uploadData: "15-03-2024",
-          views: 750,
-          downloads: 310,
-          direktori: "Rumusan Kamar",
-          jenisPutusan: "Putusan Penting",
-          pengadilan: "Pengadilan Militer",
-          lembagaPengadilan: "PA Jakarta Selatan",
-          klasifikasi: "Penganiayaan",
+          uploadData: "30-05-2024",
+          views: 1200,
+          downloads: 440,
+          direktori: "Putusan",
+          jenisPutusan: "Yurispendensi",
+          pengadilan: "Mahkamah Agung",
+          lembagaPengadilan: "PA Jakarta Pusat",
+          klasifikasi: "Pembatalan Perjanjian",
           amar: "Terbukti",
-          tingkatProses: "Banding",
+          tingkatProses: "Kasasi",
           tahunPenerbitan:"2021"
-        }
+        },
+        {
+          id: 1,
+          title: "2/Yur/TUN/2018",
+          case: "pilihan hukum, kaidah hukum substantif, kaidah hukum formal",
+          case2:"Dalam hal kepastian hak atau status hukum seseorang telah jelas melalui putusanpengadilan perdata, pengadilan pidana maupun putusan pengadilan tata usaha negara yang sudah berkekuatan hukum tetap, namun kemudianapabila terjadi",
+          desicionDate: "17-05-2024",
+          registerDate: "01-05-2024",
+          uploadData: "30-05-2024",
+          views: 1200,
+          downloads: 440,
+          direktori: "Putusan",
+          jenisPutusan: "Yurispendensi",
+          pengadilan: "Mahkamah Agung",
+          lembagaPengadilan: "PA Jakarta Pusat",
+          klasifikasi: "Pembatalan Perjanjian",
+          amar: "Terbukti",
+          tingkatProses: "Kasasi",
+          tahunPenerbitan:"2021"
+        },
+        {
+          id: 1,
+          title: "2/Yur/TUN/2018",
+          case: "pilihan hukum, kaidah hukum substantif, kaidah hukum formal",
+          case2:"Dalam hal kepastian hak atau status hukum seseorang telah jelas melalui putusanpengadilan perdata, pengadilan pidana maupun putusan pengadilan tata usaha negara yang sudah berkekuatan hukum tetap, namun kemudianapabila terjadi",
+          desicionDate: "17-05-2024",
+          registerDate: "01-05-2024",
+          uploadData: "30-05-2024",
+          views: 1200,
+          downloads: 440,
+          direktori: "Putusan",
+          jenisPutusan: "Yurispendensi",
+          pengadilan: "Mahkamah Agung",
+          lembagaPengadilan: "PA Jakarta Pusat",
+          klasifikasi: "Pembatalan Perjanjian",
+          amar: "Terbukti",
+          tingkatProses: "Kasasi",
+          tahunPenerbitan:"2021"
+        },
+        {
+          id: 1,
+          title: "2/Yur/TUN/2018",
+          case: "pilihan hukum, kaidah hukum substantif, kaidah hukum formal",
+          case2:"Dalam hal kepastian hak atau status hukum seseorang telah jelas melalui putusanpengadilan perdata, pengadilan pidana maupun putusan pengadilan tata usaha negara yang sudah berkekuatan hukum tetap, namun kemudianapabila terjadi",
+          desicionDate: "17-05-2024",
+          registerDate: "01-05-2024",
+          uploadData: "30-05-2024",
+          views: 1200,
+          downloads: 440,
+          direktori: "Putusan",
+          jenisPutusan: "Yurispendensi",
+          pengadilan: "Mahkamah Agung",
+          lembagaPengadilan: "PA Jakarta Pusat",
+          klasifikasi: "Pembatalan Perjanjian",
+          amar: "Terbukti",
+          tingkatProses: "Kasasi",
+          tahunPenerbitan:"2021"
+        },
+        {
+          id: 1,
+          title: "2/Yur/TUN/2018",
+          case: "pilihan hukum, kaidah hukum substantif, kaidah hukum formal",
+          case2:"Dalam hal kepastian hak atau status hukum seseorang telah jelas melalui putusanpengadilan perdata, pengadilan pidana maupun putusan pengadilan tata usaha negara yang sudah berkekuatan hukum tetap, namun kemudianapabila terjadi",
+          desicionDate: "17-05-2024",
+          registerDate: "01-05-2024",
+          uploadData: "30-05-2024",
+          views: 1200,
+          downloads: 440,
+          direktori: "Putusan",
+          jenisPutusan: "Yurispendensi",
+          pengadilan: "Mahkamah Agung",
+          lembagaPengadilan: "PA Jakarta Pusat",
+          klasifikasi: "Pembatalan Perjanjian",
+          amar: "Terbukti",
+          tingkatProses: "Kasasi",
+          tahunPenerbitan:"2021"
+        },
+        {
+          id: 1,
+          title: "2/Yur/TUN/2018",
+          case: "pilihan hukum, kaidah hukum substantif, kaidah hukum formal",
+          case2:"Dalam hal kepastian hak atau status hukum seseorang telah jelas melalui putusanpengadilan perdata, pengadilan pidana maupun putusan pengadilan tata usaha negara yang sudah berkekuatan hukum tetap, namun kemudianapabila terjadi",
+          desicionDate: "17-05-2024",
+          registerDate: "01-05-2024",
+          uploadData: "30-05-2024",
+          views: 1200,
+          downloads: 440,
+          direktori: "Putusan",
+          jenisPutusan: "Yurispendensi",
+          pengadilan: "Mahkamah Agung",
+          lembagaPengadilan: "PA Jakarta Pusat",
+          klasifikasi: "Pembatalan Perjanjian",
+          amar: "Terbukti",
+          tingkatProses: "Kasasi",
+          tahunPenerbitan:"2021"
+        },
+        {
+          id: 1,
+          title: "2/Yur/TUN/2018",
+          case: "pilihan hukum, kaidah hukum substantif, kaidah hukum formal",
+          case2:"Dalam hal kepastian hak atau status hukum seseorang telah jelas melalui putusanpengadilan perdata, pengadilan pidana maupun putusan pengadilan tata usaha negara yang sudah berkekuatan hukum tetap, namun kemudianapabila terjadi",
+          desicionDate: "17-05-2024",
+          registerDate: "01-05-2024",
+          uploadData: "30-05-2024",
+          views: 1200,
+          downloads: 440,
+          direktori: "Putusan",
+          jenisPutusan: "Yurispendensi",
+          pengadilan: "Mahkamah Agung",
+          lembagaPengadilan: "PA Jakarta Pusat",
+          klasifikasi: "Pembatalan Perjanjian",
+          amar: "Terbukti",
+          tingkatProses: "Kasasi",
+          tahunPenerbitan:"2021"
+        },
+        {
+          id: 1,
+          title: "2/Yur/TUN/2018",
+          case: "pilihan hukum, kaidah hukum substantif, kaidah hukum formal",
+          case2:"Dalam hal kepastian hak atau status hukum seseorang telah jelas melalui putusanpengadilan perdata, pengadilan pidana maupun putusan pengadilan tata usaha negara yang sudah berkekuatan hukum tetap, namun kemudianapabila terjadi",
+          desicionDate: "17-05-2024",
+          registerDate: "01-05-2024",
+          uploadData: "30-05-2024",
+          views: 1200,
+          downloads: 440,
+          direktori: "Putusan",
+          jenisPutusan: "Yurispendensi",
+          pengadilan: "Mahkamah Agung",
+          lembagaPengadilan: "PA Jakarta Pusat",
+          klasifikasi: "Pembatalan Perjanjian",
+          amar: "Terbukti",
+          tingkatProses: "Kasasi",
+          tahunPenerbitan:"2021"
+        },
+        {
+          id: 1,
+          title: "2/Yur/TUN/2018",
+          case: "pilihan hukum, kaidah hukum substantif, kaidah hukum formal",
+          case2:"Dalam hal kepastian hak atau status hukum seseorang telah jelas melalui putusanpengadilan perdata, pengadilan pidana maupun putusan pengadilan tata usaha negara yang sudah berkekuatan hukum tetap, namun kemudianapabila terjadi",
+          desicionDate: "17-05-2024",
+          registerDate: "01-05-2024",
+          uploadData: "30-05-2024",
+          views: 1200,
+          downloads: 440,
+          direktori: "Putusan",
+          jenisPutusan: "Yurispendensi",
+          pengadilan: "Mahkamah Agung",
+          lembagaPengadilan: "PA Jakarta Pusat",
+          klasifikasi: "Pembatalan Perjanjian",
+          amar: "Terbukti",
+          tingkatProses: "Kasasi",
+          tahunPenerbitan:"2021"
+        },
+        {
+          id: 1,
+          title: "2/Yur/TUN/2018",
+          case: "pilihan hukum, kaidah hukum substantif, kaidah hukum formal",
+          case2:"Dalam hal kepastian hak atau status hukum seseorang telah jelas melalui putusanpengadilan perdata, pengadilan pidana maupun putusan pengadilan tata usaha negara yang sudah berkekuatan hukum tetap, namun kemudianapabila terjadi",
+          desicionDate: "17-05-2024",
+          registerDate: "01-05-2024",
+          uploadData: "30-05-2024",
+          views: 1200,
+          downloads: 440,
+          direktori: "Putusan",
+          jenisPutusan: "Yurispendensi",
+          pengadilan: "Mahkamah Agung",
+          lembagaPengadilan: "PA Jakarta Pusat",
+          klasifikasi: "Pembatalan Perjanjian",
+          amar: "Terbukti",
+          tingkatProses: "Kasasi",
+          tahunPenerbitan:"2021"
+        },
+        {
+          id: 1,
+          title: "2/Yur/TUN/2018",
+          case: "pilihan hukum, kaidah hukum substantif, kaidah hukum formal",
+          case2:"Dalam hal kepastian hak atau status hukum seseorang telah jelas melalui putusanpengadilan perdata, pengadilan pidana maupun putusan pengadilan tata usaha negara yang sudah berkekuatan hukum tetap, namun kemudianapabila terjadi",
+          desicionDate: "17-05-2024",
+          registerDate: "01-05-2024",
+          uploadData: "30-05-2024",
+          views: 1200,
+          downloads: 440,
+          direktori: "Putusan",
+          jenisPutusan: "Yurispendensi",
+          pengadilan: "Mahkamah Agung",
+          lembagaPengadilan: "PA Jakarta Pusat",
+          klasifikasi: "Pembatalan Perjanjian",
+          amar: "Terbukti",
+          tingkatProses: "Kasasi",
+          tahunPenerbitan:"2021"
+        },
+        {
+          id: 1,
+          title: "2/Yur/TUN/2018",
+          case: "pilihan hukum, kaidah hukum substantif, kaidah hukum formal",
+          case2:"Dalam hal kepastian hak atau status hukum seseorang telah jelas melalui putusanpengadilan perdata, pengadilan pidana maupun putusan pengadilan tata usaha negara yang sudah berkekuatan hukum tetap, namun kemudianapabila terjadi",
+          desicionDate: "17-05-2024",
+          registerDate: "01-05-2024",
+          uploadData: "30-05-2024",
+          views: 1200,
+          downloads: 440,
+          direktori: "Putusan",
+          jenisPutusan: "Yurispendensi",
+          pengadilan: "Mahkamah Agung",
+          lembagaPengadilan: "PA Jakarta Pusat",
+          klasifikasi: "Pembatalan Perjanjian",
+          amar: "Terbukti",
+          tingkatProses: "Kasasi",
+          tahunPenerbitan:"2021"
+        },
       ];
   
       const applyFilters = () => {
@@ -855,9 +920,13 @@ export default {
       classifications: ["Semua", "Ahli Waris Pengganti", "Hak Milik Atas Tanah", "Pembatalan Perjanjian", "Penadahan", "Penipuan", "Putusan", "Tuntutan pengembalian harta warisan", "Unsur Kesengajaan", "Waris Adat", "Wasiat Wajibah"],
       directionOptions: ["Menurun", "Menaik"],
       sortOptions: ["-", "Tanggal Putusan", "Total View", "Total Download"],
+      showLabel: false,
     };
   },
   computed: {
+    computedThumbLabel() {
+        return this.showLabel ? 'always' : false
+      },
     paginationRange() {
       const current = this.page;
       const last = this.state.totalPages;

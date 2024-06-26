@@ -1,12 +1,12 @@
 <template>
     <div class="bg-[#F5F7FA] sm:px-4 md:px-16">
-        <h3 class="sm:text-xl md:text-2xl xl:text-4xl font-medium pb-2">Dokumen Terbaru</h3>
-        <hr class="border-black border-2">
-        <v-card class="elevation-0">
-            <v-tabs v-model="selectedTab" bg-color="#F5F7FA" show-arrows>
-            <v-tab v-for="(tab, index) in tabs" :key="index" :value="'tab-' + (index + 1)">
-                {{ tab }}
-            </v-tab>
+      <h3>Dokumen Terbaru</h3>
+      <hr class="border-black border-2 mb-4">
+      <v-card>
+        <v-tabs v-model="selectedTab" bg-color="#F5F7FA" show-arrows>
+          <v-tab v-for="(tab, index) in tabs" :key="index" :value="tab">
+            {{ tab }}
+          </v-tab>
         </v-tabs>
   
         <div v-for="(tab, index) in tabs" :key="'content-' + index">
@@ -142,6 +142,39 @@ import { useRouter } from 'vue-router';
           jenisPutusan: 'Restatement',
         },
         {
+          id: 2,
+          title: 'Putusan Mahkamah Agung Nomor 362 K/Pdt.Sus-PHI/2024',
+          case: 'PT MEGA AUTO',
+          desicionDate: '17-05-2024',
+          registerDate: '01-05-2024',
+          uploadData: '30-05-2024',
+          views: 120,
+          downloads: 440,
+          jenisPutusan: 'Restatement',
+        },
+        {
+          id: 2,
+          title: 'Putusan Mahkamah Agung Nomor 362 K/Pdt.Sus-PHI/2024',
+          case: 'PT MEGA AUTO',
+          desicionDate: '17-05-2024',
+          registerDate: '01-05-2024',
+          uploadData: '30-05-2024',
+          views: 120,
+          downloads: 440,
+          jenisPutusan: 'Restatement',
+        },
+        {
+          id: 1,
+          title: 'Putusan Mahkamah Agung Nomor 362 K/Pdt.Sus-PHI/2024',
+          case: 'PT MEGA AUTO',
+          desicionDate: '17-05-2024',
+          registerDate: '01-05-2024',
+          uploadData: '30-05-2024',
+          views: 120,
+          downloads: 440,
+          jenisPutusan: 'Putusan Penting',
+        },
+        {
           id: 1,
           title: 'Putusan Mahkamah Agung Nomor 362 K/Pdt.Sus-PHI/2024',
           case: 'PT MEGA AUTO',
@@ -176,6 +209,28 @@ import { useRouter } from 'vue-router';
         },
         {
           id: 2,
+          title: 'Putusan Mahkamah Agung Nomor 362 K/Pdt.Sus-PHI/2024',
+          case: 'PT MEGA AUTO',
+          desicionDate: '17-05-2024',
+          registerDate: '01-05-2024',
+          uploadData: '30-05-2024',
+          views: 120,
+          downloads: 440,
+          jenisPutusan: 'Kompilasi Kaidah Hukum',
+        },
+        {
+          id: 2,
+          title: 'Putusan Mahkamah Agung Nomor 362 K/Pdt.Sus-PHI/2024',
+          case: 'PT MEGA AUTO',
+          desicionDate: '17-05-2024',
+          registerDate: '01-05-2024',
+          uploadData: '30-05-2024',
+          views: 120,
+          downloads: 440,
+          jenisPutusan: 'Kompilasi Kaidah Hukum',
+        },
+        {
+          id: 2,
           title: 'Putusan Mahkamah Agung Nomor 363 K/Pdt.Sus-PHI/2024',
           case: 'PT MEGA AUTO 2',
           desicionDate: '18-05-2024',
@@ -184,6 +239,123 @@ import { useRouter } from 'vue-router';
           views: 220,
           downloads: 540,
           jenisPutusan: 'Putusan',
+        },
+        {
+          id: 2,
+          title: 'Putusan Mahkamah Agung Nomor 363 K/Pdt.Sus-PHI/2024',
+          case: 'PT MEGA AUTO 2',
+          desicionDate: '18-05-2024',
+          registerDate: '02-05-2024',
+          uploadData: '31-05-2024',
+          views: 220,
+          downloads: 540,
+          jenisPutusan: 'Putusan',
+        },
+        {
+          id: 2,
+          title: 'Putusan Mahkamah Agung Nomor 363 K/Pdt.Sus-PHI/2024',
+          case: 'PT MEGA AUTO 2',
+          desicionDate: '18-05-2024',
+          registerDate: '02-05-2024',
+          uploadData: '31-05-2024',
+          views: 220,
+          downloads: 540,
+          jenisPutusan: 'Putusan',
+        },
+        {
+            id: 1,
+            title: "TATA USAHA NEGARA/G.5/SEMA 7 2012",
+            case: "Keabsahan Permohonan,",
+            case2: "1. Permohonan Atas Peraturan yang Telah diajukan Permohonan Pengujian sSebelumya Permohonan HAM yang telah diutus NO, karena telah lewat waktu, apabila diajukan kembali maka harus dinyatakan tidak dapat diterima No, karena ne bis in idem 2. ",
+            desicionDate: "17-05-2024",
+            registerDate: "01-05-2024",
+            uploadData: "30-05-2024",
+            views: 1200,
+            downloads: 440,
+            direktori: "Putusan",
+            jenisPutusan: "Rumusan Kamar",
+            pengadilan: "Mahkamah Agung",
+            lembagaPengadilan: "PA Jakarta Pusat",
+            klasifikasi: "Pembatalan Perjanjian",
+            amar: "Terbukti",
+            tingkatProses: "Kasasi",
+            tahunPenerbitan:"2021"
+          },
+          {
+            id: 1,
+            title: "TATA USAHA NEGARA/G.5/SEMA 7 2012",
+            case: "Keabsahan Permohonan,",
+            case2: "1. Permohonan Atas Peraturan yang Telah diajukan Permohonan Pengujian sSebelumya Permohonan HAM yang telah diutus NO, karena telah lewat waktu, apabila diajukan kembali maka harus dinyatakan tidak dapat diterima No, karena ne bis in idem 2. ",
+            desicionDate: "17-05-2024",
+            registerDate: "01-05-2024",
+            uploadData: "30-05-2024",
+            views: 1200,
+            downloads: 440,
+            direktori: "Putusan",
+            jenisPutusan: "Rumusan Kamar",
+            pengadilan: "Mahkamah Agung",
+            lembagaPengadilan: "PA Jakarta Pusat",
+            klasifikasi: "Pembatalan Perjanjian",
+            amar: "Terbukti",
+            tingkatProses: "Kasasi",
+            tahunPenerbitan:"2021"
+          },
+          {
+          id: 10,
+          title: "RAKERNAS/2012/PIDAN/KHUSUS/1",
+          case: "hari kerja, tenggang waktu upaya hukum",
+          case2:"Mengenai tenggang waktu 14 hari untuk mengajukan permohonan kasasi dan menyerahkan memori kasasi berdasarkan patokan pada hari kalender jika tenggang waktu jatuh pada hari libur dihitung pada hari kerja",
+          desicionDate: "17-05-2024",
+          registerDate: "01-05-2024",
+          uploadData: "05-09-2024",
+          views: 700,
+          downloads: 300,
+          direktori: "Yurisprudensi",
+          jenisPutusan: "Rumusan Rakernas",
+          pengadilan: "Pengadilan Tata Usaha Negara",
+          lembagaPengadilan: "PA Jakarta Timur",
+          klasifikasi: "Perdata Agama",
+          amar: "Tolak",
+          tingkatProses: "Banding",
+          tahunPenerbitan:"2021"
+        },
+        {
+          id: 10,
+          title: "RAKERNAS/2012/PIDAN/KHUSUS/1",
+          case: "hari kerja, tenggang waktu upaya hukum",
+          case2:"Mengenai tenggang waktu 14 hari untuk mengajukan permohonan kasasi dan menyerahkan memori kasasi berdasarkan patokan pada hari kalender jika tenggang waktu jatuh pada hari libur dihitung pada hari kerja",
+          desicionDate: "17-05-2024",
+          registerDate: "01-05-2024",
+          uploadData: "05-09-2024",
+          views: 700,
+          downloads: 300,
+          direktori: "Yurisprudensi",
+          jenisPutusan: "Rumusan Rakernas",
+          pengadilan: "Pengadilan Tata Usaha Negara",
+          lembagaPengadilan: "PA Jakarta Timur",
+          klasifikasi: "Perdata Agama",
+          amar: "Tolak",
+          tingkatProses: "Banding",
+          tahunPenerbitan:"2021"
+        },
+        {
+          id: 10,
+          title: "RAKERNAS/2012/PIDAN/KHUSUS/1",
+          case: "hari kerja, tenggang waktu upaya hukum",
+          case2:"Mengenai tenggang waktu 14 hari untuk mengajukan permohonan kasasi dan menyerahkan memori kasasi berdasarkan patokan pada hari kalender jika tenggang waktu jatuh pada hari libur dihitung pada hari kerja",
+          desicionDate: "17-05-2024",
+          registerDate: "01-05-2024",
+          uploadData: "05-09-2024",
+          views: 700,
+          downloads: 300,
+          direktori: "Yurisprudensi",
+          jenisPutusan: "Rumusan Rakernas",
+          pengadilan: "Pengadilan Tata Usaha Negara",
+          lembagaPengadilan: "PA Jakarta Timur",
+          klasifikasi: "Perdata Agama",
+          amar: "Tolak",
+          tingkatProses: "Banding",
+          tahunPenerbitan:"2021"
         },
         // Tambahkan lebih banyak data sesuai kebutuhan
       ];

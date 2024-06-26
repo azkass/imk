@@ -67,8 +67,8 @@ const routes = [
         component: () => import('@/views/PeraturanPage.vue')
     },
     {
-        path:'/daftar-peradilan',
-        name:'Daftar Peradilan',
+        path:'/daftar-pengadilan',
+        name:'Daftar Pengadilan',
         component: () => import('@/views/DaftarPeradilanPage.vue')
     },
     {

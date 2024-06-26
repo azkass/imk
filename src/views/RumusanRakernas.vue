@@ -1,7 +1,8 @@
 <template>
   <NavBar />
   <div class="bg-[#F5F7FA]">
-    <v-container>
+    <!-- <v-container> -->
+      <div class="container px-16">
       <!-- Breadcrumbs Section -->
       <v-breadcrumbs :items="items" item-class="breadcrumb-item" class="breadcrumbs text-[#8e4202] pl-0">
         <template v-slot:divider>
@@ -30,7 +31,7 @@
 
       <!-- Content Section -->
       <div v-if="!state.isLoading && !state.error">
-        <div class="flex-row items-baseline mb-0 hidden md:flex">
+        <!-- <div class="flex-row items-baseline mb-0 hidden md:flex">
           <div class="mb-0">
             <v-card-title class="text-2xl">Filter</v-card-title>
           </div>
@@ -56,7 +57,7 @@
               @change="applyFilters"
             ></v-combobox>
           </div>
-        </div>
+        </div> -->
         <!-- Filter Buttons for Mobile -->
         <div class="flex md:hidden justify-center mb-4 space-x-6">
           <v-btn @click="showSortFilter = true">Urutkan</v-btn>
@@ -66,6 +67,9 @@
         <v-row justify="center mt-[-23px]">
           <!-- Filters for Desktop -->
           <v-col cols="3" class="hidden md:block">
+            <div class="mb-5">
+              <v-card-title class="text-2xl">Filter</v-card-title>
+            </div>
             <v-card class="pa-4 rounded-2xl">
               <h2 class="mb-1 text-[17px] font-bold">Kata Kunci</h2>
               <v-text-field class="mb-4" label="Masukkan Kata Kunci" v-model="keyword" />
@@ -77,7 +81,10 @@
               <v-combobox :items="classifications" label="Pilih Klasifikasi Rumusan Rakernas" variant="outlined" v-model="selectedClassification"></v-combobox>
 
               <h2 class="mb-2 text-[17px] font-bold">Tahun Penerbitan</h2>
-              <v-range-slider v-model="tempTahunPenerbitan" :max="2024" :min="1984" :step="1" thumb-label="always" hide-details track-color="brown" thumb-color="brown"></v-range-slider>
+              <v-range-slider v-model="tempTahunPenerbitan" :max="2024" :min="1984" :step="1" :thumb-label="computedThumbLabel"
+      @start="showLabel = true"
+      @end="showLabel = false"
+      hide-details track-color="brown" thumb-color="brown"></v-range-slider>
               <div class="range-inputs">
                 <v-text-field v-model="tempTahunPenerbitan[0]" density="compact" style="width: 70px; text-align: center;" type="number" variant="outlined" hide-details single-line></v-text-field>
                 <div style="flex-grow: 1"></div>
@@ -92,8 +99,53 @@
           
           <!-- List of Items -->
           <v-col cols="12" md="9">
+            <div class="flex-row items-baseline mb-0 hidden md:flex">
+              <div class="mb-0 ml-3">
+                <p class="text-gray-700 mb-4">Menampilkan {{ (page - 1) * itemsPerPage + 1 }} - {{ Math.min(page * itemsPerPage, state.totalItems) }} dari {{ state.totalItems }} Putusan</p>
+              </div>
+              <div class="flex justify-end space-x-4 ml-auto mb-0">
+                <v-card-title class="text-xl items-center mb-0">Urutkan berdasarkan</v-card-title>
+                <v-combobox
+                  :items="sortOptions"
+                  label="Urutkan"
+                  variant="outlined"
+                  class="w-48 items-end mb-0"
+                  v-model="selectedSort"
+                  @change="applyFilters"
+                ></v-combobox>
+                <v-combobox
+                  :items="directionOptions"
+                  label="Arah"
+                  variant="outlined"
+                  class="w-32 items-end border-red-500 mb-0"
+                  v-model="selectedDirection"
+                  @change="applyFilters"
+                ></v-combobox>
+              </div>
+            </div>
+            <div v-if="state.rooms.length === 0" class="flex justify-center mt-4">
+              
+              
+              <div class="flex justify-center items-center mt-40">
+                <div class="text-center">
+                  <div class="flex justify-center items-center mb-2">
+                    <img class="h-20 block" src="../assets/nodata.png" alt="data tidak ditemukan">
+                  </div>
+                  <h4 class="text-2xl font-bold">Data tidak ditemukan!</h4>
+                  <p class="text-gray-500 w-[380px]">
+                    <span class="text-gray-700 font-semibold">Maaf!</span>
+                    Kami tidak menemukan apa pun yang cocok dengan kata kunci Anda. Coba ubah kata kunci Anda untuk hasil yang lebih baik.
+                  </p>
+                </div>
+              </div>
+              <!-- <v-alert type="warning" border="left" elevation="2" prominent>
+                Tidak ada data ditemukan berdasarkan filter yang diterapkan.
+              </v-alert> -->
+            </div>
+            <div v-else class="">
             <v-list class="bg-[#F5F7FA] w-full">
               <v-list-item v-for="item in state.rooms" :key="item.id" class="mb-4">
+                <a href="/isi-rumusan-rakernas">
                 <v-card class="pa-4 rounded-2xl shadow-2xl w-full">
                   <!-- <div v-if="item.jenisPutusan === 'Putusan Penting'">
                   <div>
@@ -149,8 +201,10 @@
                     </div>
                   </div>
                 </v-card>
+              </a>
               </v-list-item>
             </v-list>
+          </div>
 
             <!-- Pagination -->
             <div class="flex justify-center mt-4" v-if="state.totalPages > 1">
@@ -198,7 +252,7 @@
           </v-col>
         </v-row>
       </div>
-    </v-container>
+    </div>
 
     <!-- Bottom Sheet for Sort Filter (Mobile) -->
     <v-bottom-sheet v-model="showSortFilter" class="d-md-none">
@@ -437,10 +491,11 @@ export default {
         },
         {
           id: 6,
-          title: "Putusan Mahkamah Agung Nomor 362 K/Pdt.Sus-PHI/2024",
-          case: "PT MEGA AUTO AGHAG",
-          registerDate: "01-05-2024",
+          title: "RAKERNAS/2012/PIDAN/KHUSUS/1",
+          case: "hari kerja, tenggang waktu upaya hukum",
+          case2:"Mengenai tenggang waktu 14 hari untuk mengajukan permohonan kasasi dan menyerahkan memori kasasi berdasarkan patokan pada hari kalender jika tenggang waktu jatuh pada hari libur dihitung pada hari kerja",
           desicionDate: "17-05-2024",
+          registerDate: "01-05-2024",
           uploadData: "29-02-2024",
           views: 220,
           downloads: 440,
@@ -455,9 +510,10 @@ export default {
         },
         {
           id: 7,
-          title: "Putusan Mahkamah Agung Nomor 123 K/Pdt.Sus-PHI/2024",
-          case: "PT XYZ",
-          desicionDate: "10-04-2024",
+          title: "RAKERNAS/2012/PIDAN/KHUSUS/1",
+          case: "hari kerja, tenggang waktu upaya hukum",
+          case2:"Mengenai tenggang waktu 14 hari untuk mengajukan permohonan kasasi dan menyerahkan memori kasasi berdasarkan patokan pada hari kalender jika tenggang waktu jatuh pada hari libur dihitung pada hari kerja",
+          desicionDate: "17-05-2024",
           registerDate: "01-05-2024",
           uploadData: "25-04-2024",
           views: 800,
@@ -473,9 +529,10 @@ export default {
         },
         {
           id: 8,
-          title: "Putusan Mahkamah Agung Nomor 456 K/Pdt.Sus-PHI/2024",
-          case: "PT ABC",
-          desicionDate: "05-06-2024",
+          title: "RAKERNAS/2012/PIDAN/KHUSUS/1",
+          case: "hari kerja, tenggang waktu upaya hukum",
+          case2:"Mengenai tenggang waktu 14 hari untuk mengajukan permohonan kasasi dan menyerahkan memori kasasi berdasarkan patokan pada hari kalender jika tenggang waktu jatuh pada hari libur dihitung pada hari kerja",
+          desicionDate: "17-05-2024",
           registerDate: "01-05-2024",
           uploadData: "20-06-2024",
           views: 500,
@@ -491,9 +548,10 @@ export default {
         },
         {
           id: 9,
-          title: "Putusan Mahkamah Agung Nomor 789 K/Pdt.Sus-PHI/2024",
-          case: "PT DEF",
-          desicionDate: "15-07-2024",
+          title: "RAKERNAS/2012/PIDAN/KHUSUS/1",
+          case: "hari kerja, tenggang waktu upaya hukum",
+          case2:"Mengenai tenggang waktu 14 hari untuk mengajukan permohonan kasasi dan menyerahkan memori kasasi berdasarkan patokan pada hari kalender jika tenggang waktu jatuh pada hari libur dihitung pada hari kerja",
+          desicionDate: "17-05-2024",
           registerDate: "01-05-2024",
           uploadData: "30-07-2024",
           views: 600,
@@ -509,15 +567,16 @@ export default {
         },
         {
           id: 10,
-          title: "Putusan Mahkamah Agung Nomor 101 K/Pdt.Sus-PHI/2024",
-          case: "PT GHI",
-          desicionDate: "20-08-2024",
+          title: "RAKERNAS/2012/PIDAN/KHUSUS/1",
+          case: "hari kerja, tenggang waktu upaya hukum",
+          case2:"Mengenai tenggang waktu 14 hari untuk mengajukan permohonan kasasi dan menyerahkan memori kasasi berdasarkan patokan pada hari kalender jika tenggang waktu jatuh pada hari libur dihitung pada hari kerja",
+          desicionDate: "17-05-2024",
           registerDate: "01-05-2024",
           uploadData: "05-09-2024",
           views: 700,
           downloads: 300,
           direktori: "Yurisprudensi",
-          jenisPutusan: "Putusan Biasa",
+          jenisPutusan: "Rumusan Rakernas",
           pengadilan: "Pengadilan Tata Usaha Negara",
           lembagaPengadilan: "PA Jakarta Timur",
           klasifikasi: "Perdata Agama",
@@ -526,110 +585,116 @@ export default {
           tahunPenerbitan:"2021"
         },
         {
-          id: 11,
-          title: "Putusan Mahkamah Agung Nomor 654 K/Pdt.Sus-PHI/2024",
-          case: "PT JKL",
-          desicionDate: "02-02-2024",
-          registerDate: "01-02-2024",
-          uploadData: "14-02-2024",
-          views: 450,
-          downloads: 150,
-          direktori: "Putusan",
-          jenisPutusan: "Putusan Penting",
-          pengadilan: "Pengadilan Umum",
-          lembagaPengadilan: "PA Jakarta Barat",
-          klasifikasi: "Narkotika dan Psikotropika",
-          amar: "Bebas",
-          tingkatProses: "Banding",
-          tahunPenerbitan:"2021"
-        },
-        {
-          id: 12,
-          title: "Putusan Mahkamah Agung Nomor 789 K/Pdt.Sus-PHI/2024",
-          case: "PT MNO",
-          desicionDate: "10-11-2023",
-          registerDate: "01-11-2023",
-          uploadData: "15-11-2023",
-          views: 600,
+          id: 10,
+          title: "RAKERNAS/2012/PIDAN/KHUSUS/1",
+          case: "hari kerja, tenggang waktu upaya hukum",
+          case2:"Mengenai tenggang waktu 14 hari untuk mengajukan permohonan kasasi dan menyerahkan memori kasasi berdasarkan patokan pada hari kalender jika tenggang waktu jatuh pada hari libur dihitung pada hari kerja",
+          desicionDate: "17-05-2024",
+          registerDate: "01-05-2024",
+          uploadData: "05-09-2024",
+          views: 700,
           downloads: 300,
-          direktori: "Putusan penting",
-          jenisPutusan: "Putusan Penting",
+          direktori: "Yurisprudensi",
+          jenisPutusan: "Rumusan Rakernas",
           pengadilan: "Pengadilan Tata Usaha Negara",
-          lembagaPengadilan: "PA Jakarta Utara",
-          klasifikasi: "Ahli Waris Pengganti",
-          amar: "Lepas",
-          tingkatProses: "Banding",
-          tahunPenerbitan:"2021"
-        },
-        {
-          id: 13,
-          title: "Putusan Mahkamah Agung Nomor 246 K/Pdt.Sus-PHI/2024",
-          case: "PT PQR",
-          desicionDate: "05-10-2024",
-          registerDate: "01-10-2024",
-          uploadData: "20-10-2024",
-          views: 780,
-          downloads: 320,
-          direktori: "Putusan",
-          jenisPutusan: "Putusan Biasa",
-          pengadilan: "Pengadilan Agama",
-          lembagaPengadilan: "PA Jakarta Selatan",
-          klasifikasi: "Perceraian",
-          amar: "Terbukti",
-          tingkatProses: "Banding",
-          tahunPenerbitan:"2021"
-        },
-        {
-          id: 14,
-          title: "Putusan Mahkamah Agung Nomor 135 K/Pdt.Sus-PHI/2024",
-          case: "PT STU",
-          desicionDate: "08-09-2024",
-          registerDate: "01-09-2024",
-          uploadData: "25-09-2024",
-          views: 520,
-          downloads: 210,
-          direktori: "Rumusan Kamar",
-          jenisPutusan: "Putusan Biasa",
-          pengadilan: "Pengadilan Pajak",
-          lembagaPengadilan: "PA Jakarta Barat",
-          klasifikasi: "Pencurian",
+          lembagaPengadilan: "PA Jakarta Timur",
+          klasifikasi: "Perdata Agama",
           amar: "Tolak",
           tingkatProses: "Banding",
           tahunPenerbitan:"2021"
         },
         {
-          id: 15,
-          title: "Putusan Mahkamah Agung Nomor 357 K/Pdt.Sus-PHI/2024",
-          case: "PT VWX",
-          desicionDate: "12-08-2024",
-          registerDate: "01-08-2024",
-          uploadData: "30-08-2024",
-          views: 630,
-          downloads: 270,
-          direktori: "Restatement",
-          jenisPutusan: "Putusan Penting",
-          pengadilan: "Pengadilan Militer",
+          id: 10,
+          title: "RAKERNAS/2012/PIDAN/KHUSUS/1",
+          case: "hari kerja, tenggang waktu upaya hukum",
+          case2:"Mengenai tenggang waktu 14 hari untuk mengajukan permohonan kasasi dan menyerahkan memori kasasi berdasarkan patokan pada hari kalender jika tenggang waktu jatuh pada hari libur dihitung pada hari kerja",
+          desicionDate: "17-05-2024",
+          registerDate: "01-05-2024",
+          uploadData: "05-09-2024",
+          views: 700,
+          downloads: 300,
+          direktori: "Yurisprudensi",
+          jenisPutusan: "Rumusan Rakernas",
+          pengadilan: "Pengadilan Tata Usaha Negara",
           lembagaPengadilan: "PA Jakarta Timur",
-          klasifikasi: "Klausula Baku",
-          amar: "Tidak Dapat Diterima",
+          klasifikasi: "Perdata Agama",
+          amar: "Tolak",
           tingkatProses: "Banding",
           tahunPenerbitan:"2021"
         },
         {
-          id: 16,
-          title: "Putusan Mahkamah Agung Nomor 468 K/Pdt.Sus-PHI/2024",
-          case: "PT YZA",
-          desicionDate: "01-07-2024",
-          registerDate: "01-07-2024",
-          uploadData: "15-07-2024",
-          views: 590,
-          downloads: 250,
-          direktori: "Rumusan Rakernas",
-          jenisPutusan: "Putusan Penting",
-          pengadilan: "Pengadilan Agama",
-          lembagaPengadilan: "PA Jakarta Utara",
-          klasifikasi: "Grosse Akta",
-          amar: "Lepas",
+          id: 10,
+          title: "RAKERNAS/2012/PIDAN/KHUSUS/1",
+          case: "hari kerja, tenggang waktu upaya hukum",
+          case2:"Mengenai tenggang waktu 14 hari untuk mengajukan permohonan kasasi dan menyerahkan memori kasasi berdasarkan patokan pada hari kalender jika tenggang waktu jatuh pada hari libur dihitung pada hari kerja",
+          desicionDate: "17-05-2024",
+          registerDate: "01-05-2024",
+          uploadData: "05-09-2024",
+          views: 700,
+          downloads: 300,
+          direktori: "Yurisprudensi",
+          jenisPutusan: "Rumusan Rakernas",
+          pengadilan: "Pengadilan Tata Usaha Negara",
+          lembagaPengadilan: "PA Jakarta Timur",
+          klasifikasi: "Perdata Agama",
+          amar: "Tolak",
+          tingkatProses: "Banding",
+          tahunPenerbitan:"2021"
+        },
+        {
+          id: 10,
+          title: "RAKERNAS/2012/PIDAN/KHUSUS/1",
+          case: "hari kerja, tenggang waktu upaya hukum",
+          case2:"Mengenai tenggang waktu 14 hari untuk mengajukan permohonan kasasi dan menyerahkan memori kasasi berdasarkan patokan pada hari kalender jika tenggang waktu jatuh pada hari libur dihitung pada hari kerja",
+          desicionDate: "17-05-2024",
+          registerDate: "01-05-2024",
+          uploadData: "05-09-2024",
+          views: 700,
+          downloads: 300,
+          direktori: "Yurisprudensi",
+          jenisPutusan: "Rumusan Rakernas",
+          pengadilan: "Pengadilan Tata Usaha Negara",
+          lembagaPengadilan: "PA Jakarta Timur",
+          klasifikasi: "Perdata Agama",
+          amar: "Tolak",
+          tingkatProses: "Banding",
+          tahunPenerbitan:"2021"
+        },
+        {
+          id: 10,
+          title: "RAKERNAS/2012/PIDAN/KHUSUS/1",
+          case: "hari kerja, tenggang waktu upaya hukum",
+          case2:"Mengenai tenggang waktu 14 hari untuk mengajukan permohonan kasasi dan menyerahkan memori kasasi berdasarkan patokan pada hari kalender jika tenggang waktu jatuh pada hari libur dihitung pada hari kerja",
+          desicionDate: "17-05-2024",
+          registerDate: "01-05-2024",
+          uploadData: "05-09-2024",
+          views: 700,
+          downloads: 300,
+          direktori: "Yurisprudensi",
+          jenisPutusan: "Rumusan Rakernas",
+          pengadilan: "Pengadilan Tata Usaha Negara",
+          lembagaPengadilan: "PA Jakarta Timur",
+          klasifikasi: "Perdata Agama",
+          amar: "Tolak",
+          tingkatProses: "Banding",
+          tahunPenerbitan:"2021"
+        },
+        {
+          id: 10,
+          title: "RAKERNAS/2012/PIDAN/KHUSUS/1",
+          case: "hari kerja, tenggang waktu upaya hukum",
+          case2:"Mengenai tenggang waktu 14 hari untuk mengajukan permohonan kasasi dan menyerahkan memori kasasi berdasarkan patokan pada hari kalender jika tenggang waktu jatuh pada hari libur dihitung pada hari kerja",
+          desicionDate: "17-05-2024",
+          registerDate: "01-05-2024",
+          uploadData: "05-09-2024",
+          views: 700,
+          downloads: 300,
+          direktori: "Yurisprudensi",
+          jenisPutusan: "Rumusan Rakernas",
+          pengadilan: "Pengadilan Tata Usaha Negara",
+          lembagaPengadilan: "PA Jakarta Timur",
+          klasifikasi: "Perdata Agama",
+          amar: "Tolak",
           tingkatProses: "Banding",
           tahunPenerbitan:"2021"
         },
@@ -875,9 +940,13 @@ export default {
       classifications: ["Semua", "Narkotika dan Psikotropika", "Pencurian", "Penganiayaan", "Perbuatan Melawan Hukum", "Perceraian", "Perdata", "Perdata Agama", "Pidana Khusus", "Pidana Umum"],
       directionOptions: ["Menurun", "Menaik"],
       sortOptions: ["-", "Tanggal Putusan", "Total View", "Total Download"],
+      showLabel: false,
     };
   },
   computed: {
+    computedThumbLabel() {
+        return this.showLabel ? 'always' : false
+      },
     paginationRange() {
       const current = this.page;
       const last = this.state.totalPages;

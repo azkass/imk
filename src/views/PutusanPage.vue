@@ -133,16 +133,10 @@
 
                 <!-- Filter Tahun Putus -->
                 <h2 class="mb-2 text-[17px] font-bold">Tahun Putus</h2>
-                <v-range-slider
-                  v-model="tempTahunPutus"
-                  :max="2024"
-                  :min="1984"
-                  :step="1"
-                  thumb-label="always"
-                  hide-details
-                  track-color="brown"
-                  thumb-color="brown"
-                ></v-range-slider>
+                <v-range-slider v-model="tempTahunPutus" :max="2024" :min="1984" :step="1" :thumb-label="computedThumbLabel"
+      @start="showLabel = true"
+      @end="showLabel = false"
+      hide-details track-color="brown" thumb-color="brown"></v-range-slider>
                 <div class="range-inputs">
                   <v-text-field
                     v-model="tempTahunPutus[0]"
@@ -166,16 +160,10 @@
                 </div>
 
                 <h2 class="mt-[10px] mb-2 text-[17px] font-bold">Tahun Register</h2>
-                <v-range-slider
-                  v-model="tempTahunRegister"
-                  :max="2024"
-                  :min="1984"
-                  :step="1"
-                  thumb-label="always"
-                  hide-details
-                  track-color="brown"
-                  thumb-color="brown"
-                ></v-range-slider>
+                <v-range-slider v-model="tempTahunRegister" :max="2024" :min="1984" :step="1" :thumb-label="computedThumbLabel"
+      @start="showLabel = true"
+      @end="showLabel = false"
+      hide-details track-color="brown" thumb-color="brown"></v-range-slider>
                 <div class="range-inputs">
                   <v-text-field
                     v-model="tempTahunRegister[0]"
@@ -199,16 +187,10 @@
                 </div>
 
                 <h2 class="mr-8 mt-[10px] mb-2 text-[17px] font-bold">Tahun Upload</h2>
-                <v-range-slider
-                  v-model="tempTahunUpload"
-                  :max="2024"
-                  :min="1984"
-                  :step="1"
-                  thumb-label="always"
-                  hide-details
-                  track-color="brown"
-                  thumb-color="brown"
-                ></v-range-slider>
+                <v-range-slider v-model="tempTahunUpload" :max="2024" :min="1984" :step="1" :thumb-label="computedThumbLabel"
+      @start="showLabel = true"
+      @end="showLabel = false"
+      hide-details track-color="brown" thumb-color="brown"></v-range-slider>
                 <div class="range-inputs">
                   <v-text-field
                     v-model="tempTahunUpload[0]"
@@ -1242,9 +1224,14 @@ const showSortFilter = ref(false);
       processLevels: ["Semua", "Pertama", "Banding", "Kasasi", "Peninjauan kembali"],
       directionOptions: ["Menurun", "Menaik"],
       sortOptions: ["-", "Tanggal Putusan", "Tanggal Register", "Tanggal Upload", "Total View", "Total Download"],
+       showLabel: false,
+
     };
   },
   computed: {
+    computedThumbLabel() {
+        return this.showLabel ? 'always' : false
+      },
     paginationRange() {
       const current = this.page;
       const last = this.state.totalPages;
