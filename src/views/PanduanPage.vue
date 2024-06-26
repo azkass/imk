@@ -220,7 +220,7 @@
                       <p class="text-gray-400">Gambar 26 - Tampilan Utama Direktori Putusan v3</p>
                       <p>2. Pilih daftar Peraturan</p>
                       <p class="text-justify">Memilih jenis Peraturan, Anda dapat memilih Peraturan berdasarkan jenisnya. Jenis peraturan antara lain : </p>
-                      <ul>
+                      <ul class="ml-4">
                         <li>SEMA</li>
                         <li>PERMA</li>
                         <li>Undang-undang</li>
@@ -236,7 +236,7 @@
                       <p>Pada detail Peraturan anda dapat mengunduh file Peraturan pada link download di sebelah kanan detail Peraturan.</p>
                     </div>
 
-                    <!-- <p v-else class="text-justify">Revitalisasi Direktori Putusan (RDP) merupakan pengembangan dari Direktori Putusan v2 kedalam Direktori Putusan v3 yang telah diimplementasikan pada server Mahkamah Agung. Fitur-fitur baru yang dihasilkan pada Direktori Putusan v3 diantaranya adalah Putusan, Yurisprudensi, Rumusan Kamar, Restatement, Kaidah Hukum dan Peraturan.</p> -->
+                    <p v-else class="text-justify">Revitalisasi Direktori Putusan (RDP) merupakan pengembangan dari Direktori Putusan v2 kedalam Direktori Putusan v3 yang telah diimplementasikan pada server Mahkamah Agung. Fitur-fitur baru yang dihasilkan pada Direktori Putusan v3 diantaranya adalah Putusan, Yurisprudensi, Rumusan Kamar, Restatement, Kaidah Hukum dan Peraturan.</p>
                   </v-card-text>
                 </v-card>
               </v-col>
