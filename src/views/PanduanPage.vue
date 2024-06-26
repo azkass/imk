@@ -4,7 +4,7 @@
       <div class="sm:px-4 md:px-16 pb-4 bg-[#F5F7FA]">
         <v-row>
           <v-col cols="12">
-            <div class="flex items-center text-[#8E4202]">
+            <div class="flex items-center">
               <v-icon class="mr-2">mdi-home</v-icon>
               <v-breadcrumbs :items="breadcrumbs">
                 <template v-slot:item="props">
