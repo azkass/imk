@@ -4,7 +4,7 @@
     <!-- <v-container> -->
     <div class="container px-16">
               <!-- Breadcrumbs Section -->
-      <v-breadcrumbs :items="items" item-class="breadcrumb-item" class="breadcrumbs pl-0 text-[#8e4202]">
+      <v-breadcrumbs :items="items" item-class="breadcrumb-item" class="px-0 sm:my-4 md:my-0 breadcrumbs text-[#8e4202]">
         <template v-slot:divider>
           <v-icon class="" icon="mdi-chevron-right"></v-icon>
         </template>

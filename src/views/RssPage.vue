@@ -22,16 +22,16 @@
         <!-- Table Section -->
         <div class="mx-10">
           <div class="flex justify-between items-end">
-             <p class="mb-4 items-end">Menampilkan {{ startItem }}-{{ endItem }} dari {{ totalItems }} Pengadilan</p>
+              <p class="mb-4 items-end">Menampilkan {{ startItem }}-{{ endItem }} dari {{ totalItems }} Pengadilan</p>
           <!-- Filter Section -->
-           <div class="flex items-center justify-end space-x-1 mb-4">
-             <input
-               type="text"
-               placeholder="Temukan data ..."
-               class="border p-2 rounded w-full max-w-md"
-               v-model="searchQuery"
+            <div class="flex items-center justify-end space-x-1 mb-4">
+              <input
+                type="text"
+                placeholder="Temukan data ..."
+                class="border p-2 rounded w-full max-w-md"
+                v-model="searchQuery"
                 @input="applyFilters"
-               />
+              />
               <button @click="clearFilter" class="ml-4 bg-gray-200 p-2 rounded">Clear</button>
               </div>
           </div>

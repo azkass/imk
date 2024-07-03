@@ -3,7 +3,7 @@
     <NavBar />
     <v-container>
       <!-- Breadcrumbs Section -->
-      <v-breadcrumbs :items="items" item-class="breadcrumb-item">
+      <v-breadcrumbs :items="items" item-class="breadcrumb-item" class="px-0 sm:my-4 md:my-0 breadcrumbs text-[#8e4202]">
         <template v-slot:divider>
           <v-icon class="text-[#8e4202]" icon="mdi-chevron-right"></v-icon>
         </template>

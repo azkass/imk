@@ -2,15 +2,15 @@
     <div class="bg-[#F5F7FA] sm:px-4 md:px-16">
       <h3 class="sm:text-xl md:text-2xl xl:text-4xl font-medium pb-2">Dokumen Terbaru</h3>
       <hr class="border-black border-2 mb-4">
-      <v-card class="bg-[#F5F7FA] elevated-0">
+      <v-card class="elevation-0">
         <v-tabs v-model="selectedTab" bg-color="#F5F7FA" show-arrows>
           <v-tab v-for="(tab, index) in tabs" :key="index" :value="tab">
             {{ tab }}
           </v-tab>
         </v-tabs>
   
-        <div v-for="(tab, index) in tabs" :key="'content-' + index" class="bg-[#F5F7FA]">
-          <v-list v-show="selectedTab === tab" class="w-full bg-white">
+        <div v-for="(tab, index) in tabs" :key="'content-' + index" class="">
+          <v-list v-show="selectedTab === tab" class="w-full bg-[#F5F7FA]">
             <v-list-item v-for="item in filteredItems(tab)" :key="item.id" class="mb-4 mt-4">
               <v-card class="pa-4 rounded-2xl">
                 <div v-if="item.jenisPutusan === 'Putusan Penting'">
@@ -94,13 +94,13 @@
           </v-list>
         </div>
 
-        <div class="flex justify-end items-end mr-4 mb-4">
+        <div class="flex justify-end items-end pr-4 pb-4 bg-[#F5F7FA]">
             <p @click="navigateToTab" class=" text-[#8e4202] text-lg flex items-center cursor-pointer"> Lihat Selengkapnya 
                 
                 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
                 <span class="material-symbols-outlined ml-2">
-                 arrow_forward
-                 </span>
+                  arrow_forward
+                </span>
                 
             </p> 
         </div>
@@ -111,7 +111,7 @@
   
   <script>
   import { ref } from 'vue';
-import { useRouter } from 'vue-router';
+  import { useRouter } from 'vue-router';
 
   export default {
     name: 'PutusanPenting',
