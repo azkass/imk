@@ -1,23 +1,21 @@
 <template>
     <div class="bg-[#F5F7FA]">
       <NavBar />
-      <div class="bg-[#F5F7FA] container mx-auto p-4">
+      <div class="bg-[#F5F7FA] sm:px-4 md:px-16 pb-8">
         <!-- Breadcrumbs Section -->
-        <v-breadcrumbs :items="items" item-class="breadcrumb-item" class="breadcrumbs text-[#7d6654]">
+        <v-breadcrumbs :items="items" item-class="breadcrumb-item" class="breadcrumbs text-[#7d6654] pl-0">
         <template v-slot:divider>
           <v-icon class="text-[#8e4202]" icon="mdi-chevron-right"></v-icon>
         </template>
         <template v-slot:prepend>
-          <v-icon class="text-[#8e4202]">mdi-home</v-icon>
+          <a href="/">
+            <v-icon class="text-[#8e4202]">mdi-home</v-icon>
+          </a>
         </template>
       </v-breadcrumbs>
-  
-        <!-- Title Section -->
-        <h1 class="text-2xl md:text-3xl font-bold mb-4">RSS</h1>
-        <hr class="border-b-2 border-gray-800 mb-4">
-        
-  
-        
+          <!-- Title Section -->
+          <h1 class="text-2xl md:text-3xl font-bold mb-4">RSS</h1>
+          <hr class="border-b-2 border-gray-800 mb-4">
   
         <!-- Table Section -->
         <div class="mx-10">

@@ -6,7 +6,9 @@
                 <v-icon class="text-[#8e4202]" icon="mdi-chevron-right"></v-icon>
             </template>
             <template v-slot:prepend>
-                <v-icon class="text-[#8e4202]">mdi-home</v-icon>
+                <a href="/">
+                    <v-icon class="text-[#8e4202]">mdi-home</v-icon>
+                </a>
             </template>
         </v-breadcrumbs>
         <h1 class="text-4xl font-semibold pb-4">Tentang</h1>

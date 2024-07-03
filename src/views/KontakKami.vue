@@ -1,19 +1,21 @@
 <template>
     <NavBar />
-    <div class="bg-[#F5F7FA]  sm:px-4 md:px-16 pb-8">
+    <div class="bg-[#F5F7FA] sm:px-4 md:px-16 pb-8">
     <v-breadcrumbs :items="breadcumbs" item-class="breadcrumb-item" class="text-[#8e4202] pl-0">
         <template v-slot:divider>
         <v-icon class="text-[#8e4202]" icon="mdi-chevron-right"></v-icon>
         </template>
         <template v-slot:prepend>
-        <v-icon class="text-[#8e4202]">mdi-home</v-icon>
+            <a href="/">
+                <v-icon class="text-[#8e4202]">mdi-home</v-icon>
+            </a>
         </template>
     </v-breadcrumbs>
     <div class="">
         <h1 class="text-4xl font-semibold pb-4">Kontak Kami</h1>
         <hr class="border-black border-2 mb-4">
         <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-4">
-            <div class="sm:w-max lg:w-5/12">
+            <div class="sm:w-full lg:w-5/12">
                 <h2 class="text-2xl font-semibold mb-4">Kontak Mahkamah Agung</h2>
                 <div class="bg-white rounded-lg">
                     <div class="py-4 pl-2 pr-4 flex space-x-2">
@@ -55,7 +57,7 @@
                 </div>
             </div>
 
-            <div class="sm:w-max lg:w-7/12 ml-10">
+            <div class="sm:w-full lg:w-7/12 ml-10 mt-4 sm:mt-0">
                 <h2 class="text-2xl font-semibold mb-4">Kirim Masukan</h2>
                 <div class="bg-white rounded-lg">
                     <div class="px-4">
