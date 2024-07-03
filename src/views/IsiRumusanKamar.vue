@@ -95,7 +95,7 @@ components: {
 data() {
     return {
     breadcumbs: [
-        { title: 'Direktori', href: '#' },
+        { title: 'Direktori', href: '/direktori' },
         { title: 'Rumusan Kamar', href: '/rumusan-kamar' },
         { title: 'Rumusan Kamar Perdata', href: '#' },
         { title: 'PERDATA UMUM/1.g/SEMA 7 2012', disabled: true },

@@ -80,8 +80,8 @@ components: {
 data() {
     return {
     breadcumbs: [
-        { title: 'Direktori', href: '#' },
-        { title: 'Putusan', href: '#' },
+        { title: 'Direktori', href: '/direktori' },
+        { title: 'Putusan', href: '/putusan' },
         { title: 'Putusan Biasa', disabled: true }
     ],
     items: [

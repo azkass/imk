@@ -79,10 +79,10 @@ components: {
 data() {
     return {
     breadcumbs: [
-        {title:'Direktori'},
-        {title:'Rumusan Rakernas'},
-        {title:'Pengajuan Gugatan'},
-        {title:'RAKERNAS/2012/PERDATA AGAMA/FORMIL/19'},
+        {title:'Direktori', href:'/direktori'},
+        {title:'Rumusan Rakernas', href:'/rumusan-rakernas'},
+        {title:'Pengajuan Gugatan', href:'#'},
+        {title:'RAKERNAS/2012/PERDATA AGAMA/FORMIL/19', disabled:true},
     ],
     items: [
         {title: 'Nomor', value: 'RAKERNAS/2012/PERDATA AGAMA/FORMIL/19'},

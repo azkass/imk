@@ -2,7 +2,7 @@
   <NavBar />
     <div class="bg-[#F5F7FA]">
       <!-- <v-container> -->
-        <div class="container px-16">
+        <div class="px-16 pb-16">
         <!-- Breadcrumbs Section -->
         <v-breadcrumbs :items="items" item-class="breadcrumb-item" class="px-0 sm:my-4 md:my-0 breadcrumbs text-[#8e4202] pl-0">
           <template v-slot:divider>
@@ -92,7 +92,7 @@
                 </div>
   
                 <div class="flex justify-center mt-4">
-                  <v-btn color="brown" @click="applyFiltersAndNavigate">Terapkan</v-btn>
+                  <v-btn color="#8E4202" @click="applyFiltersAndNavigate">Terapkan</v-btn>
                 </div>
               </v-card>
             </v-col>
@@ -138,9 +138,6 @@
                   </p>
                 </div>
               </div>
-              <!-- <v-alert type="warning" border="left" elevation="2" prominent>
-                Tidak ada data ditemukan berdasarkan filter yang diterapkan.
-              </v-alert> -->
             </div>
             <div v-else class="">
               <v-list class="bg-[#F5F7FA] w-full">
@@ -153,7 +150,7 @@
                           <span class="md:ml-6 sm:ml-0 text-green-600 sm:w-[18px] md:w-[254px]">Berkekuatan Hukum Tetap</span>
                         </div>
                         <div class="flex justify-end">
-                          <div class="bg-[#8e4202] sm:p-2 md:pr-3 md:pl-3 md:py-1 rounded-xl text-white text-center">
+                          <div class="bg-[#8e4202] sm:p-2 md:pr-3 md:pl-3 md:py-1 rounded-lg text-white text-center">
                             {{ item.jenisPutusan }}
                           </div>
                         </div>
@@ -177,7 +174,7 @@
                     <div v-else>
                       <div class="flex justify-between items-center mb-2">
                         <h3 class="text-xl font-bold mb-2">{{ item.title }}</h3>
-                        <div class="bg-[#8e4202] sm:p-0 pr-3 pl-3 py-1 rounded-xl text-white text-center">
+                        <div class="bg-[#8e4202] sm:p-0 pr-3 pl-3 py-1 rounded-lg text-white text-center">
                           {{ item.jenisPutusan }}
                         </div>
                       </div>
@@ -262,7 +259,7 @@
             <v-combobox :items="sortOptions" label="Urutkan" variant="outlined" class="w-full" v-model="selectedSort" @change="applyFilters"></v-combobox>
             <v-combobox :items="directionOptions" label="Arah" variant="outlined" class="w-full mt-4" v-model="selectedDirection" @change="applyFilters"></v-combobox>
             <div class="flex justify-center mt-4">
-              <v-btn color="brown" @click="showSortFilter = false">Terapkan</v-btn>
+              <v-btn color="#8E4202" @click="showSortFilter = false">Terapkan</v-btn>
             </div>
           </v-card-text>
         </v-card>
@@ -279,7 +276,7 @@
             <v-combobox :items="sortOptions" label="Urutkan" variant="outlined" class="w-full" v-model="selectedSort" @change="applyFilters"></v-combobox>
             <v-combobox :items="directionOptions" label="Arah" variant="outlined" class="w-full mt-4" v-model="selectedDirection" @change="applyFilters"></v-combobox>
             <div class="flex justify-center mt-4">
-              <v-btn color="brown" @click="showSortFilter = false">Terapkan</v-btn>
+              <v-btn color="#8E4202" @click="showSortFilter = false">Terapkan</v-btn>
             </div>
           </v-card-text>
         </v-card>
@@ -311,7 +308,7 @@
             </div>
   
             <div class="flex justify-center mt-4">
-              <v-btn color="brown" @click="applyFiltersAndNavigate">Terapkan</v-btn>
+              <v-btn color="#8E4202" @click="applyFiltersAndNavigate">Terapkan</v-btn>
             </div>
           </v-card-text>
         </v-card>
@@ -343,7 +340,7 @@
             </div>
   
             <div class="flex justify-center mt-4">
-              <v-btn color="brown" @click="applyFiltersAndNavigate">Terapkan</v-btn>
+              <v-btn color="#8E4202" @click="applyFiltersAndNavigate">Terapkan</v-btn>
             </div>
           </v-card-text>
         </v-card>

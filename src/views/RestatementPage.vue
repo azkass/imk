@@ -122,7 +122,6 @@
               <v-list-item v-for="item in state.rooms" :key="item.id" class="mb-1">
                 <a href="/isi-restatement">
                   <v-card class="pa-2 bg-[#F5F7FA] w-full ">
-                  <!-- <div v-if="item.jenisPutusan === 'Putusan Penting'"> -->
                   <div class="rounded-xl shadow-lg pa-4 w-full bg-white">
                     <div class="flex items-center mb-2 justify-between">
                       <div class="flex items-center">
@@ -130,7 +129,7 @@
                         <span class="md:ml-2 sm:ml-0 text-green-600 sm:w-[18px] md:w-[254px]">Berkekuatan Hukum Tetap</span>
                       </div>
                       <div class="flex justify-end">
-                        <div class="bg-[#8e4202] sm:p-2 md:pr-3 md:pl-3 md:py-1 rounded-xl text-white text-center">
+                        <div class="bg-[#8e4202] sm:p-2 md:pr-3 md:pl-3 md:py-1 rounded-lg text-white text-center">
                           {{ item.jenisPutusan }}
                         </div>
                       </div>
@@ -152,28 +151,6 @@
                       </div>
                     </div>
                   </div>
-                  <!-- <div v-else>
-                    <div class="flex justify-between items-center mb-2">
-                      <h3 class="text-xl font-bold mb-2">{{ item.title }}</h3>
-                      <div class="bg-[#8e4202] sm:p-0 pr-3 pl-3 py-1 rounded-xl text-white text-center">
-                        {{ item.jenisPutusan }}
-                      </div>
-                    </div>
-                    <p class="mb-2">{{ item.case }}</p>
-                    <div class="mt-4">
-                      <div class="flex flex-col">
-                        <hr class="border-b-2 border-gray-500 mb-4">
-                        <div class="flex justify-end items-center text-gray-600">
-                          <div class="flex items-center">
-                            <v-icon>mdi-eye</v-icon>
-                            <span class="ml-1">{{ item.views }}</span>
-                            <v-icon class="ml-4">mdi-download</v-icon>
-                            <span class="ml-1">{{ item.downloads }}</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div> -->
                 </v-card>
                 </a>
                 
@@ -381,7 +358,7 @@ export default {
           views: 630,
           downloads: 270,
           direktori: "Restatement",
-          jenisPutusan: "Putusan Penting",
+          jenisPutusan: "Restatement",
           pengadilan: "Pengadilan Militer",
           lembagaPengadilan: "PA Jakarta Timur",
           klasifikasi: "Klausula Baku",
@@ -399,7 +376,7 @@ export default {
           views: 630,
           downloads: 270,
           direktori: "Restatement",
-          jenisPutusan: "Putusan Penting",
+          jenisPutusan: "Restatement",
           pengadilan: "Pengadilan Militer",
           lembagaPengadilan: "PA Jakarta Timur",
           klasifikasi: "Klausula Baku",
@@ -417,7 +394,7 @@ export default {
           views: 630,
           downloads: 270,
           direktori: "Restatement",
-          jenisPutusan: "Putusan Penting",
+          jenisPutusan: "Restatement",
           pengadilan: "Pengadilan Militer",
           lembagaPengadilan: "PA Jakarta Timur",
           klasifikasi: "Klausula Baku",
@@ -435,7 +412,7 @@ export default {
           views: 630,
           downloads: 270,
           direktori: "Restatement",
-          jenisPutusan: "Putusan Penting",
+          jenisPutusan: "Restatement",
           pengadilan: "Pengadilan Militer",
           lembagaPengadilan: "PA Jakarta Timur",
           klasifikasi: "Klausula Baku",
@@ -453,7 +430,7 @@ export default {
           views: 630,
           downloads: 270,
           direktori: "Restatement",
-          jenisPutusan: "Putusan Penting",
+          jenisPutusan: "Restatement",
           pengadilan: "Pengadilan Militer",
           lembagaPengadilan: "PA Jakarta Timur",
           klasifikasi: "Klausula Baku",
@@ -471,7 +448,7 @@ export default {
           views: 630,
           downloads: 270,
           direktori: "Restatement",
-          jenisPutusan: "Putusan Penting",
+          jenisPutusan: "Restatement",
           pengadilan: "Pengadilan Militer",
           lembagaPengadilan: "PA Jakarta Timur",
           klasifikasi: "Klausula Baku",
@@ -489,7 +466,7 @@ export default {
           views: 630,
           downloads: 270,
           direktori: "Restatement",
-          jenisPutusan: "Putusan Penting",
+          jenisPutusan: "Restatement",
           pengadilan: "Pengadilan Militer",
           lembagaPengadilan: "PA Jakarta Timur",
           klasifikasi: "Klausula Baku",
@@ -507,7 +484,7 @@ export default {
           views: 630,
           downloads: 270,
           direktori: "Restatement",
-          jenisPutusan: "Putusan Penting",
+          jenisPutusan: "Restatement",
           pengadilan: "Pengadilan Militer",
           lembagaPengadilan: "PA Jakarta Timur",
           klasifikasi: "Klausula Baku",
@@ -525,7 +502,7 @@ export default {
           views: 630,
           downloads: 270,
           direktori: "Restatement",
-          jenisPutusan: "Putusan Penting",
+          jenisPutusan: "Restatement",
           pengadilan: "Pengadilan Militer",
           lembagaPengadilan: "PA Jakarta Timur",
           klasifikasi: "Klausula Baku",
@@ -543,7 +520,7 @@ export default {
           views: 630,
           downloads: 270,
           direktori: "Restatement",
-          jenisPutusan: "Putusan Penting",
+          jenisPutusan: "Restatement",
           pengadilan: "Pengadilan Militer",
           lembagaPengadilan: "PA Jakarta Timur",
           klasifikasi: "Klausula Baku",
@@ -561,7 +538,7 @@ export default {
           views: 630,
           downloads: 270,
           direktori: "Restatement",
-          jenisPutusan: "Putusan Penting",
+          jenisPutusan: "Restatement",
           pengadilan: "Pengadilan Militer",
           lembagaPengadilan: "PA Jakarta Timur",
           klasifikasi: "Klausula Baku",
@@ -579,7 +556,7 @@ export default {
           views: 630,
           downloads: 270,
           direktori: "Restatement",
-          jenisPutusan: "Putusan Penting",
+          jenisPutusan: "Restatement",
           pengadilan: "Pengadilan Militer",
           lembagaPengadilan: "PA Jakarta Timur",
           klasifikasi: "Klausula Baku",
@@ -597,7 +574,7 @@ export default {
           views: 630,
           downloads: 270,
           direktori: "Restatement",
-          jenisPutusan: "Putusan Penting",
+          jenisPutusan: "Restatement",
           pengadilan: "Pengadilan Militer",
           lembagaPengadilan: "PA Jakarta Timur",
           klasifikasi: "Klausula Baku",
@@ -615,7 +592,7 @@ export default {
           views: 630,
           downloads: 270,
           direktori: "Restatement",
-          jenisPutusan: "Putusan Penting",
+          jenisPutusan: "Restatement",
           pengadilan: "Pengadilan Militer",
           lembagaPengadilan: "PA Jakarta Timur",
           klasifikasi: "Klausula Baku",
@@ -633,7 +610,7 @@ export default {
           views: 630,
           downloads: 270,
           direktori: "Restatement",
-          jenisPutusan: "Putusan Penting",
+          jenisPutusan: "Restatement",
           pengadilan: "Pengadilan Militer",
           lembagaPengadilan: "PA Jakarta Timur",
           klasifikasi: "Klausula Baku",
@@ -651,7 +628,7 @@ export default {
           views: 630,
           downloads: 270,
           direktori: "Restatement",
-          jenisPutusan: "Putusan Penting",
+          jenisPutusan: "Restatement",
           pengadilan: "Pengadilan Militer",
           lembagaPengadilan: "PA Jakarta Timur",
           klasifikasi: "Klausula Baku",
@@ -669,7 +646,7 @@ export default {
           views: 630,
           downloads: 270,
           direktori: "Restatement",
-          jenisPutusan: "Putusan Penting",
+          jenisPutusan: "Restatement",
           pengadilan: "Pengadilan Militer",
           lembagaPengadilan: "PA Jakarta Timur",
           klasifikasi: "Klausula Baku",
@@ -687,7 +664,7 @@ export default {
           views: 630,
           downloads: 270,
           direktori: "Restatement",
-          jenisPutusan: "Putusan Penting",
+          jenisPutusan: "Restatement",
           pengadilan: "Pengadilan Militer",
           lembagaPengadilan: "PA Jakarta Timur",
           klasifikasi: "Klausula Baku",
@@ -705,7 +682,7 @@ export default {
           views: 630,
           downloads: 270,
           direktori: "Restatement",
-          jenisPutusan: "Putusan Penting",
+          jenisPutusan: "Restatement",
           pengadilan: "Pengadilan Militer",
           lembagaPengadilan: "PA Jakarta Timur",
           klasifikasi: "Klausula Baku",
@@ -723,7 +700,7 @@ export default {
           views: 750,
           downloads: 310,
           direktori: "Rumusan Kamar",
-          jenisPutusan: "Putusan Penting",
+          jenisPutusan: "Restatement",
           pengadilan: "Pengadilan Militer",
           lembagaPengadilan: "PA Jakarta Selatan",
           klasifikasi: "Penganiayaan",

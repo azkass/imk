@@ -1,7 +1,7 @@
 <template>
     <div>
       <NavBar />
-      <div class="bg-[#F5F7FA] px-16">
+      <div class="bg-[#F5F7FA] px-16 pb-16">
         <!-- Breadcrumbs Section -->
         <v-breadcrumbs :items="items" item-class="breadcrumb-item" class="px-0 sm:my-4 md:my-0 breadcrumbs text-[#8e4202]">
           <template v-slot:divider>

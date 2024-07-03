@@ -168,7 +168,7 @@
                 <!-- Add other filters here if necessary -->
 
                 <div class="flex justify-center mt-4">
-                  <v-btn color="brown" @click="applyFiltersAndNavigate">Terapkan</v-btn>
+                  <v-btn color="#8E4202" @click="applyFiltersAndNavigate">Terapkan</v-btn>
                 </div>
               <!-- </v-card-text> -->
             </v-card>
@@ -215,9 +215,6 @@
                   </p>
                 </div>
               </div>
-              <!-- <v-alert type="warning" border="left" elevation="2" prominent>
-                Tidak ada data ditemukan berdasarkan filter yang diterapkan.
-              </v-alert> -->
             </div>
             <div v-else class="">
             <v-list class=" w-full bg-[#F5F7FA]">
@@ -230,7 +227,7 @@
                         <span class="md:ml-0 sm:ml-0 text-green-600 sm:w-[18px] md:w-[254px] font-bold">Berkekuatan Hukum Tetap</span>
                       </div>
                       <div class="flex justify-end">
-                        <div class="bg-[#8e4202] sm:p-2 md:pr-3 md:pl-3 md:py-1 rounded-xl text-white text-center">
+                        <div class="bg-[#8e4202] sm:p-2 md:pr-3 md:pl-3 md:py-1 rounded-lg text-white text-center">
                           {{ item.jenisPutusan }}
                         </div>
                       </div>
@@ -271,36 +268,6 @@
                       </div>
                     </div>
                   </div>
-                  <!-- <div v-else>
-                    <div class="flex justify-between items-center mb-2">
-                      <h3 class="text-xl font-bold mb-2">{{ item.title }}</h3>
-                      <div class="bg-[#8e4202] p-2 md:pr-3 md:pl-3 md:py-1 rounded-xl text-white text-center">
-                        {{ item.jenisPutusan }}
-                      </div>
-                    </div>
-                    
-                    <p class="mb-2">{{ item.case }}</p>
-                    <div class="mt-4">
-                      <div class="flex flex-col">
-                        <hr class="border-b-2 border-gray-500 mb-4">
-                        <div class="flex justify-between items-center text-gray-600">
-                          <div>
-                            <span class="font-bold text-[#8e4202]">Register:</span> {{ item.registerDate }}
-                            <span class="mx-2">|</span>
-                            <span class="font-bold text-[#8e4202]">Putus:</span> {{ item.desicionDate }}
-                            <span class="mx-2">|</span>
-                            <span class="font-bold text-[#8e4202]">Upload:</span> {{ item.uploadData }}
-                          </div>
-                          <div class="flex items-center">
-                            <v-icon>mdi-eye</v-icon>
-                            <span class="ml-1">{{ item.views }}</span>
-                            <v-icon class="ml-4">mdi-download</v-icon>
-                            <span class="ml-1">{{ item.downloads }}</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div> -->
                 </v-card>
               </v-list-item>
             </v-list>
@@ -477,7 +444,7 @@
           ></v-text-field>
         </div>
         <div class="flex justify-center mt-4">
-            <v-btn color="brown" @click="applyFiltersAndNavigate">Terapkan</v-btn>
+            <v-btn color="#8E4202" @click="applyFiltersAndNavigate">Terapkan</v-btn>
           </div>
 
         <!-- Add other filters here if necessary -->
@@ -495,7 +462,7 @@
           <v-combobox :items="sortOptions" label="Urutkan" variant="outlined" class="w-full" v-model="selectedSort" @change="applyFilters"></v-combobox>
           <v-combobox :items="directionOptions" label="Arah" variant="outlined" class="w-full mt-4" v-model="selectedDirection" @change="applyFilters"></v-combobox>
           <div class="flex justify-center mt-4">
-            <v-btn color="brown" @click="showSortFilter = false">Terapkan</v-btn>
+            <v-btn color="#8E4202" @click="showSortFilter = false">Terapkan</v-btn>
           </div>
         </v-card-text>
       </v-card>

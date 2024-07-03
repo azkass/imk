@@ -106,8 +106,8 @@
     data() {
       return {
         items: [
-          { title: 'Direktori', href: '#' },
-          { title: 'Yurisprudensi', href: '#' },
+          { title: 'Direktori', href: '/direktori' },
+          { title: 'Yurisprudensi', href: '/yurisprudensi' },
           { title: 'Tata Usaha Negara', href: '#' },
           { title: '2/Yur/TUN/2018', disabled: true },
         ],

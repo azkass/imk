@@ -2,7 +2,7 @@
   <NavBar />
     <div class="bg-[#F5F7FA]">
       <!-- <v-container> -->
-        <div class="container px-16">
+        <div class="px-16 pb-16">
         <!-- Breadcrumbs Section -->
         <v-breadcrumbs :items="items" item-class="breadcrumb-item" class="px-0 sm:my-4 md:my-0 breadcrumbs text-[#8e4202]">
           <template v-slot:divider>
@@ -154,7 +154,7 @@
                           <span class="md:ml-0 sm:ml-0 sm:w-[18px] md:w-[254px] font-bold">Instruksi Presiden</span>
                         </div>
                         <div class="flex justify-end">
-                          <div class="bg-[#8e4202] sm:p-2 md:pr-3 md:pl-3 md:py-1 rounded-xl text-white text-center">
+                          <div class="bg-[#8e4202] sm:p-2 md:pr-3 md:pl-3 md:py-1 rounded-lg text-white text-center">
                             {{ item.jenisPutusan }}
                           </div>
                         </div>

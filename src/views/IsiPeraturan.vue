@@ -149,8 +149,8 @@ export default {
   data() {
     return {
       breadcrumbs: [
-        { title: 'Direktori', href: '#' },
-        { title: 'Peraturan', href: '#' },
+        { title: 'Direktori', href: '/direktori' },
+        { title: 'Peraturan', href: '/peraturan' },
         { title: 'Hukum Materil', href: '#' },
         { title: '19 Tahun 2000', disabled: true },
       ],
