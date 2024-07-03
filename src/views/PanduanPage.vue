@@ -263,7 +263,7 @@ export default {
   data() {
     return {
       breadcrumbs: [
-        { title: 'Panduan', href: '#' }
+        { title: 'Panduan', disabled: true}
       ],
       currentPage: '',
     };

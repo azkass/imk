@@ -1,5 +1,5 @@
 <template>
-    <nav class="bg-[#8E4202] min-[320px]:py-4 min-[320px]:px-4 sm:px-4 sm:py-4 md:px-16 md:py-2 text-white font-medium">
+    <nav class="bg-[#8E4202] min-[320px]:py-2 min-[320px]:px-4 sm:px-4 sm:py-4 md:px-16 md:py-2 text-white font-medium">
         <!-- Desktop View -->
         <div class="flex items-center">
             <RouterLink to="/" class="me-auto" style="display: flex; align-items: center;">

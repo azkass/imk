@@ -905,12 +905,11 @@ import { useRouter } from "vue-router";
           {
             title: "Home",
             disabled: false,
-            href: "breadcrumbs_dashboard",
+            href: "/",
           },
           {
             title: "Direktori",
-            disabled: true,
-            href: "breadcrumbs_link_1",
+            disabled: true
           },
           // {
           //   title: "Link 2",

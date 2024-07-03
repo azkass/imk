@@ -2,7 +2,7 @@
   <div class="bg-[#F5F7FA]">
     <NavBar />
     <!-- <v-container> -->
-    <div class="container px-16">
+    <div class="px-16">
               <!-- Breadcrumbs Section -->
       <v-breadcrumbs :items="items" item-class="breadcrumb-item" class="px-0 sm:my-4 md:my-0 breadcrumbs text-[#8e4202]">
         <template v-slot:divider>
@@ -251,8 +251,6 @@
               </div>
             </div>
             <div v-if="state.rooms.length === 0" class="flex justify-center mt-4">
-              
-              
               <div class="flex justify-center items-center mt-40">
                 <div class="text-center">
                   <div class="flex justify-center items-center mb-2">
@@ -1195,23 +1193,12 @@ const showSortFilter = ref(false);
         {
           title: "Direktori",
           disabled: false,
-          href: "breadcrumbs_dashboard",
+          href: "/direktori",
         },
         {
           title: "Putusan",
-          disabled: true,
-          href: "",
-        },
-        // {
-        //   title: "Link 2",
-        //   disabled: false,
-        //   href: "breadcrumbs_link_2",
-        // },
-        // {
-        //   title: "Link 3",
-        //   disabled: true,
-        //   href: "breadcrumbs_link_2",
-        // },
+          disabled: true
+        }
       ],
       directories: ["Semua", "Putusan", "Kompilasi Kaidah Hukum","Restatement", "Rumusan Kamar", "Rumusan Rakernas", "Yurisprudensi", "Peraturan"],
       decisionTypes: ["Semua", "Putusan Biasa", "Putusan Penting"],

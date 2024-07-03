@@ -18,7 +18,7 @@
           <hr class="border-b-2 border-gray-800 mb-4">
   
         <!-- Table Section -->
-        <div class="mx-10">
+        <div class="mx-10 w-full">
           <div class="flex justify-between items-end">
               <p class="mb-4 items-end">Menampilkan {{ startItem }}-{{ endItem }} dari {{ totalItems }} Pengadilan</p>
           <!-- Filter Section -->
@@ -115,8 +115,8 @@
   
   <script>
   import FooterBar from "@/components/FooterBar.vue";
-import NavBar from "@/components/NavBar.vue";
-import { computed, ref } from "vue";
+  import NavBar from "@/components/NavBar.vue";
+  import { computed, ref } from "vue";
   
   export default {
     name: "DaftarPengadilan",

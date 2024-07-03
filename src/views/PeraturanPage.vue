@@ -905,23 +905,12 @@ import { useRouter } from "vue-router";
           {
             title: "Direktori",
             disabled: false,
-            href: "breadcrumbs_dashboard",
+            href: "/direktori",
           },
           {
             title: "Peraturan",
-            disabled: false,
-            href: "breadcrumbs_link_1",
-          },
-          // {
-          //   title: "Link 2",
-          //   disabled: false,
-          //   href: "breadcrumbs_link_2",
-          // },
-          // {
-          //   title: "Link 3",
-          //   disabled: true,
-          //   href: "breadcrumbs_link_2",
-          // },
+            disabled: true
+          }
         ],
         directories: ["Semua", "Putusan", "Kompilasi Kaidah Hukum", "Restatement", "Rumusan Kamar", "Rumusan Rakernas", "Yurisprudensi", "Peraturan"],
         classifications: ["Semua","Undang-Undang","Fatwa DSN","SEMA","PERMA","Putusan MK","Peraturan Pemerintah","Qanun","SK Ketua MA","Peraturan Presiden","Fatwa MA","Surat Panitera","Peratuan Lain-Lain","Peraturan Komisi Pengawas Persaingan Usaha"],

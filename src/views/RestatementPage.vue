@@ -859,7 +859,7 @@ export default {
         {
           title: "Direktori",
           disabled: false,
-          href: "breadcrumbs_dashboard",
+          href: "/direktori",
         },
         {
           title: "Restatement",

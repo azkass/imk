@@ -21,7 +21,7 @@
                       <span class="ml-2 text-green-600">Berkekuatan Hukum Tetap</span>
                     </div>
                     <div class="flex justify-end">
-                      <div class="bg-[#8e4202] py-1 px-3 rounded-xl text-white text-center">
+                      <div class="bg-[#8e4202] py-1 px-3 rounded-lg text-white text-center">
                         {{ item.jenisPutusan }}
                       </div>
                     </div>
@@ -58,7 +58,7 @@
                 <div v-else>
                   <div class="flex justify-between items-center mb-2">
                     <h3 class="text-xl font-bold mb-2">{{ item.title }}</h3>
-                    <div class="bg-[#8e4202] py-1 px-3 rounded-xl text-white text-center">
+                    <div class="bg-[#8e4202] py-1 px-3 rounded-lg text-white text-center">
                       {{ item.jenisPutusan }}
                     </div>
                   </div>

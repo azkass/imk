@@ -1069,17 +1069,7 @@ const showSortFilter = ref(false);
         {
           title: "Kompilasi Kaidah Hukum",
           disabled: true
-        },
-        // {
-        //   title: "Link 2",
-        //   disabled: false,
-        //   href: "breadcrumbs_link_2",
-        // },
-        // {
-        //   title: "Link 3",
-        //   disabled: true,
-        //   href: "breadcrumbs_link_2",
-        // },
+        }
       ],
       directories: ["Semua", "Putusan", "Kompilasi Kaidah Hukum","Restatement", "Rumusan Kamar", "Rumusan Rakernas", "Yurisprudensi", "Peraturan"],
       decisionTypes: ["Semua", "Putusan Biasa", "Putusan Penting"],
