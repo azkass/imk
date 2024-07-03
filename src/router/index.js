@@ -122,6 +122,11 @@ const routes = [
         component: () => import('@/views/RssPage.vue')
     },
     {
+        path: '/popup',
+        name: 'popup',
+        component: () => import('@/components/PopupProgress.vue')
+    },
+    {
         path: '/src/assets/logo.png',
         name: 'Logo',
         component: () => import('@/assets/logo.png')

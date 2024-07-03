@@ -16,16 +16,19 @@
     <div class="flex justify-between items-center mb-4">
         <h1 class="text-2xl font-bold">Grosse Akta</h1>
         <div class="flex space-x-2">
-        <button class="bg-yellow-500 text-white px-4 py-2 rounded-md flex items-center">
-            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" /><span class="material-symbols-outlined">
-folder_zip
-</span> <span class="ml-1">ZIP</span>
-        </button>
-        <button class="bg-red-500 text-white px-4 py-2 rounded-md flex items-center">
-            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" /><span class="material-symbols-outlined">
-picture_as_pdf
-</span> <span class="ml-1">PDF</span>
-        </button>
+            <button @click="showPopup('ZIP')" class="bg-yellow-500 text-white px-4 py-2 rounded-md flex items-center">
+                <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" /><span class="material-symbols-outlined">
+                folder_zip
+                </span> <span class="ml-1">ZIP</span>
+            </button>
+            <button @click="showPopup('PDF')" class="bg-red-500 text-white px-4 py-2 rounded-md flex items-center">
+                <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" /><span class="material-symbols-outlined">
+                picture_as_pdf
+                </span> <span class="ml-1">PDF</span>
+            </button>
+            <div class="p-0">
+                <PopupProgress v-if="isPopupVisible" :type="downloadType" @close="isPopupVisible = false" />
+            </div>
         </div>
     </div>
     <hr class="border-b-2 border-gray-800 mb-4">
@@ -64,12 +67,14 @@ picture_as_pdf
 <script>
 import FooterBar from "@/components/FooterBar.vue";
 import NavBar from "@/components/NavBar.vue";
+import PopupProgress from "@/components/PopupProgress.vue";
 
 export default {
 name: 'YurisprudensiPage',
 components: {
     NavBar,
-    FooterBar
+    FooterBar,
+    PopupProgress
 },
 data() {
     return {
@@ -84,13 +89,19 @@ data() {
         {title: 'Klasifikasi', value: ': Grosse Akta'},
         {title: 'Author', value: ': Ahmad Fikri Assegaf, Elijana Tanjah'},
     ],
-    openSections: [false, false] // Array to keep track of which sections are open
+    openSections: [false, false], // Array to keep track of which sections are open
+    isPopupVisible: false,
+    downloadType: '',
     };
 },
 methods: {
     toggleSection(index) {
     this.openSections = this.openSections.map((open, i) => (i === index ? !open : open));
-    }
+    },
+    showPopup(type) {
+    this.downloadType = type;
+    this.isPopupVisible = true;
+    },
 }
 }
 </script>

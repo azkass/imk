@@ -92,7 +92,7 @@
                 </div>
   
                 <div class="flex justify-center mt-4">
-                  <v-btn color="brown" @click="applyFiltersAndNavigate">Terapkan</v-btn>
+                  <v-btn color="#8e4202" @click="applyFiltersAndNavigate">Terapkan</v-btn>
                 </div>
               </v-card>
             </v-col>
@@ -149,8 +149,8 @@
                   <v-card class="pa-4 rounded-2xl shadow-2xl w-full">
                     <div>
                       <div class="flex items-center mb-2 justify-between">
-                        <div class="flex items-center">
-                          <v-icon icon="mdi-folder-open" color="black"></v-icon>
+                        <div class="flex items-center text-[#8e4202]">
+                          <v-icon icon="mdi-folder-open"></v-icon>
                           <span class="md:ml-0 sm:ml-0 sm:w-[18px] md:w-[254px] font-bold">Instruksi Presiden</span>
                         </div>
                         <div class="flex justify-end">
@@ -265,7 +265,7 @@
             <v-combobox :items="sortOptions" label="Urutkan" variant="outlined" class="w-full" v-model="selectedSort" @change="applyFilters"></v-combobox>
             <v-combobox :items="directionOptions" label="Arah" variant="outlined" class="w-full mt-4" v-model="selectedDirection" @change="applyFilters"></v-combobox>
             <div class="flex justify-center mt-4">
-              <v-btn color="brown" @click="showSortFilter = false">Terapkan</v-btn>
+              <v-btn color="#8e4202" @click="showSortFilter = false">Terapkan</v-btn>
             </div>
           </v-card-text>
         </v-card>
@@ -282,7 +282,7 @@
             <v-combobox :items="sortOptions" label="Urutkan" variant="outlined" class="w-full" v-model="selectedSort" @change="applyFilters"></v-combobox>
             <v-combobox :items="directionOptions" label="Arah" variant="outlined" class="w-full mt-4" v-model="selectedDirection" @change="applyFilters"></v-combobox>
             <div class="flex justify-center mt-4">
-              <v-btn color="brown" @click="showSortFilter = false">Terapkan</v-btn>
+              <v-btn color="#8e4202" @click="showSortFilter = false">Terapkan</v-btn>
             </div>
           </v-card-text>
         </v-card>
@@ -314,7 +314,7 @@
             </div>
   
             <div class="flex justify-center mt-4">
-              <v-btn color="brown" @click="applyFiltersAndNavigate">Terapkan</v-btn>
+              <v-btn color="#8e4202" @click="applyFiltersAndNavigate">Terapkan</v-btn>
             </div>
           </v-card-text>
         </v-card>
@@ -346,7 +346,7 @@
             </div>
   
             <div class="flex justify-center mt-4">
-              <v-btn color="brown" @click="applyFiltersAndNavigate">Terapkan</v-btn>
+              <v-btn color="#8e4202" @click="applyFiltersAndNavigate">Terapkan</v-btn>
             </div>
           </v-card-text>
         </v-card>

@@ -16,12 +16,19 @@
       <div class="flex justify-between items-center mb-4">
         <h1 class="text-2xl font-bold">Undang-Undang Nomor 19 Tahun 2000</h1>
         <div class="flex space-x-2">
-          <button class="bg-yellow-500 text-white px-4 py-2 rounded-md flex items-center">
-            <v-icon class="mr-2">mdi-zip-box</v-icon> ZIP
-          </button>
-          <button class="bg-red-500 text-white px-4 py-2 rounded-md flex items-center">
-            <v-icon class="mr-2">mdi-file-pdf</v-icon> PDF
-          </button>
+        <button @click="showPopup('ZIP')" class="bg-yellow-500 text-white px-4 py-2 rounded-md flex items-center">
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" /><span class="material-symbols-outlined">
+            folder_zip
+            </span> <span class="ml-1">ZIP</span>
+        </button>
+        <button @click="showPopup('PDF')" class="bg-red-500 text-white px-4 py-2 rounded-md flex items-center">
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" /><span class="material-symbols-outlined">
+            picture_as_pdf
+            </span> <span class="ml-1">PDF</span>
+        </button>
+        <div class="p-0">
+          <PopupProgress v-if="isPopupVisible" :type="downloadType" @close="isPopupVisible = false" />
+        </div>
         </div>
       </div>
       <hr class="border-b-2 border-gray-800 mb-4">
@@ -49,21 +56,15 @@
           <div :class="{'open': openSections[0]}" class="accordion-content bg-white rounded-b">
             <p class="p-4 text-justify">
               Pajak sebagai sumber utama penerimaan negara perlu terus ditingkatkan sehingga pembangunan nasional dapat dilaksanakan dengan kemampuan sendiri berdasarkan prinsip kemandirian. peningkatan kesadaran masyarakat di bidang perpajakan harus ditunjang dengan iklim yang mendukung peningkatan peran aktif masyarakat serta pemahaman akan hak dan kewajibannya dalam melaksanakan peraturan perundang- undangan perpajakan.
-
               Peran serta masyarakat Wajib Pajak dalam memenuhi kewajiban pembayaran pajak berdasarkan ketentuan perpajakan sangat diharapkan. Namun, dalam kenyataannya masih dijumpai adanya tunggakan pajak sebagai akibat tidak dilunasinya utang pajak sebagaimana mestinya.
-
               Perkembangan jumlah tunggakan pajak dari waktu ke waktu menunjukkan jumlah yang semakin besar. Peningkatan jumlah tunggakan pajak ini masih belum dapat diimbangi dengan kegiatan pencairannya, namun demikian secara umum penerimaan di bidang pajak semakin meningkat. Terhadap tunggakan pajak dimaksud perlu dilaksanakan tindakan penagihan pajak yang mempunyai kekuatan hukum yang memaksa.
-
               Kepatuhan Wajib Pajak dalam membayar pajak merupakan posisi strategis dalam peningkatan penerimaan pajak. Dengan demikian pengkajian terhadap faktor-faktor yang dapat mempengaruhi kepatuhan Wajib Pajak sangat perlu mendapatkan perhatian. Sebagaimana dikemukakan di atas, di dalam sistem selfassessment yang berlaku sekarang ini maka penagihan pajak yang dilaksanakan secara konsisten dan berkesinambungan merupakan wujud law enforcement untuk meningkatkan kepatuhan yang menimbulkan aspek psikologis bagi Wajib Pajak.
-
               Tindakan penagihan pajak yang selama ini dilaksanakan adalah berdasarkan pada Undang-undang Nomor 19 Tahun 1997 tentang Penagihan Pajak dengan Surat Paksa. Dengan undang-undang penagihan pajak yang demikian itu diharapkan dapat memberikan penekanan yang lebih pada keseimbangan antara kepentingan masyarakat Wajib Pajak dan kepentingan negara. Keseimbangan kepentingan dimaksud berupa pelaksanaan hak dan kewajiban oleh kedua belah pihak yang tidak berat sebelah atau tidak memihak, adil, serasi, dan selaras dalam wujud tata aturan yang jelas dan sederhana serta memberikan kepastian hukum.
-
               Sejalan dengan perkembangan perekonomian Indonesia saat ini dan didukung dengan semangat reformasi, perlu kiranya dilakukan pembaharuan undang-undang penagihan pajak, dengan dilandasi pokok-pokok pikiran sebagai berikut:
               Memperhatikan ketentuan perundang-undangan lain, seperti Undang-undang Nomor 22 Tahun 1999 tentang Pemerintahan Daerah, Undang-undang Nomor 25 Tahun 1999 tentang Perimbangan Keuangan antara Pemerintah Pusat dan Daerah;
               Menegakkan keadilan;
               Memberikan perlindungan hukum, baik kepada Penanggung Pajak maupun pihak ketiga berupa hak untuk mengajukan gugatan; dan
               Melaksanakan law enforcement secara konsisten dengan berdasar pada jadwal waktu penagihan yang telah ditentukan.
-
               Beberapa pokok perubahan yang menjadi perhatian dan pembaharuan undang-undang penagihan pajak ini adalah sebagai berikut:
               Mempertegas proses pelaksanaan penagihan pajak dengan menambahkan ketentuan penerbitan Surat Teguran, Surat Peringatan dan surat lain yang sejenis sebelum Surat Paksa dilaksanakan;
               Mempertegas jangka waktu pelaksanaan penagihan aktif;
@@ -79,42 +80,53 @@
           </div>
         </div>
 
-        <!-- Timeline Section -->
-        <div class="relative text-gray-700 antialiased text-sm font-semibold">
-          <!-- Vertical bar running through middle -->
-          <div class="absolute w-1 bg-gray-300 h-full left-1/2 transform -translate-x-1/2"></div>
-          
-          <div v-for="(entry, index) in timeline" :key="index" class="mt-6 sm:mt-0 sm:mb-12">
-            <div class="flex justify-between items-center w-full mx-auto">
-              <div class="w-full sm:w-1/2 sm:pr-8">
-                <div class="bg-[#ffebc5] border-l-4 border-yellow-500 text-gray-700 p-4 rounded-md shadow-md">
-                  <h3 class="font-semibold">{{ entry.title }}</h3>
-                  <p class="mt-2">{{ entry.description }}</p>
+        <div class="accordion mb-4 border border-gray-300 rounded">
+          <button class="accordion-header w-full text-left bg-white p-4 rounded-t focus:outline-none flex justify-between items-center" @click="toggleSection(1)">
+            <span class="text-gray-800 text-xl font-semibold">Sejarah Lengkap</span>
+            <svg :class="{'transform rotate-180': openSections[1]}" class="w-5 h-5 text-gray-500 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div :class="{'open': openSections[1]}" class="accordion-content bg-white rounded-b">
+            <!-- Timeline -->
+            <div class="relative text-gray-700 antialiased text-sm font-semibold">
+              <!-- Vertical bar running through middle -->
+              <div class="absolute w-1 bg-gray-300 h-full left-1/2 transform -translate-x-1/2"></div>
+              
+              <div v-for="(entry, index) in timeline" :key="index" class="mt-6 sm:mt-0 sm:mb-12">
+                <div class="flex justify-between items-center w-full mx-auto">
+                  <div class="w-full sm:w-1/2 sm:pr-8">
+                    <div class="bg-[#ffebc5] border-l-4 border-yellow-500 text-gray-700 p-4 rounded-md shadow-md">
+                      <h3 class="font-semibold">{{ entry.title }}</h3>
+                      <p class="mt-2">{{ entry.description }}</p>
+                    </div>
+                  </div>
+                  <div class="absolute flex items-center justify-center w-8 h-8 bg-yellow-500 rounded-full left-1/2 transform -translate-x-1/2 -translate-y-4 sm:-translate-y-0">
+                    <span class="text-white font-semibold">{{ entry.date }}</span>
+                  </div>
+                  <!-- <div class="hidden sm:block w-1/2">
+                    <div class="timeline-date right">{{ entry.date }}</div>
+                  </div> -->
+                </div>
+                <div class="flex justify-between items-center w-full mx-auto">
+                  <div class="hidden sm:block w-1/2">
+                    <div class="timeline-date left">{{ entry.date }}</div>
+                  </div>
+                  <div class="w-full sm:w-1/2 sm:pl-8">
+                    <div class="bg-[#ffebc5] border-l-4 border-yellow-500 text-gray-700 p-4 rounded-md shadow-md">
+                      <h3 class="font-semibold">{{ entry.title }}</h3>
+                      <p class="mt-2">{{ entry.description }}</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="absolute flex items-center justify-center w-8 h-8 bg-yellow-500 rounded-full left-1/2 transform -translate-x-1/2 -translate-y-4 sm:-translate-y-0">
+                  <span class="text-white font-semibold">{{ entry.date }}</span>
                 </div>
               </div>
-              <div class="absolute flex items-center justify-center w-8 h-8 bg-yellow-500 rounded-full left-1/2 transform -translate-x-1/2 -translate-y-4 sm:-translate-y-0">
-                <span class="text-white font-semibold">{{ entry.date }}</span>
-              </div>
-              <!-- <div class="hidden sm:block w-1/2">
-                <div class="timeline-date right">{{ entry.date }}</div>
-              </div> -->
-            </div>
-            <div class="flex justify-between items-center w-full mx-auto">
-              <div class="hidden sm:block w-1/2">
-                <div class="timeline-date left">{{ entry.date }}</div>
-              </div>
-              <div class="w-full sm:w-1/2 sm:pl-8">
-                <div class="bg-[#ffebc5] border-l-4 border-yellow-500 text-gray-700 p-4 rounded-md shadow-md">
-                  <h3 class="font-semibold">{{ entry.title }}</h3>
-                  <p class="mt-2">{{ entry.description }}</p>
-                </div>
-              </div>
-            </div>
-            <div class="absolute flex items-center justify-center w-8 h-8 bg-yellow-500 rounded-full left-1/2 transform -translate-x-1/2 -translate-y-4 sm:-translate-y-0">
-              <span class="text-white font-semibold">{{ entry.date }}</span>
             </div>
           </div>
         </div>
+        
 
       </div>
     </v-container>
@@ -125,12 +137,14 @@
 <script>
 import FooterBar from "@/components/FooterBar.vue";
 import NavBar from "@/components/NavBar.vue";
+import PopupProgress from '@/components/PopupProgress.vue'
 
 export default {
   name: 'YurisprudensiPage',
   components: {
     NavBar,
-    FooterBar
+    FooterBar,
+    PopupProgress
   },
   data() {
     return {
@@ -147,7 +161,7 @@ export default {
         {title: 'Tentang', value: ': Perubahan Atas Undang-Undang Nomor 19 Tahun 1997 Tentang Penagihan Pajak Dengan Surat Paksa'},
         {title: 'Klasifikasi', value: ': Undang-Undang >> Hukum Materiil >> TUN Pajak'}
       ],
-      openSections: [false], // Array to keep track of which sections are open
+      openSections: [false, false], // Array to keep track of which sections are open
       timeline: [
         {
           date: '2006',
@@ -161,13 +175,19 @@ export default {
           description: `Mencabut sebagian Pasal Undang-Undang No 30 Tahun 2002
           pasal : Pasal 53-Pasal 62; varian : Pada saat Undang-Undang ini mulai berlaku, ketentuan Pasal 53 sampai dengan Pasal 62 dari Bab VII mengenai pemeriksaan di sidang pengadilan yang diatur dalam Undang-Undang Nomor 30 Tahun 2002 tentang Komisi Pemberantasan Tindak Pidana Korupsi (Lembaran Negara Republik Indonesia Tahun 2002 Nomor 137, Tambahan Lembaran Negara Republik Indonesia Nomor 4250) dicabut dan dinyatakan tidak berlaku;`
         }
-      ]
+      ],
+      isPopupVisible: false,
+      downloadType: '',
     };
   },
   methods: {
     toggleSection(index) {
-      this.openSections = this.openSections.map((open, i) => (i === index ? !open : open));
-    }
+        this.openSections = this.openSections.map((open, i) => (i === index ? !open : open));
+      },
+    showPopup(type) {
+      this.downloadType = type;
+      this.isPopupVisible = true;
+    },
   }
 }
 </script>
@@ -268,5 +288,14 @@ button:hover {
 .timeline-content p {
   margin-bottom: 0;
   text-align: justify;
+}
+
+@import 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0';
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24;
 }
 </style>

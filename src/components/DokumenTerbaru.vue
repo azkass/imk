@@ -8,7 +8,8 @@
             {{ tab }}
           </v-tab>
         </v-tabs>
-  
+
+        <!-- Box Rounded -->
         <div v-for="(tab, index) in tabs" :key="'content-' + index" class="">
           <v-list v-show="selectedTab === tab" class="w-full bg-[#F5F7FA]">
             <v-list-item v-for="item in filteredItems(tab)" :key="item.id" class="mb-4 mt-4">
