@@ -122,7 +122,7 @@
                 <v-card class="pa-4 rounded-2xl shadow-2xl w-full">
                   <div>
                     <div class="flex justify-between items-center mb-2">
-                      <h3 class="text-xl font-bold mb-2">{{ item.title }}</h3>
+                      <h3 class="text-xl font-bold mb-2 hover:underline">{{ item.title }}</h3>
                       <div class="bg-[#8e4202] sm:p-0 pr-3 pl-3 py-1 rounded-lg text-white text-center">
                         {{ item.jenisPutusan }}
                       </div>

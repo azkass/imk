@@ -234,8 +234,8 @@
                         </div>
                       </div>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">{{ item.title }}</h3>
-                    <p class="mb-2 text-gray-400">{{ item.case }}</p>
+                    <h3 class="text-xl font-bold mb-3 hover:underline">{{ item.title }}</h3>
+                    <p class="mb-2 text-gray-400 text-justify">{{ item.case }}</p>
                     <div class="mt-4">
                       <div class="flex flex-col">
                         <hr class="border-b-2 border-gray-500 mb-4">

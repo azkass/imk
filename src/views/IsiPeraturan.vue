@@ -38,13 +38,16 @@
       <!-- Content Section -->
       <div>
         <div class="bg-white shadow-md rounded-md p-4 mb-6">
-          <div>
-            <h3 class="text-xl font-semibold mb-4">Metadata</h3>
-            <div v-for="(item, index) in items" :key="'item-'+index" class="flex flex-row gap-4 mb-4">
-              <h4 class="text-l font-semibold w-20 mb-4">{{ item.title }}</h4>
-              <p class="text-l max-w-max">{{ item.value }}</p>
-            </div>
-          </div>
+        <div>
+        <h3 class="text-xl font-semibold mb-4">Metadata</h3>
+        <div
+            v-for="(item, index) in items"
+            :key="'item-'+index"
+            class="flex flex-row gap-4 mb-4">
+                <h4 class="text-l font-semibold w-20 mb-4 xl:w-1/6">{{ item.title }}</h4>
+                <p class="text-l max-w-max">: {{ item.value }}</p>
+        </div>
+        </div>
         </div>
 
         <!-- Accordion Sections -->
@@ -157,11 +160,11 @@ export default {
         { title: '19 Tahun 2000', disabled: true },
       ],
       items: [
-        {title: 'Jenis', value: ': Undang-Undang'},
-        {title: 'Nomor', value: ': 19 Tahun 2000'},
-        {title: 'Tahun', value: ': 2000'},
-        {title: 'Tentang', value: ': Perubahan Atas Undang-Undang Nomor 19 Tahun 1997 Tentang Penagihan Pajak Dengan Surat Paksa'},
-        {title: 'Klasifikasi', value: ': Undang-Undang >> Hukum Materiil >> TUN Pajak'}
+        {title: 'Jenis', value: 'Undang-Undang'},
+        {title: 'Nomor', value: '19 Tahun 2000'},
+        {title: 'Tahun', value: '2000'},
+        {title: 'Tentang', value: 'Perubahan Atas Undang-Undang Nomor 19 Tahun 1997 Tentang Penagihan Pajak Dengan Surat Paksa'},
+        {title: 'Klasifikasi', value: 'Undang-Undang >> Hukum Materiil >> TUN Pajak'}
       ],
       openSections: [false, false], // Array to keep track of which sections are open
       timeline: [

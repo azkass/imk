@@ -146,6 +146,7 @@
                 <v-list-item v-for="item in state.rooms" :key="item.id" class="mb-4">
                   <v-card class="pa-4 rounded-2xl shadow-2xl w-full">
                     <div v-if="item.jenisPutusan === 'Putusan Penting'">
+                      <a href="/isi-rumusan-kamar"> 
                       <div class="flex items-center mb-2 justify-between">
                         <div class="flex items-center">
                           <v-icon color="green">mdi-check-circle</v-icon>
@@ -157,7 +158,7 @@
                           </div>
                         </div>
                       </div>
-                      <h3 class="text-xl font-bold mb-2">{{ item.title }}</h3>
+                      <h3 class="text-xl font-bold mb-2 hover:underline">{{ item.title }}</h3>
                       <p class="mb-2 text-gray-500"><span class="text-black">Kata kunci:</span>{{ item.case }}</p>
                       <div class="mt-4">
                         <div class="flex flex-col">
@@ -172,10 +173,12 @@
                           </div>
                         </div>
                       </div>
+                    </a>
                     </div>
                     <div v-else>
+                      <a href="/isi-rumusan-kamar"> 
                       <div class="flex justify-between items-center mb-2">
-                        <h3 class="text-xl font-bold mb-2">{{ item.title }}</h3>
+                        <h3 class="text-xl font-bold mb-2 hover:underline">{{ item.title }}</h3>
                         <div class="bg-[#8e4202] sm:p-0 pr-3 pl-3 py-1 rounded-lg text-white text-center">
                           {{ item.jenisPutusan }}
                         </div>
@@ -195,6 +198,7 @@
                           </div>
                         </div>
                       </div>
+                      </a>
                     </div>
                   </v-card>
                 </v-list-item>

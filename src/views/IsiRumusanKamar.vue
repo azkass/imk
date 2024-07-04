@@ -42,11 +42,11 @@
         <div
             v-for="(item, index) in items"
             :key="'item-'+index"
-            class="grid grid-cols-2 gap-4 max-w-md mb-4">
-                <h4 class="text-l font-semibold mb-4">{{ item.title }}</h4>
-                <p class="text-l">{{ item.value }}</p>
+            class="flex flex-row gap-4 mb-4">
+                <h4 class="text-l font-semibold w-20 mb-4 xl:w-1/6">{{ item.title }}</h4>
+                <p class="text-l max-w-max">: {{ item.value }}</p>
         </div>
-    </div>
+        </div>
         </div>
         <!-- Accordion Sections -->
         <div class="accordion mb-4 border border-gray-300 rounded">
@@ -103,11 +103,11 @@ data() {
         { title: 'PERDATA UMUM/1.g/SEMA 7 2012', disabled: true },
     ],
     items: [
-        {title: 'Nomor', value: ': PERDATA UMUM/1.g/SEMA 7 2012'},
-        {title: 'Tahun', value: ': Grosse Akta'},
-        {title: 'Nomor Sema', value: ': 7 Tahun 2012'},
-        {title: 'Klasifikasi', value: ': Rumusan Kamar Perdata > Hukum Acara Perdata > Kewenangan Jaksa Pengacara Negara'},
-        {title: 'Kata Kuncu', value: ': Jaksa pengacara negara; Jaksa kuasa BUMN'},
+        {title: 'Nomor', value: 'PERDATA UMUM/1.g/SEMA 7 2012'},
+        {title: 'Tahun', value: 'Grosse Akta'},
+        {title: 'Nomor Sema', value: '7 Tahun 2012'},
+        {title: 'Klasifikasi', value: 'Rumusan Kamar Perdata > Hukum Acara Perdata > Kewenangan Jaksa Pengacara Negara'},
+        {title: 'Kata Kuncu', value: 'Jaksa pengacara negara; Jaksa kuasa BUMN'},
     ],
     openSections: [false, false], // Array to keep track of which sections are open
     isPopupVisible: false,

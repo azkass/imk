@@ -136,7 +136,7 @@
                         </div>
                       </div>
                     </div>
-                    <h3 class="text-xl font-bold mb-2">{{ item.title }}</h3>
+                    <h3 class="text-xl font-bold mb-2 hover:underline">{{ item.title }}</h3>
                     <p class="mb-4 text-gray-500"><span class="text-black">Author:</span>{{ item.case }}</p>
                     <p class="mb-2 text-gray-500">{{ item.case2 }} ... <span class="text-red-400">[Selengkapnya]</span></p>
                     <div class="mt-4">

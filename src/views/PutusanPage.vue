@@ -282,7 +282,7 @@
                         </div>
                       </div>
                     </div>
-                    <h3 class="text-xl font-bold mb-2">{{ item.title }}</h3>
+                    <h3 class="text-xl font-bold mb-2 hover:underline">{{ item.title }}</h3>
                     <p class="mb-2">{{ item.case }}</p>
                     <div class="mt-4">
                       <div class="flex flex-col">
@@ -316,7 +316,7 @@
                   <div v-else class="rounded-xl shadow-lg pa-4 w-full bg-white">
                     <a href="/isi-putusan">
                     <div class="flex justify-between items-center mb-2">
-                      <h3 class="text-xl font-bold mb-2">{{ item.title }}</h3>
+                      <h3 class="text-xl font-bold mb-2 hover:underline">{{ item.title }}</h3>
                       <div class="bg-[#8e4202] p-2 md:pr-3 md:pl-3 md:py-1 rounded-lg text-white text-center">
                         {{ item.jenisPutusan }}
                       </div>

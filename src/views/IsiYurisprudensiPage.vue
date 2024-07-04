@@ -42,20 +42,20 @@
             <h2 class="text-lg font-semibold mb-2">Metadata</h2>
             <div class="text-sm text-gray-700">
               <div class="mb-2">
-                <strong>Tahun:</strong> <span class="ml-64">2018</span>
+                <strong>Tahun</strong> <span class="ml-64">: 2018</span>
               </div>
               <div class="mb-2">
-                <strong>Nomor Katalog:</strong> <span class="ml-[194px]">2/Yur/TUN/2018</span>
+                <strong>Nomor Katalog</strong> <span class="ml-[194px]">: 2/Yur/TUN/2018</span>
               </div>
               <div class="mb-2">
-                <strong>Bidang:</strong> <span class="ml-[248px]">Tata Usaha Negara</span>
+                <strong>Bidang</strong> <span class="ml-[248px]">: Tata Usaha Negara</span>
               </div>
               <div class="mb-2">
-                <strong>Klasifikasi:</strong>
-                <a href="#" class="text-[#8e4202] underline ml-[234px]">Tata Usaha Negara &gt;&gt; Kepegawaian &gt;&gt; Pemberhentian Pegawai</a>
+                <strong>Klasifikasi</strong>
+                <a href="#" class="text-[#8e4202] underline ml-[234px]">: Tata Usaha Negara &gt;&gt; Kepegawaian &gt;&gt; Pemberhentian Pegawai</a>
               </div>
               <div>
-                <strong>Kata Kunci:</strong> <span class="ml-56">pilihan hukum kaidah hukum substantif; kaidah hukum formal</span>
+                <strong>Kata Kunci</strong> <span class="ml-56">: Pilihan hukum kaidah hukum substantif; kaidah hukum formal</span>
               </div>
             </div>
           </div>

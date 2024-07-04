@@ -161,7 +161,7 @@
                           </div>
                         </div>
                       </div>
-                      <h3 class="text-xl font-bold mb-2">{{ item.title }}</h3>
+                      <h3 class="text-xl font-bold mb-2 hover:underline">{{ item.title }}</h3>
                       <p class="mb-4 text-gray-500"><span class="text-black">Tentang: </span>{{ item.case }}</p>
                       <div class="mt-4">
                         <div class="flex flex-col">
@@ -360,9 +360,9 @@
   
   <script>
   import FooterBar from "@/components/FooterBar.vue";
-import NavBar from "@/components/NavBar.vue";
-import { onMounted, reactive, ref, watch } from "vue";
-import { useRouter } from "vue-router";
+  import NavBar from "@/components/NavBar.vue";
+  import { onMounted, reactive, ref, watch } from "vue";
+  import { useRouter } from "vue-router";
   
   export default {
     name: "PutusanPenting",
