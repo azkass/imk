@@ -1,19 +1,21 @@
 <template>
   <div class="bg-[#F5F7FA]">
     <NavBar />
-    <v-container>
+    <div class="px-16">
       <!-- Breadcrumbs Section -->
-      <v-breadcrumbs :items="items" item-class="breadcrumb-item">
+      <v-breadcrumbs :items="items" item-class="breadcrumb-item" class="px-0 sm:my-4 md:my-0 breadcrumbs text-[#8e4202]">
         <template v-slot:divider>
           <v-icon class="text-[#8e4202]" icon="mdi-chevron-right"></v-icon>
         </template>
         <template v-slot:prepend>
-          <v-icon class="text-[#8e4202]">mdi-home</v-icon>
+          <a href="/">
+            <v-icon class="text-[#8e4202]">mdi-home</v-icon>
+          </a>
         </template>
       </v-breadcrumbs>
 
       <!-- Title Section -->
-      <h1 class="text-2xl font-bold mb-4">Putusan</h1>
+      <h1 class="text-2xl font-bold mb-4">Putusan Penting</h1>
       <hr class="border-b-2 border-gray-800 mb-4">
       <p class="mb-8">
         Putusan merupakan suatu pernyataan hakim sebagai pejabat negara yang diucapkan di muka persidangan dengan tujuan untuk mengakhiri atau menyelesaikan suatu perkara atau sengketa antara para pihak yang saling berkepentingan
@@ -239,7 +241,7 @@
                       <span class="ml-2 text-green-600" v-if="item.jenisPutusan === 'Putusan Penting'">Berkekuatan Hukum Tetap</span>
                       </div>
                       <div class="flex justify-end">
-                        <div class="bg-[#8e4202] pr-3 pl-3 pa-1 pb-1 rounded-xl text-white">
+                        <div class="bg-[#8e4202] pr-3 pl-3 pa-1 pb-1 rounded-lg text-white">
                           {{ item.jenisPutusan }}
                         </div>
                       </div>
@@ -270,7 +272,7 @@
                   <div v-else>
                     <div class="flex justify-between">
                       <h3 class="text-xl font-bold mb-2">{{ item.title }}</h3>
-                      <div class="bg-[#8e4202] pr-3 pl-3 pa-1 pb-1 rounded-xl text-white">
+                      <div class="bg-[#8e4202] pr-3 pl-3 pa-1 pb-1 rounded-lg text-white">
                           {{ item.jenisPutusan }}
                         </div>
                     </div>
@@ -348,7 +350,7 @@
           </v-col>
         </v-row>
       </div>
-    </v-container>
+    </div>
     <FooterBar />
   </div>
 </template>
@@ -918,25 +920,19 @@ export default {
     return {
       items: [
         {
-          title: "Dashboard",
+          title: "Direktori",
           disabled: false,
-          href: "breadcrumbs_dashboard",
+          href: "/direktori",
         },
         {
-          title: "Link 1",
+          title: "Putusan",
           disabled: false,
-          href: "breadcrumbs_link_1",
+          href: "/putusan",
         },
         {
-          title: "Link 2",
-          disabled: false,
-          href: "breadcrumbs_link_2",
-        },
-        {
-          title: "Link 3",
-          disabled: true,
-          href: "breadcrumbs_link_2",
-        },
+          title: "Putusan Penting",
+          disabled: true
+        }
       ],
       directories: ["Semua", "Putusan", "Kompilasi Kaidah Hukum","Restatement", "Rumusan Kamar", "Rumusan Rakernas", "Yurisprudensi", "Peraturan"],
       decisionTypes: ["Semua", "Putusan Biasa", "Putusan Penting"],

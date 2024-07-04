@@ -8,7 +8,9 @@
             <v-icon class="text-[#8e4202]" icon="mdi-chevron-right"></v-icon>
           </template>
           <template v-slot:prepend>
-            <v-icon class="text-[#8e4202]">mdi-home</v-icon>
+            <a href="/">
+                <v-icon class="text-[#8e4202]">mdi-home</v-icon>
+            </a>
           </template>
         </v-breadcrumbs>
   
@@ -16,16 +18,19 @@
         <div class="flex justify-between items-center mb-4">
           <h1 class="text-2xl font-bold">2/Yur/TUN/2018</h1>
           <div class="flex space-x-2">
-            <button class="bg-yellow-500 text-white px-4 py-2 rounded-md flex items-center">
-              <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" /><span class="material-symbols-outlined">
-folder_zip
-</span> <span class="ml-1">ZIP</span>
+            <button @click="showPopup('ZIP')" class="bg-yellow-500 text-white px-4 py-2 rounded-md flex items-center">
+                <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" /><span class="material-symbols-outlined">
+                folder_zip
+                </span> <span class="ml-1">ZIP</span>
             </button>
-            <button class="bg-red-500 text-white px-4 py-2 rounded-md flex items-center">
-              <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" /><span class="material-symbols-outlined">
-picture_as_pdf
-</span> <span class="ml-1">PDF</span>
+            <button @click="showPopup('PDF')" class="bg-red-500 text-white px-4 py-2 rounded-md flex items-center">
+                <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" /><span class="material-symbols-outlined">
+                picture_as_pdf
+                </span> <span class="ml-1">PDF</span>
             </button>
+            <div class="p-0">
+              <PopupProgress v-if="isPopupVisible" :type="downloadType" @close="isPopupVisible = false" />
+            </div>
           </div>
         </div>
   
@@ -37,20 +42,20 @@ picture_as_pdf
             <h2 class="text-lg font-semibold mb-2">Metadata</h2>
             <div class="text-sm text-gray-700">
               <div class="mb-2">
-                <strong>Tahun:</strong> <span class="ml-64">2018</span>
+                <strong>Tahun</strong> <span class="ml-64">: 2018</span>
               </div>
               <div class="mb-2">
-                <strong>Nomor Katalog:</strong> <span class="ml-[194px]">2/Yur/TUN/2018</span>
+                <strong>Nomor Katalog</strong> <span class="ml-[194px]">: 2/Yur/TUN/2018</span>
               </div>
               <div class="mb-2">
-                <strong>Bidang:</strong> <span class="ml-[248px]">Tata Usaha Negara</span>
+                <strong>Bidang</strong> <span class="ml-[248px]">: Tata Usaha Negara</span>
               </div>
               <div class="mb-2">
-                <strong>Klasifikasi:</strong>
-                <a href="#" class="text-[#8e4202] underline ml-[234px]">Tata Usaha Negara &gt;&gt; Kepegawaian &gt;&gt; Pemberhentian Pegawai</a>
+                <strong>Klasifikasi</strong>
+                <a href="#" class="text-[#8e4202] underline ml-[234px]">: Tata Usaha Negara &gt;&gt; Kepegawaian &gt;&gt; Pemberhentian Pegawai</a>
               </div>
               <div>
-                <strong>Kata Kunci:</strong> <span class="ml-56">pilihan hukum kaidah hukum substantif; kaidah hukum formal</span>
+                <strong>Kata Kunci</strong> <span class="ml-56">: Pilihan hukum kaidah hukum substantif; kaidah hukum formal</span>
               </div>
             </div>
           </div>
@@ -90,29 +95,37 @@ picture_as_pdf
   
   <script>
   import FooterBar from "@/components/FooterBar.vue";
-import NavBar from "@/components/NavBar.vue";
-  
+  import NavBar from "@/components/NavBar.vue";
+  import PopupProgress from '@/components/PopupProgress.vue'
+
   export default {
     name: 'YurisprudensiPage',
     components: {
       NavBar,
-      FooterBar
+      FooterBar,
+      PopupProgress
     },
     data() {
       return {
         items: [
-          { title: 'Direktori', href: '#' },
-          { title: 'Yurisprudensi', href: '#' },
+          { title: 'Direktori', href: '/direktori' },
+          { title: 'Yurisprudensi', href: '/yurisprudensi' },
           { title: 'Tata Usaha Negara', href: '#' },
           { title: '2/Yur/TUN/2018', disabled: true },
         ],
-        openSections: [false, false] // Array to keep track of which sections are open
+        openSections: [false, false], // Array to keep track of which sections are open
+        isPopupVisible: false,
+        downloadType: '',
       };
     },
     methods: {
       toggleSection(index) {
         this.openSections = this.openSections.map((open, i) => (i === index ? !open : open));
-      }
+      },
+      showPopup(type) {
+      this.downloadType = type;
+      this.isPopupVisible = true;
+      },
     }
   }
   </script>

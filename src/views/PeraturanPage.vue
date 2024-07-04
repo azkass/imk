@@ -2,14 +2,16 @@
   <NavBar />
     <div class="bg-[#F5F7FA]">
       <!-- <v-container> -->
-        <div class="container px-16">
+        <div class="px-16 pb-16">
         <!-- Breadcrumbs Section -->
-        <v-breadcrumbs :items="items" item-class="breadcrumb-item" class="breadcrumbs">
+        <v-breadcrumbs :items="items" item-class="breadcrumb-item" class="px-0 sm:my-4 md:my-0 breadcrumbs text-[#8e4202]">
           <template v-slot:divider>
-            <v-icon class="text-[#8e4202]" icon="mdi-chevron-right"></v-icon>
+            <v-icon class="" icon="mdi-chevron-right"></v-icon>
           </template>
           <template v-slot:prepend>
-            <v-icon class="text-[#8e4202]">mdi-home</v-icon>
+            <a href="/">
+              <v-icon class="text-[#8e4202]">mdi-home</v-icon>
+            </a>
           </template>
         </v-breadcrumbs>
   
@@ -92,7 +94,7 @@
                 </div>
   
                 <div class="flex justify-center mt-4">
-                  <v-btn color="brown" @click="applyFiltersAndNavigate">Terapkan</v-btn>
+                  <v-btn color="#8e4202" @click="applyFiltersAndNavigate">Terapkan</v-btn>
                 </div>
               </v-card>
             </v-col>
@@ -149,17 +151,17 @@
                   <v-card class="pa-4 rounded-2xl shadow-2xl w-full">
                     <div>
                       <div class="flex items-center mb-2 justify-between">
-                        <div class="flex items-center">
-                          <v-icon icon="mdi-folder-open" color="black"></v-icon>
+                        <div class="flex items-center text-[#8e4202]">
+                          <v-icon icon="mdi-folder-open"></v-icon>
                           <span class="md:ml-0 sm:ml-0 sm:w-[18px] md:w-[254px] font-bold">Instruksi Presiden</span>
                         </div>
                         <div class="flex justify-end">
-                          <div class="bg-[#8e4202] sm:p-2 md:pr-3 md:pl-3 md:py-1 rounded-xl text-white text-center">
+                          <div class="bg-[#8e4202] sm:p-2 md:pr-3 md:pl-3 md:py-1 rounded-lg text-white text-center">
                             {{ item.jenisPutusan }}
                           </div>
                         </div>
                       </div>
-                      <h3 class="text-xl font-bold mb-2">{{ item.title }}</h3>
+                      <h3 class="text-xl font-bold mb-2 hover:underline">{{ item.title }}</h3>
                       <p class="mb-4 text-gray-500"><span class="text-black">Tentang: </span>{{ item.case }}</p>
                       <div class="mt-4">
                         <div class="flex flex-col">
@@ -265,7 +267,7 @@
             <v-combobox :items="sortOptions" label="Urutkan" variant="outlined" class="w-full" v-model="selectedSort" @change="applyFilters"></v-combobox>
             <v-combobox :items="directionOptions" label="Arah" variant="outlined" class="w-full mt-4" v-model="selectedDirection" @change="applyFilters"></v-combobox>
             <div class="flex justify-center mt-4">
-              <v-btn color="brown" @click="showSortFilter = false">Terapkan</v-btn>
+              <v-btn color="#8e4202" @click="showSortFilter = false">Terapkan</v-btn>
             </div>
           </v-card-text>
         </v-card>
@@ -282,7 +284,7 @@
             <v-combobox :items="sortOptions" label="Urutkan" variant="outlined" class="w-full" v-model="selectedSort" @change="applyFilters"></v-combobox>
             <v-combobox :items="directionOptions" label="Arah" variant="outlined" class="w-full mt-4" v-model="selectedDirection" @change="applyFilters"></v-combobox>
             <div class="flex justify-center mt-4">
-              <v-btn color="brown" @click="showSortFilter = false">Terapkan</v-btn>
+              <v-btn color="#8e4202" @click="showSortFilter = false">Terapkan</v-btn>
             </div>
           </v-card-text>
         </v-card>
@@ -314,7 +316,7 @@
             </div>
   
             <div class="flex justify-center mt-4">
-              <v-btn color="brown" @click="applyFiltersAndNavigate">Terapkan</v-btn>
+              <v-btn color="#8e4202" @click="applyFiltersAndNavigate">Terapkan</v-btn>
             </div>
           </v-card-text>
         </v-card>
@@ -346,7 +348,7 @@
             </div>
   
             <div class="flex justify-center mt-4">
-              <v-btn color="brown" @click="applyFiltersAndNavigate">Terapkan</v-btn>
+              <v-btn color="#8e4202" @click="applyFiltersAndNavigate">Terapkan</v-btn>
             </div>
           </v-card-text>
         </v-card>
@@ -358,9 +360,9 @@
   
   <script>
   import FooterBar from "@/components/FooterBar.vue";
-import NavBar from "@/components/NavBar.vue";
-import { onMounted, reactive, ref, watch } from "vue";
-import { useRouter } from "vue-router";
+  import NavBar from "@/components/NavBar.vue";
+  import { onMounted, reactive, ref, watch } from "vue";
+  import { useRouter } from "vue-router";
   
   export default {
     name: "PutusanPenting",
@@ -903,23 +905,12 @@ import { useRouter } from "vue-router";
           {
             title: "Direktori",
             disabled: false,
-            href: "breadcrumbs_dashboard",
+            href: "/direktori",
           },
           {
             title: "Peraturan",
-            disabled: false,
-            href: "breadcrumbs_link_1",
-          },
-          // {
-          //   title: "Link 2",
-          //   disabled: false,
-          //   href: "breadcrumbs_link_2",
-          // },
-          // {
-          //   title: "Link 3",
-          //   disabled: true,
-          //   href: "breadcrumbs_link_2",
-          // },
+            disabled: true
+          }
         ],
         directories: ["Semua", "Putusan", "Kompilasi Kaidah Hukum", "Restatement", "Rumusan Kamar", "Rumusan Rakernas", "Yurisprudensi", "Peraturan"],
         classifications: ["Semua","Undang-Undang","Fatwa DSN","SEMA","PERMA","Putusan MK","Peraturan Pemerintah","Qanun","SK Ketua MA","Peraturan Presiden","Fatwa MA","Surat Panitera","Peratuan Lain-Lain","Peraturan Komisi Pengawas Persaingan Usaha"],

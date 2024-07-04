@@ -9,7 +9,9 @@
             <v-icon class="text-[#8e4202]" icon="mdi-chevron-right"></v-icon>
           </template>
           <template v-slot:prepend>
-            <v-icon class="text-[#8e4202]">mdi-home</v-icon>
+            <a href="/">
+              <v-icon class="text-[#8e4202]">mdi-home</v-icon>
+            </a>
           </template>
         </v-breadcrumbs>
   
@@ -89,7 +91,7 @@
                 </div> -->
   
                 <div class="flex justify-center mt-4">
-                  <v-btn color="brown" @click="applyFiltersAndNavigate">Terapkan</v-btn>
+                  <v-btn color="#8E4202" @click="applyFiltersAndNavigate">Terapkan</v-btn>
                 </div>
               </v-card>
             </v-col>
@@ -151,7 +153,7 @@
                           <span class="md:ml-2 sm:ml-0 text-green-600 sm:w-[18px] md:w-[254px]">Berkekuatan Hukum Tetap</span>
                         </div>
                         <div class="flex justify-end">
-                          <div class="bg-[#8e4202] sm:p-2 md:pr-3 md:pl-3 md:py-1 rounded-xl text-white text-center">
+                          <div class="bg-[#8e4202] sm:p-2 md:pr-3 md:pl-3 md:py-1 rounded-lg text-white text-center">
                             {{ item.jenisPutusan }}
                           </div>
                         </div>
@@ -260,7 +262,7 @@
             <v-combobox :items="sortOptions" label="Urutkan" variant="outlined" class="w-full" v-model="selectedSort" @change="applyFilters"></v-combobox>
             <v-combobox :items="directionOptions" label="Arah" variant="outlined" class="w-full mt-4" v-model="selectedDirection" @change="applyFilters"></v-combobox>
             <div class="flex justify-center mt-4">
-              <v-btn color="brown" @click="showSortFilter = false">Terapkan</v-btn>
+              <v-btn color="#8E4202" @click="showSortFilter = false">Terapkan</v-btn>
             </div>
           </v-card-text>
         </v-card>
@@ -277,7 +279,7 @@
             <v-combobox :items="sortOptions" label="Urutkan" variant="outlined" class="w-full" v-model="selectedSort" @change="applyFilters"></v-combobox>
             <v-combobox :items="directionOptions" label="Arah" variant="outlined" class="w-full mt-4" v-model="selectedDirection" @change="applyFilters"></v-combobox>
             <div class="flex justify-center mt-4">
-              <v-btn color="brown" @click="showSortFilter = false">Terapkan</v-btn>
+              <v-btn color="#8E4202" @click="showSortFilter = false">Terapkan</v-btn>
             </div>
           </v-card-text>
         </v-card>
@@ -301,7 +303,7 @@
             <v-combobox :items="classifications" label="Pilih Klasifikasi Rumusan Rakernas" variant="outlined" v-model="selectedClassification"></v-combobox>
   
             <h2 class="mb-2 text-[17px] font-bold">Tahun Penerbitan</h2>
-            <v-range-slider v-model="tempTahunPenerbitan" :max="2024" :min="1984" :step="1" thumb-label="always" hide-details track-color="brown" thumb-color="brown"></v-range-slider>
+            <v-range-slider v-model="tempTahunPenerbitan" :max="2024" :min="1984" :step="1" thumb-label="always" hide-details track-color="#8E4202" thumb-color="brown"></v-range-slider>
             <div class="range-inputs">
               <v-text-field v-model="tempTahunPenerbitan[0]" density="compact" style="width: 70px; text-align: center;" type="number" variant="outlined" hide-details single-line></v-text-field>
               <div style="flex-grow: 1"></div>
@@ -309,7 +311,7 @@
             </div>
   
             <div class="flex justify-center mt-4">
-              <v-btn color="brown" @click="applyFiltersAndNavigate">Terapkan</v-btn>
+              <v-btn color="#8E4202" @click="applyFiltersAndNavigate">Terapkan</v-btn>
             </div>
           </v-card-text>
         </v-card>
@@ -333,7 +335,7 @@
             <v-combobox :items="classifications" label="Pilih Klasifikasi Rumusan Rakernas" variant="outlined" v-model="selectedClassification"></v-combobox>
   
             <h2 class="mb-2 text-[17px] font-bold">Tahun Penerbitan</h2>
-            <v-range-slider v-model="tempTahunPenerbitan" :max="2024" :min="1984" :step="1" thumb-label="always" hide-details track-color="brown" thumb-color="brown"></v-range-slider>
+            <v-range-slider v-model="tempTahunPenerbitan" :max="2024" :min="1984" :step="1" thumb-label="always" hide-details track-color="#8E4202" thumb-color="brown"></v-range-slider>
             <div class="range-inputs">
               <v-text-field v-model="tempTahunPenerbitan[0]" density="compact" style="width: 70px; text-align: center;" type="number" variant="outlined" hide-details single-line></v-text-field>
               <div style="flex-grow: 1"></div>
@@ -341,7 +343,7 @@
             </div>
   
             <div class="flex justify-center mt-4">
-              <v-btn color="brown" @click="applyFiltersAndNavigate">Terapkan</v-btn>
+              <v-btn color="#8E4202" @click="applyFiltersAndNavigate">Terapkan</v-btn>
             </div>
           </v-card-text>
         </v-card>
@@ -903,12 +905,11 @@ import { useRouter } from "vue-router";
           {
             title: "Home",
             disabled: false,
-            href: "breadcrumbs_dashboard",
+            href: "/",
           },
           {
             title: "Direktori",
-            disabled: true,
-            href: "breadcrumbs_link_1",
+            disabled: true
           },
           // {
           //   title: "Link 2",

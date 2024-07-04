@@ -8,7 +8,9 @@
         <v-icon class="text-[#8e4202]" icon="mdi-chevron-right"></v-icon>
         </template>
         <template v-slot:prepend>
-        <v-icon class="text-[#8e4202]">mdi-home</v-icon>
+            <a href="/">
+                <v-icon class="text-[#8e4202]">mdi-home</v-icon>
+            </a>
         </template>
     </v-breadcrumbs>
 
@@ -16,16 +18,19 @@
     <div class="flex justify-between items-center mb-4">
         <h1 class="text-2xl font-bold">Grosse Akta</h1>
         <div class="flex space-x-2">
-        <button class="bg-yellow-500 text-white px-4 py-2 rounded-md flex items-center">
-            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" /><span class="material-symbols-outlined">
-folder_zip
-</span> <span class="ml-1">ZIP</span>
-        </button>
-        <button class="bg-red-500 text-white px-4 py-2 rounded-md flex items-center">
-            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" /><span class="material-symbols-outlined">
-picture_as_pdf
-</span> <span class="ml-1">PDF</span>
-        </button>
+            <button @click="showPopup('ZIP')" class="bg-yellow-500 text-white px-4 py-2 rounded-md flex items-center">
+                <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" /><span class="material-symbols-outlined">
+                folder_zip
+                </span> <span class="ml-1">ZIP</span>
+            </button>
+            <button @click="showPopup('PDF')" class="bg-red-500 text-white px-4 py-2 rounded-md flex items-center">
+                <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" /><span class="material-symbols-outlined">
+                picture_as_pdf
+                </span> <span class="ml-1">PDF</span>
+            </button>
+            <div class="p-0">
+                <PopupProgress v-if="isPopupVisible" :type="downloadType" @close="isPopupVisible = false" />
+            </div>
         </div>
     </div>
     <hr class="border-b-2 border-gray-800 mb-4">
@@ -37,11 +42,11 @@ picture_as_pdf
         <div
             v-for="(item, index) in items"
             :key="'item-'+index"
-            class="grid grid-cols-2 gap-4 max-w-md mb-4">
-                <h4 class="text-l font-semibold mb-4">{{ item.title }}</h4>
-                <p class="text-l">{{ item.value }}</p>
+            class="flex flex-row gap-4 mb-4">
+                <h4 class="text-l font-semibold w-20 mb-4 xl:w-1/6">{{ item.title }}</h4>
+                <p class="text-l max-w-max">: {{ item.value }}</p>
         </div>
-    </div>
+        </div>
         </div>
         <!-- Accordion Sections -->
         <div class="accordion mb-4 border border-gray-300 rounded">
@@ -64,33 +69,41 @@ picture_as_pdf
 <script>
 import FooterBar from "@/components/FooterBar.vue";
 import NavBar from "@/components/NavBar.vue";
+import PopupProgress from "@/components/PopupProgress.vue";
 
 export default {
 name: 'YurisprudensiPage',
 components: {
     NavBar,
-    FooterBar
+    FooterBar,
+    PopupProgress
 },
 data() {
     return {
     breadcumbs: [
-        { title: 'Direktori', href: '#' },
-        { title: 'Yurisprudensi', href: '#' },
+        { title: 'Direktori', href: '/direktori' },
+        { title: 'Yurisprudensi', href: '/yurisprudensi' },
         { title: 'Tata Usaha Negara', href: '#' },
         { title: '2/Yur/TUN/2018', disabled: true },
     ],
     items: [
-        {title: 'Judul', value: ': Grosse Akta'},
-        {title: 'Klasifikasi', value: ': Grosse Akta'},
-        {title: 'Author', value: ': Ahmad Fikri Assegaf, Elijana Tanjah'},
+        {title: 'Judul', value: 'Grosse Akta'},
+        {title: 'Klasifikasi', value: 'Grosse Akta'},
+        {title: 'Author', value: 'Ahmad Fikri Assegaf, Elijana Tanjah'},
     ],
-    openSections: [false, false] // Array to keep track of which sections are open
+    openSections: [false, false], // Array to keep track of which sections are open
+    isPopupVisible: false,
+    downloadType: '',
     };
 },
 methods: {
     toggleSection(index) {
     this.openSections = this.openSections.map((open, i) => (i === index ? !open : open));
-    }
+    },
+    showPopup(type) {
+    this.downloadType = type;
+    this.isPopupVisible = true;
+    },
 }
 }
 </script>

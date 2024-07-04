@@ -1,19 +1,21 @@
 <template>
     <NavBar />
-    <div class="bg-[#F5F7FA]  sm:px-4 md:px-16 pb-8">
+    <div class="bg-[#F5F7FA] sm:px-4 md:px-16 pb-8">
     <v-breadcrumbs :items="breadcumbs" item-class="breadcrumb-item" class="text-[#8e4202] pl-0">
         <template v-slot:divider>
         <v-icon class="text-[#8e4202]" icon="mdi-chevron-right"></v-icon>
         </template>
         <template v-slot:prepend>
-        <v-icon class="text-[#8e4202]">mdi-home</v-icon>
+            <a href="/">
+                <v-icon class="text-[#8e4202]">mdi-home</v-icon>
+            </a>
         </template>
     </v-breadcrumbs>
     <div class="">
         <h1 class="text-4xl font-semibold pb-4">Kontak Kami</h1>
         <hr class="border-black border-2 mb-4">
-        <div class="flex flex-col sm:flex-row sm:items-start">
-            <div class="md:w-5/12">
+        <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-4">
+            <div class="sm:w-full lg:w-5/12">
                 <h2 class="text-2xl font-semibold mb-4">Kontak Mahkamah Agung</h2>
                 <div class="bg-white rounded-lg">
                     <div class="py-4 pl-2 pr-4 flex space-x-2">
@@ -49,13 +51,13 @@
                         </div>
                     </div>
                 </div>
-                <div>
+                <div class="">
                     <h2 class="text-2xl font-semibold mb-4 pt-4">Lokasi</h2>
-                    <iframe class="rounded-lg" src="https://www.google.co.id/maps/embed?pb=!1m18!1m12!1m3!1d3966.7036261674634!2d106.82380621069349!3d-6.170424460442687!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5d2094c7cc7%3A0xcd2b2096349c07d6!2sSupreme%20Court%20of%20the%20Republic%20of%20Indonesia!5e0!3m2!1sen!2sid!4v1719316186920!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe class="rounded-lg sm:w-full lg:w-full" src="https://www.google.co.id/maps/embed?pb=!1m18!1m12!1m3!1d3966.7036261674634!2d106.82380621069349!3d-6.170424460442687!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5d2094c7cc7%3A0xcd2b2096349c07d6!2sSupreme%20Court%20of%20the%20Republic%20of%20Indonesia!5e0!3m2!1sen!2sid!4v1719316186920!5m2!1sen!2sid" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
 
-            <div class="md:w-7/12 ml-10">
+            <div class="sm:w-full lg:w-7/12 ml-10 mt-4 sm:mt-0">
                 <h2 class="text-2xl font-semibold mb-4">Kirim Masukan</h2>
                 <div class="bg-white rounded-lg">
                     <div class="px-4">

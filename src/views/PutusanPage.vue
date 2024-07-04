@@ -2,14 +2,16 @@
   <div class="bg-[#F5F7FA]">
     <NavBar />
     <!-- <v-container> -->
-    <div class="container px-16">
+    <div class="px-16">
               <!-- Breadcrumbs Section -->
-      <v-breadcrumbs :items="items" item-class="breadcrumb-item" class="breadcrumbs pl-0 text-[#8e4202]">
+      <v-breadcrumbs :items="items" item-class="breadcrumb-item" class="px-0 sm:my-4 md:my-0 breadcrumbs text-[#8e4202]">
         <template v-slot:divider>
           <v-icon class="" icon="mdi-chevron-right"></v-icon>
         </template>
         <template v-slot:prepend>
-          <v-icon class="">mdi-home</v-icon>
+          <a href="/">
+            <v-icon class="text-[#8e4202]">mdi-home</v-icon>
+          </a>
         </template>
       </v-breadcrumbs>
 
@@ -216,7 +218,7 @@
                 <!-- Add other filters here if necessary -->
 
                 <div class="flex justify-center mt-4">
-                  <v-btn color="brown" @click="applyFiltersAndNavigate">Terapkan</v-btn>
+                  <v-btn color="#8E4202" @click="applyFiltersAndNavigate">Terapkan</v-btn>
                 </div>
               <!-- </v-card-text> -->
             </v-card>
@@ -249,8 +251,6 @@
               </div>
             </div>
             <div v-if="state.rooms.length === 0" class="flex justify-center mt-4">
-              
-              
               <div class="flex justify-center items-center mt-40">
                 <div class="text-center">
                   <div class="flex justify-center items-center mb-2">
@@ -263,9 +263,6 @@
                   </p>
                 </div>
               </div>
-              <!-- <v-alert type="warning" border="left" elevation="2" prominent>
-                Tidak ada data ditemukan berdasarkan filter yang diterapkan.
-              </v-alert> -->
             </div>
             <div v-else class="">
             <v-list class=" w-full md:mt-[-16px] bg-[#F5F7FA]">
@@ -280,12 +277,12 @@
                         <span class="md:ml-2 sm:ml-0 text-green-600 sm:w-[18px] md:w-[254px]">Berkekuatan Hukum Tetap</span>
                       </div>
                       <div class="flex justify-end">
-                        <div class="bg-[#8e4202] sm:p-2 md:pr-3 md:pl-3 md:py-1 rounded-xl text-white text-center">
+                        <div class="bg-[#8e4202] sm:p-2 md:pr-3 md:pl-3 md:py-1 rounded-lg text-white text-center">
                           {{ item.jenisPutusan }}
                         </div>
                       </div>
                     </div>
-                    <h3 class="text-xl font-bold mb-2">{{ item.title }}</h3>
+                    <h3 class="text-xl font-bold mb-2 hover:underline">{{ item.title }}</h3>
                     <p class="mb-2">{{ item.case }}</p>
                     <div class="mt-4">
                       <div class="flex flex-col">
@@ -319,8 +316,8 @@
                   <div v-else class="rounded-xl shadow-lg pa-4 w-full bg-white">
                     <a href="/isi-putusan">
                     <div class="flex justify-between items-center mb-2">
-                      <h3 class="text-xl font-bold mb-2">{{ item.title }}</h3>
-                      <div class="bg-[#8e4202] p-2 md:pr-3 md:pl-3 md:py-1 rounded-xl text-white text-center">
+                      <h3 class="text-xl font-bold mb-2 hover:underline">{{ item.title }}</h3>
+                      <div class="bg-[#8e4202] p-2 md:pr-3 md:pl-3 md:py-1 rounded-lg text-white text-center">
                         {{ item.jenisPutusan }}
                       </div>
                     </div>
@@ -579,7 +576,7 @@
           ></v-text-field>
         </div>
         <div class="flex justify-center mt-4">
-            <v-btn color="brown" @click="applyFiltersAndNavigate">Terapkan</v-btn>
+            <v-btn color="#8E4202" @click="applyFiltersAndNavigate">Terapkan</v-btn>
           </div>
 
         <!-- Add other filters here if necessary -->
@@ -597,7 +594,7 @@
           <v-combobox :items="sortOptions" label="Urutkan" variant="outlined" class="w-full" v-model="selectedSort" @change="applyFilters"></v-combobox>
           <v-combobox :items="directionOptions" label="Arah" variant="outlined" class="w-full mt-4" v-model="selectedDirection" @change="applyFilters"></v-combobox>
           <div class="flex justify-center mt-4">
-            <v-btn color="brown" @click="showSortFilter = false">Terapkan</v-btn>
+            <v-btn color="#8E4202" @click="showSortFilter = false">Terapkan</v-btn>
           </div>
         </v-card-text>
       </v-card>
@@ -1196,23 +1193,12 @@ const showSortFilter = ref(false);
         {
           title: "Direktori",
           disabled: false,
-          href: "breadcrumbs_dashboard",
+          href: "/direktori",
         },
         {
           title: "Putusan",
-          disabled: true,
-          href: "",
-        },
-        // {
-        //   title: "Link 2",
-        //   disabled: false,
-        //   href: "breadcrumbs_link_2",
-        // },
-        // {
-        //   title: "Link 3",
-        //   disabled: true,
-        //   href: "breadcrumbs_link_2",
-        // },
+          disabled: true
+        }
       ],
       directories: ["Semua", "Putusan", "Kompilasi Kaidah Hukum","Restatement", "Rumusan Kamar", "Rumusan Rakernas", "Yurisprudensi", "Peraturan"],
       decisionTypes: ["Semua", "Putusan Biasa", "Putusan Penting"],
