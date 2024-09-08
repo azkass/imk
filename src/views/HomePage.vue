@@ -4,8 +4,8 @@
         <NavBar />
         <div class="bg-cover bg-center bg-[url('@/assets/beranda.png')] pt-10">
             <div class="text-center">
-                <h2 class="sm:text-3xl md:text-5xl font-semibold md:my-4">Publikasi Dokumen Elektronik</h2>
-                <h2 class="sm:text-3xl md:text-5xl font-semibold md:mb-4">Putusan Seluruh Pengadilan di Indonesia</h2>
+                <h2 class="text-3xl md:text-5xl font-semibold md:my-4">Publikasi Dokumen Elektronik</h2>
+                <h2 class="text-3xl md:text-5xl font-semibold md:mb-4">Putusan Seluruh Pengadilan di Indonesia</h2>
                 <br>
             </div>
             <v-card
@@ -30,13 +30,6 @@
 
             <div class="flex items-center justify-center pb-5">
     <div class="container mx-24 my-12">
-            <!-- <button
-            @click="prevPage"
-            :disabled="currentPage === 0"
-            class="absolute left-0 z-10 p-2 bg-[#8E4202] text-white rounded-xl ml-10 mt-28"
-            >
-            &lt;
-        </button> -->
         <div class="relative flex items-center">
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10 mx-auto">
                 <div
@@ -57,13 +50,6 @@
                 </div>
             </div>
         </div>
-        <!-- <button
-            @click="nextPage"
-            :disabled="currentPage === maxPage"
-            class="absolute right-0 p-2 bg-[#8E4202] text-white rounded-full mr-10 mb-52"
-        >
-            &gt;
-        </button> -->
     </div>
 </div>
 
