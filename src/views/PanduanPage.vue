@@ -92,7 +92,7 @@
                   </div>
 
                   <div v-else-if="currentPage === 'fitur'">
-                    <img src="path_to_image_1.png" alt="Gambar 5" />
+                    <img src="../assets/rekapitulasi-putusan.png" alt="Gambar 5" />
                     <p class="text-gray-400">Gambar 2 - Tampilan Statistik data dan Putusan</p>
                     <p class="text-justify">Fitur-fitur pada Direktori Putusan ditampilkan pada bagian atas halaman awal Direktori Putusan, fitur-fitur tersebut antara lain :</p>
                     <ul>1. Beranda</ul>
@@ -115,7 +115,7 @@
                     <h3>Fitur Pencarian</h3>
                     <p class="text-justify">Penelusuran informasi putusan dengan metode pencarian (searching) dapat dilakukan dengan 2 cara, yakni :</p>
                     <ul>1. Melalui papan pencarian yang tersedia di halaman awal</ul>
-                    <img src="path_to_image_1.png" alt="Gambar 6" />
+                    <img src="" alt="Gambar 6" />
                     <p class="text-gray-400">Gambar 6 - Tampilan Pencarian Pada Halaman Awal Direktori Putusan v3</p>
                     <ul>2. Melalui Fitur Pencarian</ul>
                     <img src="path_to_image_1.png" alt="Gambar 7" />
@@ -135,20 +135,20 @@
                     <p class="text-justify">Untuk melihat data putusan, Anda dapat mencari berdasarkan Pengadilan, Klasifikasi, Kata kunci (Pencarian), Tahun (Putus, Upload, Register) seperti gambar dibawah :</p>
                     <br>
                     <p>1. Berdasarkan Pengadilan</p>
-                    <img src="path_to_image_1.png" alt="Gambar 10" />
-                    <p class="text-gray-400">Gambar 10 - Tampilan Utama Direktori Putusan v3</p>
+                    <img src="../assets/pengadilan.png" alt="Gambar 10" />
+                    <p class="text-gray-400 flex justify-cente">Gambar 10 - Tampilan Berdasarkan Pengadilan</p>
                     <p>2. Berdasarkan Klasifikasi</p>
-                    <img src="path_to_image_1.png" alt="Gambar 11" />
-                    <p class="text-gray-400">Gambar 11 - Tampilan Utama Direktori Putusan v3</p>
+                    <img src="../assets/klasifikasi.png" alt="Gambar 11" />
+                    <p class="text-gray-400 flex justify-cente">Gambar 11 - Tampilan Berdasarkan Klasifikasi</p>
                     <p>3. Berdasarkan Kata Kunci Pencarian</p>
-                    <img src="path_to_image_1.png" alt="Gambar 12" />
-                    <p class="text-gray-400">Gambar 12 - Tampilan Utama Direktori Putusan v3</p>
+                    <img src="../assets/katakunci.png" alt="Gambar 12" />
+                    <p class="text-gray-400 flex justify-cente">Gambar 12 - Tampilan Berdasarkan Kata Kunci</p>
                     <p>4. Berdasarkan Tahun Putus</p>
-                    <img src="path_to_image_1.png" alt="Gambar 13" />
-                    <p class="text-gray-400">Gambar 13 - Tampilan Utama Direktori Putusan v3</p>
+                    <img src="../assets/Tahunputus.png" alt="Gambar 13" />
+                    <p class="text-gray-400 flex justify-cente">Gambar 13 - Tampilan Berdasarkan Tahun Putus</p>
                     <p class="text-justify">Kemudian untuk melihat detail putusan yang anda cari, klik nomor putusan. Sistem akan menampilkan detail putusan seperti pada gambar berikut, anda dapat mengunduh file putusan pada link sebelah kanan detail putusan.</p>
-                    <img src="path_to_image_1.png" alt="Gambar 14" />
-                    <p class="text-gray-400">Gambar 14 - Tampilan Utama Direktori Putusan v3</p>
+                    <img src="../assets/klik.png" alt="Gambar 14" />
+                    <p class="text-gray-400 flex justify-center">Gambar 14 - Tampilan Berdasarkan Melihat Detail</p>
                   </div>
 
                   <div v-else-if="currentPage === 'rumusan'">
@@ -157,12 +157,12 @@
                     <p>Langkah mengakses halaman Rumusan Kamar :</p>
                     <br>
                     <p>1, Pada fitur Direktori, pilih Rumusan Kamar</p>
-                    <img src="path_to_image_1.png" alt="Gambar 15" />
+                    <img src="../assets/rumusankamar.png" alt="Gambar 15" />
                     <p class="text-gray-400">Gambar 15 - Tampilan Utama Direktori Putusan v3</p>
                     <p>2. Pilih daftar Rumusan Kamar</p>
                     <p class="text-justify">Rumusan kamar memiliki Klasifikasi, Anda dapat membuka Rumusan Kamar berdasarkan klasifikasi yang dibutuhkan.</p>
                     <p>3. Klik nomor Rumusan Kamar yang akan dilihat detailnya</p>
-                    <img src="path_to_image_1.png" alt="Gambar 16" />
+                    <img src="../assets/Isirumusankamar.png" alt="Gambar 16" />
                   </div>
                   <div v-else-if="currentPage === 'kaidah'">
                     <p class="text-justify">Fitur Kaidah Hukum menyajiakn ringkasan Kaidah Hukum yang akan dijadikan pedoman Para Majelis Hukum untuk memutusakan suatu perkara.</p>
